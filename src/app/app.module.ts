@@ -5,11 +5,13 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { RegisterStudentComponent } from "./main/register-student/register-student.component";
+
 import { LoginStudentComponent } from "./main/login-student/login-student.component";
 import { NgxPaginationModule } from "ngx-pagination";
 
 @NgModule({
-  declarations: [AppComponent, LoginStudentComponent, LoginStudentComponent],
+  declarations: [AppComponent, LoginStudentComponent, RegisterStudentComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
