@@ -4,6 +4,7 @@ import { MainLoginComponent } from "./main/login/login.component";
 import { RegisterStudentComponent } from "./main/register-student/register-student.component";
 import { RegisterComponent } from "./main/register/register.component";
 import { LoginStudentComponent } from "./main/login-student/login-student.component";
+import { TrainerRegisterComponent } from "./main/trainer-register/trainer-register.component";
 import { TrainerLoginComponent } from "./main/trainer-login/trainer-login.component";
 
 const routes: Routes = [
@@ -29,7 +30,10 @@ const routes: Routes = [
 
       {
         path: "trainer",
-        children: [{ path: "login", component: TrainerLoginComponent }],
+        children: [
+          { path: "logout", redirectTo: "main/login", pathMatch: "full" },
+          { path: "register", component: TrainerRegisterComponent },
+        ],
       },
     ],
   },
