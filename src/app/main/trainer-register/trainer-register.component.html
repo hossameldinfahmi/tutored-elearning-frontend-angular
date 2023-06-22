@@ -1,0 +1,225 @@
+<div class="container mt-5 grid-margin stretch-card text-primary">
+  <div class="card main-forms" style="margin-top: 80px;">
+    <div class="card-body">
+      <h4 class="card-title text-center fw-bold">Sign Up</h4>
+
+      <form class="forms-sample mt-3" #trainerRegisterForm="ngForm">
+        <div class="form-row">
+          <div class="col">
+            <label for="fname">First Name :</label>
+            <input
+              #firstNameInput="ngModel"
+              ngModel
+              required
+              minlength="3"
+              maxlength="20"
+              pattern="^[a-zA-Z0-9 _.-]*$"
+              type="text"
+              class="form-control"
+              id="fname"
+              placeholder="First Name"
+              name="fname"
+            />
+            <span
+              *ngIf="firstNameInput.touched && firstNameInput.invalid && firstNameInput.errors?.['required']"
+              style="color: red"
+              class="alert"
+              >This field is required *</span
+            >
+            <span
+              *ngIf="firstNameInput.errors?.['minlength']"
+              style="color: red"
+              class="alert"
+              >Please enter more than 3 characters *</span
+            >
+            <span
+              *ngIf="firstNameInput.errors?.['maxlength']"
+              style="color: red"
+              class="alert"
+              >Please enter less than 20 characters *</span
+            >
+            <span
+              *ngIf="firstNameInput.errors?.['pattern']"
+              style="color: red"
+              class="alert"
+              >Please enter alphabets characters only *</span
+            >
+          </div>
+
+          <div class="col">
+            <label for="lname">Last Name :</label>
+            <input
+              #lastNameInput="ngModel"
+              ngModel
+              required
+              minlength="3"
+              maxlength="20"
+              pattern="^[a-zA-Z0-9 _.-]*$"
+              type="text"
+              class="form-control"
+              id="lname"
+              placeholder="Last Name"
+              name="lname"
+            />
+            <span
+              *ngIf="lastNameInput.touched && lastNameInput.invalid && lastNameInput.errors?.['required']"
+              style="color: red"
+              class="alert"
+              >This field is required *</span
+            >
+            <span
+              *ngIf="lastNameInput.errors?.['minlength']"
+              style="color: red"
+              class="alert"
+              >Please enter more than 3 characters *</span
+            >
+            <span
+              *ngIf="lastNameInput.errors?.['maxlength']"
+              style="color: red"
+              class="alert"
+              >Please enter less than 20 characters *</span
+            >
+            <span
+              *ngIf="lastNameInput.errors?.['pattern']"
+              style="color: red"
+              class="alert"
+              >Please enter alphabets characters only *</span
+            >
+          </div>
+        </div>
+        <fieldset class="row mt-3">
+          <legend
+            class="col-form-label col-sm-2 pt-0"
+            style="color: #5fcf80; font-weight: bold"
+          >
+            Gender:
+          </legend>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                #genderInput="ngModel"
+                ngModel
+                name="gender"
+                id="male"
+                value="male"
+                checked
+              />
+              <label
+                class="form-check-label"
+                style="color: black; font-weight: normal"
+                for="male"
+              >
+                Male
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                #genderInput="ngModel"
+                ngModel
+                name="gender"
+                id="female"
+                value="female"
+              />
+              <label
+                class="form-check-label"
+                style="color: black; font-weight: normal"
+                for="female"
+              >
+                Female
+              </label>
+            </div>
+          </div>
+          <span
+            *ngIf="genderInput.touched && genderInput.invalid && genderInput.errors?.['required']"
+            style="color: red"
+            class="alert"
+            >This field is required *</span
+          >
+        </fieldset>
+
+        <div class="form-group">
+          <label for="phone">Phone :</label>
+          <input
+            #phoneInput="ngModel"
+            ngModel
+            required
+            type="text"
+            class="form-control"
+            id="phone"
+            placeholder="Phone"
+            name="phone"
+          />
+          <span
+            *ngIf="phoneInput.touched && phoneInput.invalid && phoneInput.errors?.['required']"
+            style="color: red"
+            class="alert"
+            >This field is required *</span
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email :</label>
+          <input
+            #emailInput="ngModel"
+            ngModel
+            required
+            type="text"
+            class="form-control"
+            id="email"
+            placeholder="Email Address"
+            name="email"
+          />
+          <span
+            *ngIf="emailInput.touched && emailInput.invalid && emailInput.errors?.['required']"
+            style="color: red"
+            class="alert"
+            >This field is required *</span
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password :</label>
+          <input
+            #passwordInput="ngModel"
+            ngModel
+            required
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Password"
+            name="password"
+          />
+          <span
+            *ngIf="passwordInput.touched && passwordInput.invalid && passwordInput.errors?.['required']"
+            style="color: red"
+            class="alert"
+            >This field is required *</span
+          >
+        </div>
+        
+       
+        
+        
+
+        <button
+          type="submit"
+          id="submitBtn"
+          class="btn text-light mr-2 border-0 main-btns"
+          [disabled]="!trainerRegisterForm.valid"
+          routerLink="/main/trainer/login"
+          (click)="addTrainer(trainerRegisterForm)"
+          
+        >
+          Register
+        </button>
+        <button class="btn btn-light" (click)="resetForm(trainerRegisterForm)">
+          Cancel
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

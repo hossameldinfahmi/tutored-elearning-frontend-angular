@@ -9,9 +9,15 @@ import { RegisterStudentComponent } from "./main/register-student/register-stude
 
 import { LoginStudentComponent } from "./main/login-student/login-student.component";
 import { NgxPaginationModule } from "ngx-pagination";
+import { TrainerRegisterComponent } from "./main/trainer-register/trainer-register.component";
 
 @NgModule({
-  declarations: [AppComponent, LoginStudentComponent, RegisterStudentComponent],
+  declarations: [
+    AppComponent,
+    LoginStudentComponent,
+    RegisterStudentComponent,
+    TrainerRegisterComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
