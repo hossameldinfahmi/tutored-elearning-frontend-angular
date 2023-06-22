@@ -6,6 +6,7 @@ import { RegisterComponent } from "./main/register/register.component";
 import { LoginStudentComponent } from "./main/login-student/login-student.component";
 import { TrainerRegisterComponent } from "./main/trainer-register/trainer-register.component";
 import { TrainerLoginComponent } from "./main/trainer-login/trainer-login.component";
+import { HomePageComponent } from "./main/home-page/home-page.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -13,6 +14,7 @@ const routes: Routes = [
   {
     path: "main",
     children: [
+      { path: "home", component: HomePageComponent },
       { path: "login", component: MainLoginComponent },
       { path: "login/student", component: LoginStudentComponent },
       { path: "register", component: RegisterComponent },

@@ -14,21 +14,29 @@ import { FooterComponent } from "./main/footer/footer.component";
 import { TrainerLoginComponent } from "./main/trainer-login/trainer-login.component";
 import { CommonModule } from "@angular/common";
 import { NavbarMainComponent } from "./navbar-main/navbar-main.component";
-
+import { CountsComponent } from "./main/Layouts/counts/counts.component";
+import { WhyUsComponent } from "./main/Layouts/why-us/why-us.component";
+import { AboutComponent } from "./main//Layouts/about/about.component";
+import { HomePageComponent } from "./main/home-page/home-page.component";
 @NgModule({
   declarations: [
     //main Component & Layout
     AppComponent,
     FooterComponent,
+    AboutComponent,
+    CountsComponent,
+    WhyUsComponent,
 
     // login
     LoginStudentComponent,
+    TrainerLoginComponent,
 
     //Register
     RegisterStudentComponent,
     TrainerRegisterComponent,
-    TrainerLoginComponent,
     NavbarMainComponent,
+
+    HomePageComponent,
   ],
 
   imports: [
