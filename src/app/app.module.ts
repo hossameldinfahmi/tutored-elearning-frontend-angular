@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RegisterStudentComponent } from './main/register-student/register-student.component';
+// import { RegisterStudentComponent } from './main/register-student/register-student.component';
 import { LoginStudentComponent } from './main/login-student/login-student.component';
 
 
@@ -15,13 +15,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
   declarations: [
     AppComponent,
    
-       RegisterStudentComponent,
+      //  RegisterStudentComponent,
        LoginStudentComponent,
 
-       RegisterStudentComponent,
+      //  RegisterStudentComponent,
        LoginStudentComponent,
 
-    RegisterStudentComponent,
+    // RegisterStudentComponent,
     LoginStudentComponent,
    
     ],

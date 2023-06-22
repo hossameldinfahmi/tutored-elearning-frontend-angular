@@ -10,13 +10,10 @@ import { Router } from '@angular/router';
 export class LoginStudentComponent implements OnInit {
 
   constructor( 
-    ) {
-
-    }
+    ) {}
 
   ngOnInit(): void {
   }
-
 
   data={email:"",password:""}
 
@@ -27,10 +24,5 @@ export class LoginStudentComponent implements OnInit {
 
     this.data.email=form.value.email
     this.data.password=form.value.password
-
-  
   }
-
-
-
 }
