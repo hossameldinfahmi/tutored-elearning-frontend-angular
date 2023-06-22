@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { MainLoginComponent } from "./main/login/login.component";
+import { LoginStudentComponent } from "./main/login-student/login-student.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -10,6 +11,8 @@ const routes: Routes = [
     children: [
       // { path: 'register', component: RegisterComponent },
       { path: "login", component: MainLoginComponent },
+      { path: "login/student", component: LoginStudentComponent },
+
       {
         path: "courses",
         children: [],
