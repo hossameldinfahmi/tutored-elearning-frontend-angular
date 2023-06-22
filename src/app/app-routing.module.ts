@@ -1,49 +1,41 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-// import { RegisterComponent } from './main/register/register.component';
-import { MainLoginComponent } from './main/login/login.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { MainLoginComponent } from "./main/login/login.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/main/home', pathMatch: 'full' },
+  { path: "", redirectTo: "/main/home", pathMatch: "full" },
 
   {
-    path: 'main',
+    path: "main",
     children: [
       // { path: 'register', component: RegisterComponent },
-      { path: 'login', component: MainLoginComponent },
+      { path: "login", component: MainLoginComponent },
       {
-        path: 'courses',
-        children: [
-        
-        ],
+        path: "courses",
+        children: [],
       },
 
       {
-        path: 'categories',
-        children: [
-        ],
+        path: "categories",
+        children: [],
       },
       {
-        path: 'trainer',
+        path: "trainer",
         children: [
-        
-          { path: 'logout', redirectTo:'main/login', pathMatch:'full'}
+          { path: "logout", redirectTo: "main/login", pathMatch: "full" },
         ],
       },
-
     ],
   },
 
   {
-    path: 'dashboard',
-    children: [
-     
-    ],
+    path: "dashboard",
+    children: [],
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' })],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "top" })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
