@@ -33,6 +33,7 @@ const routes: Routes = [
         children: [
           { path: "logout", redirectTo: "main/login", pathMatch: "full" },
           { path: "register", component: TrainerRegisterComponent },
+          { path: "login", component: TrainerLoginComponent },
         ],
       },
     ],

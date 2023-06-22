@@ -1,0 +1,133 @@
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+    <img
+      src="assets/main/img/SARA.png"
+      width="140px"
+      alt=""
+      class="img-fluid logo me-auto"
+    />
+
+    <!-- <h1 class="logo me-auto"><img src="assets/dashboard/images/online.png" alt="logo" width="140px" /></h1> -->
+    <nav id="navbar" class="navbar-expand-lg order-last order-lg-0">
+      <div class="container-fluid">
+        <button
+          type="button"
+          class="navbar-toggler bi bi-list"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav">
+            <a
+              class="text-dark font-weight-medium mt-3 m-2"
+              routerLink="/main/home"
+              >Home</a
+            >
+            <a
+              class="text-dark font-weight-medium mt-3 m-2"
+              routerLink="/main/about"
+              >About</a
+            >
+            <a
+              class="text-dark font-weight-medium mt-3 m-2"
+              routerLink="/main/courses"
+              >Courses</a
+            >
+            <a
+              class="text-dark font-weight-medium mt-3 m-2"
+              routerLink="/main/trainers"
+              >Trainers</a
+            >
+            <a
+              class="text-dark font-weight-medium mt-3 m-2"
+              routerLink="/main/categories"
+              >Categories</a
+            >
+            <a
+              class="text-dark font-weight-medium mt-3 m-2"
+              routerLink="/main/contact"
+              >Contact</a
+            >
+            <a
+              class="text-dark font-weight-medium mt-3 m-2"
+              routerLink="/main/search"
+              ><i class="fa fa-search" aria-hidden="true"></i
+            ></a>
+
+            <ng-template #login>
+              <a
+                routerLink="/main/register"
+                class="get-started-btn font-weight-medium mt-2 m-1 button"
+                >Register</a
+              >
+              <a
+                routerLink="/main/login"
+                class="get-started-btn font-weight-medium mt-2 m-1 button"
+                >Login</a
+              ></ng-template
+            >
+
+            <ul
+              *ngIf="userName; else login"
+              class="navbar-nav navbar-nav-right ml-lg-auto"
+            >
+              <li class="nav-item nav-profile dropdown border-0">
+                <a
+                  class="nav-link dropdown-toggle"
+                  id="profileDropdown"
+                  href="#"
+                  data-toggle="dropdown"
+                >
+                  <img
+                    class="nav-profile-img mr-2 img-style"
+                    alt=""
+                    src="assets/dashboard/images/faces/face1.jpg"
+                  />
+                  <span
+                    class="profile-name"
+                    id="loggedInUser"
+                    style="color: #5fcf80"
+                    >{{ userName }}</span
+                  >
+                </a>
+                <div
+                  class="dropdown-menu navbar-dropdown w-100"
+                  aria-labelledby="profileDropdown"
+                >
+                  <a
+                    class="dropdown-item"
+                    [routerLink]="'/main/' + checkUser + '/courses'"
+                  >
+                    <i
+                      class="mdi mdi-book-open-page-variant menu-icon mr-2 text-info"
+                    ></i>
+                    My Courses
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    [routerLink]="'/main/' + checkUser + '/update'"
+                  >
+                    <i
+                      class="fa fa-pencil-square-o mr-2 text-success"
+                      aria-hidden="true"
+                    ></i>
+                    Edit Profile
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    [routerLink]="'/main/' + checkUser + '/logout'"
+                  >
+                    <i class="mdi mdi-logout mr-2 text-primary"></i> Sign Out
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>

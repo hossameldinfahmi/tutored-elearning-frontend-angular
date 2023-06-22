@@ -10,6 +10,9 @@ import { RegisterStudentComponent } from "./main/register-student/register-stude
 import { LoginStudentComponent } from "./main/login-student/login-student.component";
 import { NgxPaginationModule } from "ngx-pagination";
 import { TrainerRegisterComponent } from "./main/trainer-register/trainer-register.component";
+import { TrainerLoginComponent } from "./main/trainer-login/trainer-login.component";
+import { CommonModule } from "@angular/common";
+import { NavbarMainComponent } from "./navbar-main/navbar-main.component";
 
 @NgModule({
   declarations: [
@@ -17,13 +20,17 @@ import { TrainerRegisterComponent } from "./main/trainer-register/trainer-regist
     LoginStudentComponent,
     RegisterStudentComponent,
     TrainerRegisterComponent,
+    TrainerLoginComponent,
+    NavbarMainComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
