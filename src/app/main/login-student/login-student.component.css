@@ -1,0 +1,9 @@
+label{
+    color: #5fcf80;
+    font-weight: bold;
+}
+
+#submitBtn:hover {
+    background-color: rgb(161, 236, 164) ;
+}
+
