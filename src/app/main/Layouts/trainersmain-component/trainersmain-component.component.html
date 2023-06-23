@@ -1,0 +1,33 @@
+<!-- ======= Trainers Section ======= -->
+<section id="trainers" class="trainers">
+  <div class="container" data-aos="fade-up">
+    <div class="row" data-aos="zoom-in" data-aos-delay="100">
+      <div
+        *ngFor="
+          let trainer of TrainersArray
+            | paginate : { itemsPerPage: 6, currentPage: p };
+          let i = index
+        "
+        class="mb-4 col-lg-4 col-md-6 d-flex align-items-stretch"
+      >
+        <div class="member w-100 h-100">
+          <!-- <img src="assets/main/img/trainers/trainer-1.jpg" class="img-fluid" alt=""> -->
+          <!-- <img [src]="url + trainer.img" alt="" class="img-fluid w-100" /> -->
+          <div class="member-content">
+            <!-- <h4>{{ trainer.fname }} {{ trainer.lname }}</h4> -->
+            <!-- <span>Phone : {{ trainer.phone }}</span>
+            <p>Email : {{ trainer.email }}</p>
+            <div class="social">
+              <a [href]="trainer.twitter"><i class="bi bi-twitter"></i></a>
+              <a [href]="trainer.facebook"><i class="bi bi-facebook"></i></a>
+              <a [href]="trainer.linkedin"><i class="bi bi-linkedin"></i></a>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- <pagination-controls (pageChange)="p = $event" style="float: right; margin: 10px;"></pagination-controls> -->
+    </div>
+  </div>
+</section>
+<!-- End Trainers Section -->

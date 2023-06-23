@@ -18,6 +18,11 @@ import { CountsComponent } from "./main/Layouts/counts/counts.component";
 import { WhyUsComponent } from "./main/Layouts/why-us/why-us.component";
 import { AboutComponent } from "./main//Layouts/about/about.component";
 import { HomePageComponent } from "./main/home-page/home-page.component";
+
+import { FeaturesComponent } from "./main/Layouts/features/features.component";
+import { PopularCourcesComponent } from "./main/Layouts/popular-cources/popular-cources.component";
+import { TrainersmainComponentComponent } from "./main/Layouts/trainersmain-component/trainersmain-component.component";
+
 @NgModule({
   declarations: [
     //main Component & Layout
@@ -26,7 +31,9 @@ import { HomePageComponent } from "./main/home-page/home-page.component";
     AboutComponent,
     CountsComponent,
     WhyUsComponent,
-
+    PopularCourcesComponent,
+    TrainersmainComponentComponent,
+    FeaturesComponent,
     // login
     LoginStudentComponent,
     TrainerLoginComponent,
