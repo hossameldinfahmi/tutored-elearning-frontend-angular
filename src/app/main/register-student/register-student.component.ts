@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
+import { Student } from "src/app/_models/student.model";
+import { StudentService } from "src/app/_services/student.service";
 
 @Component({
   selector: "app-register-student",
@@ -7,13 +9,14 @@ import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
   styleUrls: ["./register-student.component.css"],
 })
 export class RegisterStudentComponent implements OnInit {
-  constructor() {}
+  constructor(private studentService: StudentService) {}
   ngOnInit(): void {}
+  studentArray!: Student[];
 
-  newStudent: any = {
+  newStudent: Student = {
     fname: "",
     lname: "",
-    gender: "", //enum
+    gender: "",
     phone: "",
     email: "",
     password: "",
@@ -26,6 +29,14 @@ export class RegisterStudentComponent implements OnInit {
     this.newStudent.phone = form.value["phone"];
     this.newStudent.email = form.value["email"];
     this.newStudent.password = form.value["password"];
+
+    this.studentService.addStudent(this.newStudent).subscribe(
+      (res) => {},
+      (err) => {
+        console.log("Error adding student");
+        console.log(err);
+      }
+    );
   }
 
   onSubmit(form: NgForm) {}

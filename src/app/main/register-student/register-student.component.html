@@ -43,7 +43,7 @@
                 *ngIf="firstNameInput.errors?.['pattern']"
                 style="color: red"
                 class="alert"
-                >Please enter alphabets characters only *</span
+                >Please enter number or alphabets characters only *</span
               >
             </div>
 
@@ -84,7 +84,7 @@
                 *ngIf="lastNameInput.errors?.['pattern']"
                 style="color: red"
                 class="alert"
-                >Please enter alphabets characters only *</span
+                >Please enter number or alphabets characters only *</span
               >
             </div>
           </div>
@@ -96,7 +96,7 @@
             >
               Gender:
             </legend>
-            <div class="col-sm-10">
+            <div class="col-sm-10 d-flex gap-5">
               <div class="form-check">
                 <input
                   class="form-check-input"
@@ -107,6 +107,7 @@
                   id="male"
                   value="male"
                   checked
+                  required
                 />
                 <label
                   class="form-check-label"
@@ -125,6 +126,7 @@
                   name="gender"
                   id="female"
                   value="female"
+                  required
                 />
                 <label
                   class="form-check-label"
@@ -135,12 +137,12 @@
                 </label>
               </div>
             </div>
-            <!-- <span
+            <span
               *ngIf="genderInput.touched && genderInput.invalid && genderInput.errors?.['required']"
               style="color: red"
               class="alert"
               >This field is required *</span
-            > -->
+            >
           </fieldset>
 
           <div class="form-group">
@@ -154,7 +156,21 @@
               id="phone"
               placeholder="Phone Number"
               name="phone"
+              maxlength="11"
+              pattern="^01(0|1|2|5)\d{8}$"
             />
+            <span
+              *ngIf="phoneContentInput.touched && phoneContentInput.invalid && phoneContentInput.errors?.['required']"
+              style="color: red"
+              class="alert"
+              >This field is required *</span
+            >
+            <span
+              *ngIf="phoneContentInput.errors?.['pattern']"
+              style="color: red"
+              class="alert"
+              >Please enter correct Phone *</span
+            >
           </div>
           <div class="form-group">
             <label for="email">Email :</label>
@@ -167,7 +183,20 @@
               id="email"
               placeholder="Email Address"
               name="email"
+              email
             />
+            <span
+              *ngIf="emailInput.touched && emailInput.invalid && emailInput.errors?.['required']"
+              style="color: red"
+              class="alert"
+              >This field is required *</span
+            >
+            <span
+              *ngIf="emailInput.errors?.['email']"
+              style="color: red"
+              class="alert"
+              >Please enter correct email *</span
+            >
           </div>
           <div class="form-group">
             <label for="password">Password :</label>
@@ -178,7 +207,7 @@
               type="password"
               class="form-control"
               id="password"
-              placeholder="placeholder"
+              placeholder="Password"
               name="password"
             />
           </div>
@@ -186,7 +215,7 @@
           <button
             type="submit"
             id="submitBtn"
-            class="btn text-light mr-2 border-0 main-btns"
+            class="btn m-4 btn-success border-0 main-btns"
             [disabled]="!studentForm.valid"
             routerLink="/main/login/student"
             (click)="addStudent(studentForm)"
