@@ -22,6 +22,8 @@ import { HomePageComponent } from "./main/home-page/home-page.component";
 import { FeaturesComponent } from "./main/Layouts/features/features.component";
 import { PopularCourcesComponent } from "./main/Layouts/popular-cources/popular-cources.component";
 import { TrainersmainComponentComponent } from "./main/Layouts/trainersmain-component/trainersmain-component.component";
+import { ContentComponent } from "./main/content/content.component";
+import { ContactComponent } from "./main/Layouts/contact/contact.component";
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { TrainersmainComponentComponent } from "./main/Layouts/trainersmain-comp
     PopularCourcesComponent,
     TrainersmainComponentComponent,
     FeaturesComponent,
+    ContentComponent,
+    ContactComponent,
 
     // login
     LoginStudentComponent,
