@@ -8,11 +8,23 @@ import { NgForm } from "@angular/forms";
   styleUrls: ["./trainer-register.component.css"],
 })
 export class TrainerRegisterComponent implements OnInit {
-  constructor(TrainerService: TrainerService) {}
+  constructor(private trainerService: TrainerService) {}
   ngOnInit(): void {}
 
   addTrainer(form: NgForm) {
-    console.log("Hello World");
+    const formData = form.value;
+    console.log("====================================");
+    console.log(formData);
+    console.log("====================================");
+    this.trainerService.addTrainer(formData).subscribe(
+      (response: any) => {
+        console.log(response);
+        form.resetForm();
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
   }
 
   resetForm(form: NgForm) {
