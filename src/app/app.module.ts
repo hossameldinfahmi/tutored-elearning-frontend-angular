@@ -34,6 +34,7 @@ import { TrainersmainComponentComponent } from "./main/Layouts/trainersmain-comp
     PopularCourcesComponent,
     TrainersmainComponentComponent,
     FeaturesComponent,
+
     // login
     LoginStudentComponent,
     TrainerLoginComponent,

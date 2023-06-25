@@ -1,22 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Router, RouterModule } from "@angular/router";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"],
 })
 export class MainLoginComponent implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor(private router: Router) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  clickTrainer() {
+    this.router.navigate(["/main/trainer/login"]);
   }
-
-clickTrainer(){
-    this.router.navigate(['/main/trainer/login'])
-}
-clickstudent(){
-  this.router.navigate(['/main/login/student'])
-}
+  clickstudent() {
+    this.router.navigate(["/main/login/student"]);
+  }
 }

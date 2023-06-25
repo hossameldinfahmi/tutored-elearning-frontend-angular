@@ -1,9 +1,9 @@
-import { Course } from "./course.model"
+import { Course } from "./course.model";
 
-export interface CourseContent{
-    id ?:number,
-    course_id :number,
-    name ?:string,
-    content ?:string,
-    course?:Course,
+export interface CourseContent {
+  id?: number;
+  course_id: number;
+  name?: string;
+  content?: string;
+  course?: Course;
 }
