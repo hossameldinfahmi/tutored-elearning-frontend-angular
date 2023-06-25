@@ -54,6 +54,7 @@ import { TrainersmainComponentComponent } from "./main/Layouts/trainersmain-comp
     ReactiveFormsModule,
     NgxPaginationModule,
     CommonModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

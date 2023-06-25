@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { TrainerService } from "../../_services/trainer.service";
 import { NgForm } from "@angular/forms";
 
 @Component({
@@ -7,12 +8,12 @@ import { NgForm } from "@angular/forms";
   styleUrls: ["./trainer-register.component.css"],
 })
 export class TrainerRegisterComponent implements OnInit {
-  constructor() {}
-  ngOnInit(): void {
-    throw new Error("Method not implemented.");
-  }
+  constructor(TrainerService: TrainerService) {}
+  ngOnInit(): void {}
 
-  addTrainer(form: NgForm) {}
+  addTrainer(form: NgForm) {
+    console.log("Hello World");
+  }
 
   resetForm(form: NgForm) {
     form.reset();
