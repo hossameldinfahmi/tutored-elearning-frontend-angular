@@ -25,13 +25,15 @@ import { PopularCourcesComponent } from "./main/Layouts/popular-cources/popular-
 import { TrainersmainComponentComponent } from "./main/Layouts/trainersmain-component/trainersmain-component.component";
 import { ContentComponent } from "./main/content/content.component";
 import { ContactComponent } from "./main/Layouts/contact/contact.component";
+import { FeedbackComponent } from "./main/Layouts/feedback/feedback.component";
+import { AboutPageComponent } from "./main/about-page/about-page.component";
+import { HeroComponent } from "./main/Layouts/hero/hero.component";
 
 @NgModule({
   declarations: [
     //main Component & Layout
     AppComponent,
     FooterComponent,
-    AboutComponent,
     CountsComponent,
     WhyUsComponent,
     PopularCourcesComponent,
@@ -39,6 +41,7 @@ import { ContactComponent } from "./main/Layouts/contact/contact.component";
     FeaturesComponent,
     ContentComponent,
     ContactComponent,
+    HeroComponent,
 
     // login
     LoginStudentComponent,
@@ -50,7 +53,10 @@ import { ContactComponent } from "./main/Layouts/contact/contact.component";
     NavbarMainComponent,
 
     // About
+    AboutPageComponent,
     AboutComponent,
+    FeedbackComponent,
+    CountsComponent,
 
     HomePageComponent,
   ],

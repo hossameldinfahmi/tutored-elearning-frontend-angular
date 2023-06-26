@@ -9,6 +9,7 @@ import { TrainerLoginComponent } from "./main/trainer-login/trainer-login.compon
 import { HomePageComponent } from "./main/home-page/home-page.component";
 import { ContentComponent } from "./main/content/content.component";
 import { ContactPageComponent } from "./main/contact-page/contact-page.component";
+import { AboutPageComponent } from "./main/about-page/about-page.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -17,6 +18,7 @@ const routes: Routes = [
     path: "main",
     children: [
       { path: "home", component: HomePageComponent },
+      { path: "about", component: AboutPageComponent },
       { path: "login", component: MainLoginComponent },
       { path: "login/student", component: LoginStudentComponent },
       { path: "register", component: RegisterComponent },
