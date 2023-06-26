@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
 import { AppRoutingModule } from "./app-routing.module";
+
 import { AppComponent } from "./app.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
@@ -22,7 +23,6 @@ import { HomePageComponent } from "./main/home-page/home-page.component";
 import { FeaturesComponent } from "./main/Layouts/features/features.component";
 import { PopularCourcesComponent } from "./main/Layouts/popular-cources/popular-cources.component";
 import { TrainersmainComponentComponent } from "./main/Layouts/trainersmain-component/trainersmain-component.component";
-
 @NgModule({
   declarations: [
     //main Component & Layout
@@ -43,6 +43,9 @@ import { TrainersmainComponentComponent } from "./main/Layouts/trainersmain-comp
     RegisterStudentComponent,
     TrainerRegisterComponent,
     NavbarMainComponent,
+
+    // About
+    AboutComponent,
 
     HomePageComponent,
   ],

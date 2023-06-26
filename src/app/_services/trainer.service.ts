@@ -93,6 +93,7 @@ export class TrainerService {
     const headers = new HttpHeaders({
       Authorization: token,
     });
+
     return this.httpClient.get<Trainer>(
       `${environment.baseUrl}trainer/courses/${id}`,
       { headers }
