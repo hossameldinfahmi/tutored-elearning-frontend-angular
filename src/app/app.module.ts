@@ -7,6 +7,8 @@ import { AppComponent } from "./app.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { RegisterStudentComponent } from "./main/register-student/register-student.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from "ngx-toastr";
 
 import { LoginStudentComponent } from "./main/login-student/login-student.component";
 import { NgxPaginationModule } from "ngx-pagination";
@@ -69,6 +71,8 @@ import { HeroComponent } from "./main/Layouts/hero/hero.component";
     NgxPaginationModule,
     CommonModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

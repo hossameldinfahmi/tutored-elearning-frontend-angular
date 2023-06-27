@@ -27,6 +27,7 @@
               "src/assets/main/vendor/bootstrap/css/bootstrap.min.css",
               "src/assets/main/vendor/bootstrap-icons/bootstrap-icons.css",
               "src/assets/main/vendor/boxicons/css/boxicons.min.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css",
               "src/assets/main/css/style.css"
             ],
@@ -91,7 +92,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.css"],
+            "styles": ["node_modules/ngx-toastr/toastr.css", "src/styles.css"],
             "scripts": []
           }
         }

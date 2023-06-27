@@ -2,6 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { TrainerService } from "../../_services/trainer.service";
 import { Trainer } from "src/app/_models/trainer.model";
 import { NgForm } from "@angular/forms";
+import { ToastrService } from "ngx-toastr";
+import { HttpErrorResponse } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-trainer-register",
@@ -9,7 +12,11 @@ import { NgForm } from "@angular/forms";
   styleUrls: ["./trainer-register.component.css"],
 })
 export class TrainerRegisterComponent implements OnInit {
-  constructor(private trainerService: TrainerService) {}
+  constructor(
+    private trainerService: TrainerService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
   ngOnInit(): void {}
 
   trainersArray!: Trainer[];
@@ -17,14 +24,13 @@ export class TrainerRegisterComponent implements OnInit {
   newTrainer: Trainer = {
     fname: "",
     lname: "",
-    gender: "", //
+    gender: "",
     phone: "",
     email: "",
     password: "",
   };
 
   addTrainer(form: NgForm) {
-    console.log(form.value);
     this.newTrainer.fname = form.value["fname"];
     this.newTrainer.lname = form.value["lname"];
     this.newTrainer.gender = form.value["gender"];
@@ -34,18 +40,25 @@ export class TrainerRegisterComponent implements OnInit {
 
     this.trainerService.addTrainer(this.newTrainer).subscribe(
       (res) => {
-        // console.log(res);
+        if (res.status) {
+          this.toastr.success("Trainer added successfully!", "Success");
+          this.router.navigate(["/main/trainer/login"]);
+          form.reset();
+        }
       },
-      (err) => {
-        console.log("Error registering Trainer");
-        console.log(err);
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
-  }
-
-  onSubmit(form: NgForm) {
-    // console.log(form);
-    // console.log(form.value);
   }
 
   resetForm(form: NgForm) {
