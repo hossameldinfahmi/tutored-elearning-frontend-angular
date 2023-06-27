@@ -7,7 +7,6 @@ import { LoginStudentComponent } from "./main/login-student/login-student.compon
 import { TrainerRegisterComponent } from "./main/trainer-register/trainer-register.component";
 import { TrainerLoginComponent } from "./main/trainer-login/trainer-login.component";
 import { HomePageComponent } from "./main/home-page/home-page.component";
-import { ContentComponent } from "./main/content/content.component";
 import { ContactPageComponent } from "./main/contact-page/contact-page.component";
 import { AboutPageComponent } from "./main/about-page/about-page.component";
 import { CategoriesPageComponent } from "./main/categories-page/categories-page.component";
@@ -24,7 +23,6 @@ const routes: Routes = [
       { path: "login/student", component: LoginStudentComponent },
       { path: "register", component: RegisterComponent },
       { path: "register/student", component: RegisterStudentComponent },
-      { path: "enroll/:courseId", component: ContentComponent },
       { path: "contact", component: ContactPageComponent },
       { path: "categories", component: CategoriesPageComponent },
 

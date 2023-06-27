@@ -25,7 +25,6 @@ import { HomePageComponent } from "./main/home-page/home-page.component";
 import { FeaturesComponent } from "./main/Layouts/features/features.component";
 import { PopularCourcesComponent } from "./main/Layouts/popular-cources/popular-cources.component";
 import { TrainersmainComponentComponent } from "./main/Layouts/trainersmain-component/trainersmain-component.component";
-import { ContentComponent } from "./main/content/content.component";
 import { ContactComponent } from "./main/Layouts/contact/contact.component";
 import { FeedbackComponent } from "./main/Layouts/feedback/feedback.component";
 import { AboutPageComponent } from "./main/about-page/about-page.component";
@@ -36,29 +35,22 @@ import { ContactPageComponent } from "./main/contact-page/contact-page.component
 
 @NgModule({
   declarations: [
+    //main Component
+    AppComponent,
+
     // Layout
     NavbarMainComponent,
     FooterComponent,
 
-    //main Component
-    AppComponent,
-
     //home Page
     HomePageComponent,
+    HeroComponent,
+    AboutComponent,
     CountsComponent,
     WhyUsComponent,
     FeaturesComponent,
     PopularCourcesComponent,
     TrainersmainComponentComponent,
-    HeroComponent,
-
-    //contact
-    ContactPageComponent,
-    ContactComponent,
-
-    //Categories
-    CategoriesPageComponent,
-    CategoriesmainComponentComponent,
 
     // login
     LoginStudentComponent,
@@ -68,11 +60,17 @@ import { ContactPageComponent } from "./main/contact-page/contact-page.component
     RegisterStudentComponent,
     TrainerRegisterComponent,
 
+    //contact
+    ContactPageComponent,
+    ContactComponent,
+
+    //Categories
+    CategoriesPageComponent,
+    CategoriesmainComponentComponent,
+
     // About
     AboutPageComponent,
-    AboutComponent,
     FeedbackComponent,
-    CountsComponent,
   ],
 
   imports: [
