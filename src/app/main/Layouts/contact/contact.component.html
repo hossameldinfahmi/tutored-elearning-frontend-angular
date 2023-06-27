@@ -1,4 +1,3 @@
-<!-- ======= Contact Section ======= -->
 <section id="contact" class="contact">
   <div data-aos="fade-up">
     <iframe
@@ -95,6 +94,7 @@
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 required
               />
+
               <span
                 *ngIf="contactEmailInput.touched && contactEmailInput.invalid && contactEmailInput.errors?.['required']"
                 style="color: red"
@@ -209,11 +209,17 @@
             </div>
           </div>
           <div class="text-center">
-            <!-- <button type="submit"  routerLink="/main/home" (click)="addContact(contactForm) "[disabled]="!contactForm.valid">Send Message</button> -->
+            <button
+              type="submit"
+              routerLink="/main/home"
+              (click)="addContact(contactForm)"
+              [disabled]="!contactForm.valid"
+            >
+              Send Message
+            </button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </section>
-<!-- End Contact Section -->

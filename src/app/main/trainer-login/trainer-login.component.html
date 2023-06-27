@@ -1,60 +1,62 @@
-<div class="container mt-5 grid-margin stretch-card font-weight-bold">
-  <div class="card main-forms" style="margin-top: 80px">
-    <div class="card-body">
-      <h3 class="card-title text-center fw-bold">Trainer Login</h3>
-      <form class="forms-sample mt-3" #TrainerLoginForm="ngForm">
-        <div class="form-group">
-          <label for="email">Email address :</label>
-          <input
-            #trainerEmailInput="ngModel"
-            ngModel
-            required
-            type="email"
-            class="form-control"
-            id="email"
-            placeholder="Email"
-            name="email"
-          />
-          <span
-            *ngIf="trainerEmailInput.touched && trainerEmailInput.invalid && trainerEmailInput.errors?.['required']"
-            style="color: red"
-            class="alert"
-            >This field is required *</span
-          >
-        </div>
-        <div class="form-group">
-          <label for="password">Password :</label>
-          <input
-            #trainerPasswordInput="ngModel"
-            ngModel
-            required
-            type="password"
-            class="form-control"
-            id="password"
-            placeholder="Password"
-            name="password"
-          />
-          <span
-            *ngIf="trainerPasswordInput.touched && trainerPasswordInput.invalid && trainerPasswordInput.errors?.['required']"
-            style="color: red"
-            class="alert"
-            >This field is required *</span
-          >
-        </div>
+<main class="p-5">
+  <div class="container mt-5 grid-margin stretch-card font-weight-bold">
+    <div class="card main-forms" style="margin-top: 80px">
+      <div class="card-body">
+        <h3 class="card-title text-center fw-bold">Trainer Login</h3>
+        <form class="forms-sample mt-3" #TrainerLoginForm="ngForm">
+          <div class="form-group">
+            <label for="email">Email address :</label>
+            <input
+              #trainerEmailInput="ngModel"
+              ngModel
+              required
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Email"
+              name="email"
+            />
+            <span
+              *ngIf="trainerEmailInput.touched && trainerEmailInput.invalid && trainerEmailInput.errors?.['required']"
+              style="color: red"
+              class="alert"
+              >This field is required *</span
+            >
+          </div>
+          <div class="form-group">
+            <label for="password">Password :</label>
+            <input
+              #trainerPasswordInput="ngModel"
+              ngModel
+              required
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Password"
+              name="password"
+            />
+            <span
+              *ngIf="trainerPasswordInput.touched && trainerPasswordInput.invalid && trainerPasswordInput.errors?.['required']"
+              style="color: red"
+              class="alert"
+              >This field is required *</span
+            >
+          </div>
 
-        <button
-          type="submit"
-          id="submitBtn"
-          class="btn btn-primary m-2"
-          [disabled]="!TrainerLoginForm.valid"
-          (click)="login(TrainerLoginForm)"
-        >
-          Sign In
-        </button>
-        <button class="btn btn-light" (click)="resetForm(TrainerLoginForm)">
-          Cancel
-        </button>
-      </form>
+          <button
+            type="submit"
+            id="submitBtn"
+            class="btn btn-primary m-2"
+            [disabled]="!TrainerLoginForm.valid"
+            (click)="login(TrainerLoginForm)"
+          >
+            Sign In
+          </button>
+          <button class="btn btn-light" (click)="resetForm(TrainerLoginForm)">
+            Cancel
+          </button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
+</main>

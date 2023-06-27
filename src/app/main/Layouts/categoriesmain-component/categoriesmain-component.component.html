@@ -1,0 +1,33 @@
+<!-- ======= Events Section ======= -->
+<section id="events" class="events">
+  <div class="container" data-aos="fade-up">
+    <div class="row">
+      <div
+        *ngFor="
+          let category of catarray
+            | paginate : { itemsPerPage: 4, currentPage: p };
+          let i = index
+        "
+        class="col-md-6 d-flex align-items-stretch"
+      >
+        <div class="card w-100">
+          <div class="card-img">
+            <img [src]="url + category.img" alt="" class="img-fluid w-100" />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">
+              <a routerLink="/main/categories/details/{{ category.id }}">{{
+                category.name
+              }}</a>
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <pagination-controls
+      (pageChange)="p = $event"
+      style="float: right; margin: 10px"
+    ></pagination-controls>
+  </div>
+</section>
+<!-- End Events Section -->

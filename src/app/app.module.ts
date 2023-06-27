@@ -30,20 +30,35 @@ import { ContactComponent } from "./main/Layouts/contact/contact.component";
 import { FeedbackComponent } from "./main/Layouts/feedback/feedback.component";
 import { AboutPageComponent } from "./main/about-page/about-page.component";
 import { HeroComponent } from "./main/Layouts/hero/hero.component";
+import { CategoriesmainComponentComponent } from "./main/Layouts/categoriesmain-component/categoriesmain-component.component";
+import { CategoriesPageComponent } from "./main/categories-page/categories-page.component";
+import { ContactPageComponent } from "./main/contact-page/contact-page.component";
 
 @NgModule({
   declarations: [
-    //main Component & Layout
-    AppComponent,
+    // Layout
+    NavbarMainComponent,
     FooterComponent,
+
+    //main Component
+    AppComponent,
+
+    //home Page
+    HomePageComponent,
     CountsComponent,
     WhyUsComponent,
+    FeaturesComponent,
     PopularCourcesComponent,
     TrainersmainComponentComponent,
-    FeaturesComponent,
-    ContentComponent,
-    ContactComponent,
     HeroComponent,
+
+    //contact
+    ContactPageComponent,
+    ContactComponent,
+
+    //Categories
+    CategoriesPageComponent,
+    CategoriesmainComponentComponent,
 
     // login
     LoginStudentComponent,
@@ -52,15 +67,12 @@ import { HeroComponent } from "./main/Layouts/hero/hero.component";
     //Register
     RegisterStudentComponent,
     TrainerRegisterComponent,
-    NavbarMainComponent,
 
     // About
     AboutPageComponent,
     AboutComponent,
     FeedbackComponent,
     CountsComponent,
-
-    HomePageComponent,
   ],
 
   imports: [

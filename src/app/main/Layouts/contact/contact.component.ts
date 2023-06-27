@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-// import { ContactUsService } from "src/app/_services/contact-us.service";
+import { ContactUsService } from "src/app/_services/contact-us.service";
 import { Contactus } from "src/app/_models/contactus.model";
 import { NgForm } from "@angular/forms";
 @Component({
@@ -8,7 +8,7 @@ import { NgForm } from "@angular/forms";
   styleUrls: ["./contact.component.css"],
 })
 export class ContactComponent implements OnInit {
-  // constructor(private contactService: ContactUsService) {}
+  constructor(private contactService: ContactUsService) {}
   newcontact: Contactus = {
     email: "",
     name: "",
@@ -17,24 +17,24 @@ export class ContactComponent implements OnInit {
   };
   recieved = false;
   ngOnInit(): void {}
-  // addContact(form: NgForm) {
-  //   this.newcontact.name = form.value["name"];
-  //   this.newcontact.email = form.value["email"];
-  //   this.newcontact.subject = form.value["subject"];
-  //   this.newcontact.message = form.value["message"];
+  addContact(form: NgForm) {
+    this.newcontact.name = form.value["name"];
+    this.newcontact.email = form.value["email"];
+    this.newcontact.subject = form.value["subject"];
+    this.newcontact.message = form.value["message"];
 
-  //   // console.log(this.newContent);
+    // console.log(this.newContent);
 
-  //   this.contactService.addContact(this.newcontact).subscribe(
-  //     (res) => {
-  //       // this.coursesContentsArr = res;
-  //       // console.log(res);
-  //     },
-  //     (err) => {
-  //       console.log("Error adding contact");
-  //     }
-  //   );
-  // }
+    this.contactService.addContact(this.newcontact).subscribe(
+      (res) => {
+        // this.coursesContentsArr = res;
+        // console.log(res);
+      },
+      (err) => {
+        console.log("Error adding contact");
+      }
+    );
+  }
 
   onSubmit(form: NgForm) {
     // console.log(form);

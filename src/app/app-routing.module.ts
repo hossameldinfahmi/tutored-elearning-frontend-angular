@@ -10,6 +10,7 @@ import { HomePageComponent } from "./main/home-page/home-page.component";
 import { ContentComponent } from "./main/content/content.component";
 import { ContactPageComponent } from "./main/contact-page/contact-page.component";
 import { AboutPageComponent } from "./main/about-page/about-page.component";
+import { CategoriesPageComponent } from "./main/categories-page/categories-page.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path: "register/student", component: RegisterStudentComponent },
       { path: "enroll/:courseId", component: ContentComponent },
       { path: "contact", component: ContactPageComponent },
+      { path: "categories", component: CategoriesPageComponent },
 
       {
         path: "courses",
