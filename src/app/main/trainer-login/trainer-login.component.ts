@@ -37,7 +37,7 @@ export class TrainerLoginComponent implements OnInit {
         localStorage.setItem("name", res.name);
         this.router.navigate(["/main/home"]);
         this.trainerService.trainerloginservice.emit(res);
-        this.router.navigate(["/dashboard"]);
+        this.router.navigate(["/main/home"]);
       },
       (error: Error) => {
         console.log("Login failed:", error);

@@ -71,19 +71,33 @@ const routes: Routes = [
         children: [
           { path: "register", component: TrainerRegisterComponent },
           { path: "login", component: TrainerLoginComponent },
-          { path: "courses", component: MyCoursesComponent },
-          { path: "add-course", component: AddThisCourseComponent },
-          { path: "edit-course/:courseId", component: EditThisCourseComponent },
+          {
+            path: "courses",
+            canActivate: [AuthTrainerGuard],
+            component: MyCoursesComponent,
+          },
+          {
+            path: "add-course",
+            canActivate: [AuthTrainerGuard],
+            component: AddThisCourseComponent,
+          },
+          {
+            path: "edit-course/:courseId",
+            canActivate: [AuthTrainerGuard],
+            component: EditThisCourseComponent,
+          },
           {
             path: "course/details/:courseId",
             component: CourseContentDetailsComponent,
           },
           {
             path: "course/details/:courseId/add-content",
+            canActivate: [AuthTrainerGuard],
             component: AddThisCourseContentComponent,
           },
           {
             path: "course/details/:courseId/:contentId/edit-content",
+            canActivate: [AuthTrainerGuard],
             component: EditThisCourseContentComponent,
           },
 

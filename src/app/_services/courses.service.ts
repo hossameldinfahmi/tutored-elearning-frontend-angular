@@ -32,6 +32,9 @@ export class CoursesService {
       Authorization: token,
     });
 
+    console.log("====================================");
+    console.log(headers);
+    console.log("====================================");
     return this.httpClient.post(environment.baseUrl + "courses", data, {
       headers,
     });

@@ -10,22 +10,35 @@ import { tap } from "rxjs/operators";
 })
 export class TrainerService {
   trainerloginservice: EventEmitter<any> = new EventEmitter<any>();
-  private currentTrainerSubject: BehaviorSubject<LoginResponse> =
-    new BehaviorSubject<LoginResponse>({
-      name: "",
-      id: 0,
-      role: "",
-      access_token: "",
-      token_type: "",
-      expires_in: 0,
-      accessToken: "",
-      tokenType: "",
-      expiresIn: 0,
-    });
+  private currentTrainerSubject: BehaviorSubject<LoginResponse | null> =
+    new BehaviorSubject<LoginResponse | null>(null);
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    const token: string | null = localStorage.getItem("Authorization");
+    const id: number | null = localStorage.getItem("id")
+      ? Number(localStorage.getItem("id"))
+      : null;
+    const name: string | null = localStorage.getItem("name");
+    const role: string | null = localStorage.getItem("role");
 
-  get currentUser(): Observable<LoginResponse> {
+    if (token && id && name && role) {
+      const loginResponse: LoginResponse = {
+        name: name,
+        id: id,
+        role: role,
+        access_token: token,
+        token_type: "bearer",
+        expires_in: 0,
+        accessToken: "",
+        tokenType: "",
+        expiresIn: 0,
+      };
+      this.currentTrainerSubject.next(loginResponse);
+    } else {
+      this.currentTrainerSubject.next(null);
+    }
+  }
+  get currentUser(): Observable<any> {
     return this.currentTrainerSubject.asObservable();
   }
 
@@ -103,7 +116,6 @@ export class TrainerService {
             tokenType: response.tokenType,
             expiresIn: response.expiresIn,
           });
-          localStorage.setItem("access_token", response.access_token);
         })
       );
   }
