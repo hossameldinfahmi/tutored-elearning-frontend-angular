@@ -1,0 +1,126 @@
+<main id="main" data-aos="fade-in">
+  <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs">
+    <div class="container">
+      <h2 class="my-2">Add New Course Content</h2>
+      <!-- <p>
+        Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia
+        id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam
+        aperiam consequatur laboriosam nemo harum praesentium.
+      </p> -->
+    </div>
+  </div>
+  <!-- End Breadcrumbs -->
+  <div class="container-fluid">
+    <div class="row mt-5">
+      <div class="col-12 grid-margin stretch-card text-primary">
+        <div class="card main-forms">
+          <div class="card-body">
+            <h4 class="card-title text-center">Add New Course Content</h4>
+
+            <form class="forms-sample" #courseContentForm="ngForm">
+
+              <div class="form-group">
+                <label for="exampleInputName2">Name :</label>
+                <input
+                  #contentNameInput="ngModel"
+                  ngModel
+                  required
+                  minlength="3"
+                  maxlength="20"
+                  pattern="^[a-zA-Z0-9 _.-]*$"
+                  type="text"
+                  class="form-control"
+                  id="exampleInputName2"
+                  placeholder="Name"
+                  name="contentName"
+                />
+                <span
+                  *ngIf="contentNameInput.touched && contentNameInput.invalid && contentNameInput.errors?.['required']"
+                  style="color: red"
+                  class="alert"
+                  >This field is required *</span
+                >
+                <span
+                  *ngIf="contentNameInput.errors?.['minlength']"
+                  style="color: red"
+                  class="alert"
+                  >Please enter more than 3 characters *</span
+                >
+                <span
+                  *ngIf="contentNameInput.errors?.['maxlength']"
+                  style="color: red"
+                  class="alert"
+                  >Please enter less than 20 characters *</span
+                >
+                <span
+                  *ngIf="contentNameInput.errors?.['pattern']"
+                  style="color: red"
+                  class="alert"
+                  >Please enter alphabets characters only *</span
+                >
+              </div>
+              <div class="form-group">
+                <label for="exampleInputName3">Content :</label>
+                <input
+                  #courseContentInput="ngModel"
+                  ngModel
+                  required
+                  minlength="3"
+                  maxlength="255"
+                  pattern="^[a-zA-Z0-9 _./:-]*$"
+                  type="text"
+                  class="form-control"
+                  id="exampleInputName3"
+                  placeholder="Content"
+                  name="courseContent"
+                />
+                <span
+                  *ngIf="courseContentInput.touched && courseContentInput.invalid && courseContentInput.errors?.['required']"
+                  style="color: red"
+                  class="alert"
+                  >This field is required *</span
+                >
+                <span
+                  *ngIf="courseContentInput.errors?.['minlength']"
+                  style="color: red"
+                  class="alert"
+                  >Please enter more than 3 characters *</span
+                >
+                <span
+                  *ngIf="courseContentInput.errors?.['maxlength']"
+                  style="color: red"
+                  class="alert"
+                  >Please enter less than 255 characters *</span
+                >
+                <span
+                  *ngIf="courseContentInput.errors?.['pattern']"
+                  style="color: red"
+                  class="alert"
+                  >Please enter alphabets characters only *</span
+                >
+              </div>
+
+              <button
+                type="submit"
+                id="submitBtn"
+                class="btn text-light mr-2 main-btns"
+                [disabled]="!courseContentForm.valid"
+                [routerLink]="'/main/trainer/course/details/'+id"
+                (click)="addCourseContent(courseContentForm)"
+              >
+                Submit
+              </button>
+              <button
+                class="btn text-light main-btns"
+                (click)="resetForm(courseContentForm)"
+              >
+                Cancel
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

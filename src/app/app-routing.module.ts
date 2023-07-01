@@ -18,6 +18,8 @@ import { CategoryCoursesComponent } from "./main/category-courses/category-cours
 import { CourseContentDetailsComponent } from "./main/course-content-details/course-content-details.component";
 import { MyCoursesComponent } from "./main/my-courses/my-courses.component";
 import { ExamPageComponent } from "./main/exam-page/exam-page.component";
+import { UpdateTrainerComponent } from "./main/Forms/update-trainer/update-trainer.component";
+import { UpdateStudentComponent } from "./main/Forms/update-student/update-student.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -69,8 +71,10 @@ const routes: Routes = [
             component: CourseContentDetailsComponent,
           },
           { path: "courses", component: MyCoursesComponent },
+          { path: "update", component: UpdateTrainerComponent },
         ],
       },
+      { path: "student/update", component: UpdateStudentComponent },
     ],
   },
 

@@ -41,6 +41,8 @@ import { CourseContentDetailsComponent } from "./main/course-content-details/cou
 import { MyCoursesComponent } from "./main/my-courses/my-courses.component";
 import { SearchComponent } from "./main/search/search.component";
 import { ExamPageComponent } from "./main/exam-page/exam-page.component";
+import { UpdateStudentComponent } from "./main/Forms/update-student/update-student.component";
+import { UpdateTrainerComponent } from "./main/Forms/update-trainer/update-trainer.component";
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { ExamPageComponent } from "./main/exam-page/exam-page.component";
     FooterComponent,
     MyCoursesComponent,
     SearchComponent,
+    UpdateStudentComponent,
+    UpdateTrainerComponent,
 
     //home Page
     HomePageComponent,
