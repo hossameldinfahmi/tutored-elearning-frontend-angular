@@ -34,6 +34,7 @@ import { CategoriesPageComponent } from "./main/categories-page/categories-page.
 import { ContactPageComponent } from "./main/contact-page/contact-page.component";
 import { CourcesComponent } from "./main/Layouts/cources/cources.component";
 import { CoursesPageComponent } from "./main/courses-page/courses-page.component";
+import { TrainersPageComponent } from "./main/trainers-page/trainers-page.component";
 
 @NgModule({
   declarations: [
@@ -77,6 +78,10 @@ import { CoursesPageComponent } from "./main/courses-page/courses-page.component
     // Courses
     CoursesPageComponent,
     CourcesComponent,
+
+    // Trainers Page
+    TrainersPageComponent,
+    TrainersmainComponentComponent,
   ],
 
   imports: [

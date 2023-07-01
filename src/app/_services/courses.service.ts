@@ -31,7 +31,6 @@ export class CoursesService {
     const headers = new HttpHeaders({
       Authorization: token,
     });
-    // console.log(headers);
 
     return this.httpClient.post(environment.baseUrl + "courses", data, {
       headers,
@@ -54,8 +53,6 @@ export class CoursesService {
     const headers = new HttpHeaders({
       Authorization: token,
     });
-    // console.log(id);
-    // console.log(updatedCourse);
 
     return this.httpClient.post<Course>(
       environment.baseUrl + "courses/" + id,
