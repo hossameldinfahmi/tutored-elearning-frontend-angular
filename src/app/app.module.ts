@@ -39,6 +39,7 @@ import { CoursesDetailsPageComponent } from "./main/courses-details-page/courses
 import { CategoryCoursesComponent } from "./main/category-courses/category-courses.component";
 import { CourseContentDetailsComponent } from "./main/course-content-details/course-content-details.component";
 import { MyCoursesComponent } from "./main/my-courses/my-courses.component";
+import { SearchComponent } from "./main/search/search.component";
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { MyCoursesComponent } from "./main/my-courses/my-courses.component";
     NavbarMainComponent,
     FooterComponent,
     MyCoursesComponent,
+    SearchComponent,
 
     //home Page
     HomePageComponent,
