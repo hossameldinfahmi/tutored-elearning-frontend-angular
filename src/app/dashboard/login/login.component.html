@@ -1,0 +1,29 @@
+<div class="wrapper fadeInDown mt-5">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="assets/dashboard/images/online.png" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form class="forms-sample" #adminlogin=ngForm>
+        <div class="form-group">
+        <input #emailinput=ngModel ngModel type="email" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" required class="form-control" id="login" class="fadeIn second" name="email" placeholder="Email"><br>
+            <span *ngIf="emailinput.touched && emailinput.invalid && emailinput.errors?.['required']" style="color: red;" class="alert" >This field is required *</span>
+            <span *ngIf="emailinput.touched && emailinput.invalid && emailinput.errors?.['pattern']" style="color: red;" class="alert" >please enter correct email *</span>
+        </div>
+
+
+      <div class="form-group">
+        <input #passwordinput=ngModel ngModel required  type="password" class="form-control" id="password" class="fadeIn third" name="password" placeholder="password"><br>
+        <span *ngIf="passwordinput.touched && passwordinput.invalid && passwordinput.errors?.['required']" style="color: red;" class="alert" >This field is required *</span>
+        </div>
+
+      <input type="submit" class="fadeIn fourth" value="Log In" (click)="login(adminlogin)" >
+    </form>
+
+
+  </div>
+</div>

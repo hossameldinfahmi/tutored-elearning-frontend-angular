@@ -43,6 +43,12 @@ import { SearchComponent } from "./main/search/search.component";
 import { ExamPageComponent } from "./main/exam-page/exam-page.component";
 import { UpdateStudentComponent } from "./main/Forms/update-student/update-student.component";
 import { UpdateTrainerComponent } from "./main/Forms/update-trainer/update-trainer.component";
+import { AddThisCourseContentComponent } from "./main/Forms/add-this-course-content/add-this-course-content.component";
+import { EditThisCourseContentComponent } from "./main/Forms/edit-this-course-content/edit-this-course-content.component";
+import { AddThisCourseComponent } from "./main/Forms/add-this-course/add-this-course.component";
+import { EditThisCourseComponent } from "./main/Forms/edit-this-course/edit-this-course.component";
+import { LoginComponent } from "./dashboard/login/login.component";
+import { AdminsComponent } from "./dashboard/admins/admins.component";
 
 @NgModule({
   declarations: [
@@ -56,6 +62,10 @@ import { UpdateTrainerComponent } from "./main/Forms/update-trainer/update-train
     SearchComponent,
     UpdateStudentComponent,
     UpdateTrainerComponent,
+    EditThisCourseComponent,
+    AddThisCourseComponent,
+    EditThisCourseContentComponent,
+    AddThisCourseContentComponent,
 
     //home Page
     HomePageComponent,
@@ -100,6 +110,10 @@ import { UpdateTrainerComponent } from "./main/Forms/update-trainer/update-train
 
     // Exam
     ExamPageComponent,
+
+    // Dashboard
+    LoginComponent,
+    AdminsComponent,
   ],
 
   imports: [

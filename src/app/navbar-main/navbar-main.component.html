@@ -1,12 +1,14 @@
+<!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
   <div class="container d-flex align-items-center">
     <img
-      src="assets/main/img/logo.png"
+      src="assets/main/img/SARA.png"
       width="140px"
       alt=""
       class="img-fluid logo me-auto"
     />
 
+    <!-- <h1 class="logo me-auto"><img src="assets/dashboard/images/online.png" alt="logo" width="140px" /></h1> -->
     <nav id="navbar" class="navbar-expand-lg order-last order-lg-0">
       <div class="container-fluid">
         <button
@@ -82,7 +84,7 @@
                   <img
                     class="nav-profile-img mr-2 img-style"
                     alt=""
-                    src="../../assets/dashboard/images/faces/face1.jpg"
+                    src="assets/dashboard/images/faces/face1.jpg"
                   />
                   <span
                     class="profile-name"
@@ -117,6 +119,7 @@
                   <a
                     class="dropdown-item"
                     [routerLink]="'/main/' + checkUser + '/logout'"
+                    (click)="logout()"
                   >
                     <i class="mdi mdi-logout mr-2 text-primary"></i> Sign Out
                   </a>
