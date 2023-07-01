@@ -37,6 +37,8 @@ import { CoursesPageComponent } from "./main/courses-page/courses-page.component
 import { TrainersPageComponent } from "./main/trainers-page/trainers-page.component";
 import { CoursesDetailsPageComponent } from "./main/courses-details-page/courses-details-page.component";
 import { CategoryCoursesComponent } from "./main/category-courses/category-courses.component";
+import { CourseContentDetailsComponent } from "./main/course-content-details/course-content-details.component";
+import { MyCoursesComponent } from "./main/my-courses/my-courses.component";
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { CategoryCoursesComponent } from "./main/category-courses/category-cours
     // Layout
     NavbarMainComponent,
     FooterComponent,
+    MyCoursesComponent,
 
     //home Page
     HomePageComponent,
@@ -56,6 +59,7 @@ import { CategoryCoursesComponent } from "./main/category-courses/category-cours
     FeaturesComponent,
     PopularCourcesComponent,
     TrainersmainComponentComponent,
+    CourseContentDetailsComponent,
 
     // login
     LoginStudentComponent,

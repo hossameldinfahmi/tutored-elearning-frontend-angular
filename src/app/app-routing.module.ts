@@ -15,6 +15,8 @@ import { CoursesPageComponent } from "./main/courses-page/courses-page.component
 import { TrainersPageComponent } from "./main/trainers-page/trainers-page.component";
 import { CoursesDetailsPageComponent } from "./main/courses-details-page/courses-details-page.component";
 import { CategoryCoursesComponent } from "./main/category-courses/category-courses.component";
+import { CourseContentDetailsComponent } from "./main/course-content-details/course-content-details.component";
+import { MyCoursesComponent } from "./main/my-courses/my-courses.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -57,6 +59,11 @@ const routes: Routes = [
           { path: "logout", redirectTo: "main/login", pathMatch: "full" },
           { path: "register", component: TrainerRegisterComponent },
           { path: "login", component: TrainerLoginComponent },
+          {
+            path: "course/details/:courseId",
+            component: CourseContentDetailsComponent,
+          },
+          { path: "courses", component: MyCoursesComponent },
         ],
       },
     ],

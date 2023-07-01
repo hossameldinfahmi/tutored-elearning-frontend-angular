@@ -1,0 +1,103 @@
+<main id="main">
+  <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs" data-aos="fade-in">
+    <div class="container">
+      <h2 class="my-2">" {{course.name}} " Course Details</h2>
+      <!-- <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia optio
+        ipsam commodi, quisquam aliquam deleniti dolorem laboriosam sunt ratione
+        nostrum officiis totam id vitae, ad dolorum similique voluptatibus
+        repellendus laborum.
+      </p> -->
+    </div>
+  </div>
+  <!-- End Breadcrumbs -->
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-lg-12 mt-5 grid-margin stretch-card">
+        <div class="card main-forms">
+          <div class="card-body">
+            <h4 class="card-title text-center">Course Content Table</h4>
+            
+            <div class="btn-group d-flex justify-content-center">
+            <button
+                type="button"
+                class="btn btn-fw col-sm-12 mb-3 main-btns text-light mx-2"
+                style="background-color:#eef0ef;"
+                [routerLink]="'/main/trainer/course/details/'+id+'/add-content'"
+              >
+                Add New Course content
+              </button>
+              <button
+                type="button"
+                class="btn btn-fw col-sm-12 mb-3 main-btns text-light mx-2"
+                style="background-color:#eef0ef;"
+                [routerLink]="'/main/trainer/course/details/'+id+'/exams'"
+              >
+                Show All Exams
+              </button>
+              <button
+                type="button"
+                class="btn btn-fw col-sm-12 mb-3 main-btns text-light mx-2"
+                style="background-color:#eef0ef;"
+                [routerLink]="'/main/trainer/course/details/'+id+'/add-exam'"
+              >
+                Add New Exam
+              </button>
+            </div>
+            
+
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <!-- <th> ID</th> -->
+                    <!-- <th> Course Name</th> -->
+                    <th>Content Name</th>
+                    <th>Content</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let course of coursesContentsArr; let i = index">
+                    <!-- <td>{{course.id}}</td> -->
+                    <!-- <td>{{course.course?.name}}</td> -->
+                    <td>{{ course.name }}</td>
+                    <td>{{ course.content }}</td>
+                    <!-- <td>
+                      <button
+                        type="button"
+                        class="btn btn-warning"
+                        [routerLink]="'/main/trainer/course/details/'+id+'/'+course.id+'/edit-content'"
+                      >
+                        Update
+                      </button>
+                    </td>-->
+                    
+                    <td>
+                      <a class="h3 text-warning"  [routerLink]="'/main/trainer/course/details/'+id+'/'+course.id+'/edit-content'"> <i class="mdi mdi-tooltip-edit font-weight-medium"></i> </a>
+                    </td>
+                    <td>
+                      <a class="h3 text-danger" style="cursor: pointer;" [routerLink]="'/main/trainer/course/details/'+id" (click)="deleteCourseContent(course.id!)"><i class="mdi mdi-delete-forever "></i> </a>
+                    </td>
+                    <!-- <td>
+                      <button
+                        type="button"
+                        class="btn btn-inverse-danger"
+                        [routerLink]="'/main/trainer/course/details/'+id"
+                        (click)="deleteCourseContent(course.id!)"
+                      >
+                        Delete
+                      </button>
+                    </td>  -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
