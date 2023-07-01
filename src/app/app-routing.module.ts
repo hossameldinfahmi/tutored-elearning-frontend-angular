@@ -11,6 +11,7 @@ import { ContactPageComponent } from "./main/contact-page/contact-page.component
 import { AboutPageComponent } from "./main/about-page/about-page.component";
 import { CategoriesPageComponent } from "./main/categories-page/categories-page.component";
 import { AuthTrainerGuard } from "./trainer.guard";
+import { CoursesPageComponent } from "./main/courses-page/courses-page.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -30,6 +31,7 @@ const routes: Routes = [
       { path: "register/student", component: RegisterStudentComponent },
       { path: "contact", component: ContactPageComponent },
       { path: "categories", component: CategoriesPageComponent },
+      { path: "courses", component: CoursesPageComponent },
 
       {
         path: "courses",

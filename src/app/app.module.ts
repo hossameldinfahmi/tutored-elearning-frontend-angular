@@ -32,6 +32,8 @@ import { HeroComponent } from "./main/Layouts/hero/hero.component";
 import { CategoriesmainComponentComponent } from "./main/Layouts/categoriesmain-component/categoriesmain-component.component";
 import { CategoriesPageComponent } from "./main/categories-page/categories-page.component";
 import { ContactPageComponent } from "./main/contact-page/contact-page.component";
+import { CourcesComponent } from "./main/Layouts/cources/cources.component";
+import { CoursesPageComponent } from "./main/courses-page/courses-page.component";
 
 @NgModule({
   declarations: [
@@ -71,6 +73,10 @@ import { ContactPageComponent } from "./main/contact-page/contact-page.component
     // About
     AboutPageComponent,
     FeedbackComponent,
+
+    // Courses
+    CoursesPageComponent,
+    CourcesComponent,
   ],
 
   imports: [

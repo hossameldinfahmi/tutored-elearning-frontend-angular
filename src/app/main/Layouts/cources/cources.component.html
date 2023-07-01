@@ -1,0 +1,40 @@
+<!-- ======= Courses Section ======= -->
+<section id="courses" class="courses">
+  <div class="container" data-aos="fade-up">
+      <!-- <tr *ngFor="let category of catarray; let i=index" > -->
+    <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+      <div *ngFor="let course of courseArray | paginate: { itemsPerPage: 6, currentPage: p }; let i=index" class="col-lg-4 col-md-6 d-flex align-items-stretch">
+        <div class="course-item my-5">
+          <!-- <img src="assets/main/img/course-1.jpg" class="img-fluid" alt="..."> -->
+          <img [src]="url+course.img" class="img-fluid w-100 h-50" alt="">
+          <div class="course-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4>{{course.category?.name}}</h4>
+              <p class="price">${{course.price}}</p>
+            </div>
+            <h3><a [routerLink]="'/main/courses/details/'+course.id">{{course.name}}</a></h3>
+            <p>{{course.desc}}</p>
+            <p>{{course.duration}} hour(s)</p>
+            <div class="trainer d-flex justify-content-between align-items-center pb-5">
+              <div class="trainer-profile d-flex align-items-center">
+                <!-- <img src="assets/main/img/trainers/trainer-1.jpg" class="img-fluid" alt=""> -->
+                <img [src]="t_url+course.trainer?.img" alt="" class="img-fluid rounded">
+                <span>{{course.trainer?.fname}}</span>
+              </div>
+              <div class="trainer-rank d-flex align-items-center">
+                <i class="bx bx-user"></i>&nbsp;{{courseCount[i]}}
+                &nbsp;&nbsp;
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- End Course Item-->
+
+     
+
+    </div>
+    <pagination-controls (pageChange)="p = $event" style="float: right; margin: 10px;"></pagination-controls>
+
+  </div>
+</section><!-- End Courses Section -->

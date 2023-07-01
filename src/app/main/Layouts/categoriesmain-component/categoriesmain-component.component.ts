@@ -15,6 +15,9 @@ export class CategoriesmainComponentComponent implements OnInit {
   catarray!: Category[];
   ngOnInit(): void {
     this.getAll();
+    console.log("====================================");
+    console.log(this.catarray);
+    console.log("====================================");
   }
 
   p: number = 1;
@@ -23,6 +26,7 @@ export class CategoriesmainComponentComponent implements OnInit {
     this.categoryService.getcategories().subscribe(
       (res) => {
         this.catarray = res.data;
+        console.log(res);
       },
       (err) => {
         console.log(err);
