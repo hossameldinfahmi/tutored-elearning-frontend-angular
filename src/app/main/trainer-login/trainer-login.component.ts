@@ -27,8 +27,16 @@ export class TrainerLoginComponent implements OnInit {
     this.trainer.email = form.value["email"];
     this.trainer.password = form.value["password"];
     this.trainerService.loginTrainer(this.trainer).subscribe(
-      (response: any) => {
-        console.log("Login successful:", response);
+      (res: any) => {
+        console.log("Login successful:", res);
+        localStorage.setItem("Authorization", "bearer " + res.access_token);
+        localStorage.setItem("id", res.id + "");
+        sessionStorage.setItem("role", res.role);
+        sessionStorage.setItem("id", res.id + "");
+        localStorage.setItem("role", res.role);
+        localStorage.setItem("name", res.name);
+        this.router.navigate(["/main/home"]);
+        this.trainerService.trainerloginservice.emit(res);
         this.router.navigate(["/dashboard"]);
       },
       (error: Error) => {
