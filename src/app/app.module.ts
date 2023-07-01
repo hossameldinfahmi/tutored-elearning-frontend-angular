@@ -40,6 +40,7 @@ import { CategoryCoursesComponent } from "./main/category-courses/category-cours
 import { CourseContentDetailsComponent } from "./main/course-content-details/course-content-details.component";
 import { MyCoursesComponent } from "./main/my-courses/my-courses.component";
 import { SearchComponent } from "./main/search/search.component";
+import { ExamPageComponent } from "./main/exam-page/exam-page.component";
 
 @NgModule({
   declarations: [
@@ -92,6 +93,9 @@ import { SearchComponent } from "./main/search/search.component";
     // Trainers Page
     TrainersPageComponent,
     TrainersmainComponentComponent,
+
+    // Exam
+    ExamPageComponent,
   ],
 
   imports: [

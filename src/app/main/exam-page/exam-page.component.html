@@ -1,0 +1,122 @@
+<main id="main" data-aos="fade-in">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+        <h2 class="my-2">Exam</h2>
+      </div>
+    </div>
+    <!-- End Breadcrumbs -->
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12 grid-margin stretch-card text-primary mt-5 py-5">
+                <div class="card main-forms">
+                    <div class="card-body">
+
+                        <h4 class="card-title text-center ">Welcome </h4>
+        
+                        <form class="forms-sample" #examForm=ngForm >
+        
+
+                            <div *ngFor="let question of examQuestion; let i = index;">
+                                <fieldset>
+                                    {{question.header}}
+                                    
+                                    
+                                    <div class="form-check">
+                                    <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    #genderInput="ngModel"
+                                    ngModel
+                                    [name]="question.id"
+                                    
+                                    [value]="question.choice_1"
+                                    
+                                    />
+                                    <label
+                                    class="form-check-label"
+                                    style="color: black; font-weight: normal"
+                                
+                                    >
+                                    {{question.choice_1}}
+                                    </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        #genderInput="ngModel"
+                                        ngModel
+                                        [name]="question.id"
+                                        
+                                        [value]="question.choice_2"
+                                        
+                                        />
+                                        <label
+                                        class="form-check-label"
+                                        style="color: black; font-weight: normal"
+                                        
+                                        >
+                                        {{question.choice_2}}
+                                        </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            #genderInput="ngModel"
+                                            ngModel
+                                            [name]="question.id"
+                                            
+                                            [value]="question.choice_3"
+                                            
+                                            />
+                                            <label
+                                            class="form-check-label"
+                                            style="color: black; font-weight: normal"
+                                            
+                                            >
+                                            {{question.choice_3}}
+                                            </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input
+                                                class="form-check-input"
+                                                type="radio"
+                                                #genderInput="ngModel"
+                                                ngModel
+                                                [name]="question.id"
+                                                
+                                                [value]="question.choice_4"
+                                                
+                                                />
+                                                <label
+                                                class="form-check-label"
+                                                style="color: black; font-weight: normal"
+                                                
+                                                >
+                                                {{question.choice_4}}
+                                                </label>
+                                                </div>
+                                    <span
+                                    *ngIf="genderInput.touched && genderInput.invalid && genderInput.errors?.['required']"
+                                    style="color: red"
+                                    class="alert"
+                                    >This field is required *</span>
+                                    </fieldset>
+                                    
+                                    
+                            </div>
+
+        
+
+                            <button class="btn btn-light main-btns" id="submitBtn" [routerLink]="'/main/courses/details/'+id+'/videos/exam/result'" (click)="addAnswers(examForm)">Submit answers</button>
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

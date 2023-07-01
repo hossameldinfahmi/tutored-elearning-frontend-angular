@@ -17,6 +17,7 @@ import { CoursesDetailsPageComponent } from "./main/courses-details-page/courses
 import { CategoryCoursesComponent } from "./main/category-courses/category-courses.component";
 import { CourseContentDetailsComponent } from "./main/course-content-details/course-content-details.component";
 import { MyCoursesComponent } from "./main/my-courses/my-courses.component";
+import { ExamPageComponent } from "./main/exam-page/exam-page.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -43,6 +44,10 @@ const routes: Routes = [
         path: "courses",
         children: [
           { path: "details/:courseId", component: CoursesDetailsPageComponent },
+          {
+            path: "details/:courseId/videos/exam",
+            component: ExamPageComponent,
+          },
         ],
       },
 
