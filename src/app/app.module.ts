@@ -36,6 +36,7 @@ import { CourcesComponent } from "./main/Layouts/cources/cources.component";
 import { CoursesPageComponent } from "./main/courses-page/courses-page.component";
 import { TrainersPageComponent } from "./main/trainers-page/trainers-page.component";
 import { CoursesDetailsPageComponent } from "./main/courses-details-page/courses-details-page.component";
+import { CategoryCoursesComponent } from "./main/category-courses/category-courses.component";
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { CoursesDetailsPageComponent } from "./main/courses-details-page/courses
     //Categories
     CategoriesPageComponent,
     CategoriesmainComponentComponent,
+    CategoryCoursesComponent,
 
     // About
     AboutPageComponent,

@@ -14,6 +14,7 @@ import { AuthTrainerGuard } from "./trainer.guard";
 import { CoursesPageComponent } from "./main/courses-page/courses-page.component";
 import { TrainersPageComponent } from "./main/trainers-page/trainers-page.component";
 import { CoursesDetailsPageComponent } from "./main/courses-details-page/courses-details-page.component";
+import { CategoryCoursesComponent } from "./main/category-courses/category-courses.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -45,7 +46,9 @@ const routes: Routes = [
 
       {
         path: "categories",
-        children: [],
+        children: [
+          { path: "details/:categoryId", component: CategoryCoursesComponent },
+        ],
       },
 
       {
