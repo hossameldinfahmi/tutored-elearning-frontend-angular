@@ -41,7 +41,7 @@ export class StudentService {
       data: Student;
       status: boolean;
       error: any[];
-    }>(`${environment.baseUrl}students`, newStudent);
+    }>(`${environment.baseUrl}student/register`, newStudent);
   }
 
   getStudentById(
@@ -86,7 +86,7 @@ export class StudentService {
 
   checkStudent(data: any): Observable<student> {
     return this.httpClient.post<student>(
-      environment.baseUrl + "login/student",
+      environment.baseUrl + "student/login/",
       data
     );
   }

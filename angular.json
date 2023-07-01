@@ -31,7 +31,6 @@
               "src/assets/main/vendor/bootstrap-icons/bootstrap-icons.css",
               "src/assets/main/vendor/boxicons/css/boxicons.min.css",
               "src/assets/main/vendor/remixicon/remixicon.css",
-              "node_modules/swiper/swiper-bundle.css",
               "src/assets/main/vendor/swiper/swiper-bundle.min.css",
               "src/assets/main/css/style.css",
               "src/assets/dashboard/vendors/mdi/css/materialdesignicons.min.css",

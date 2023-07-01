@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
-import { Student } from "src/app/_models/student.model";
 import { StudentService } from "src/app/_services/student.service";
+import { Student } from "src/app/_models/student.model";
+import { NgForm } from "@angular/forms";
+import { ToastrService } from "ngx-toastr";
+import { HttpErrorResponse } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-register-student",
@@ -9,7 +12,11 @@ import { StudentService } from "src/app/_services/student.service";
   styleUrls: ["./register-student.component.css"],
 })
 export class RegisterStudentComponent implements OnInit {
-  constructor(private studentService: StudentService) {}
+  constructor(
+    private studentService: StudentService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
   ngOnInit(): void {}
   studentArray!: Student[];
 
@@ -31,15 +38,25 @@ export class RegisterStudentComponent implements OnInit {
     this.newStudent.password = form.value["password"];
 
     this.studentService.addStudent(this.newStudent).subscribe(
-      (res) => {},
-      (err) => {
-        console.log("Error adding student");
-        console.log(err);
+      (res) => {
+        this.toastr.success("Trainer added successfully!", "Success");
+        this.router.navigate(["/main/trainer/login"]);
+        form.reset();
+      },
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }
-
-  onSubmit(form: NgForm) {}
 
   resetForm(form: NgForm) {
     form.reset();
