@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Course } from "src/app/_models/course.model";
 import { CourseStudent } from "src/app/_models/course_student.model";
-import { CoursesService } from "../../../_services/courses.service";
+import { CoursesService } from "src/app/_services/courses.service";
 
 @Component({
   selector: "app-cources",
@@ -25,7 +25,7 @@ export class CourcesComponent implements OnInit {
     this.courseService.getAllCourses().subscribe(
       (res) => {
         this.courseArray = res;
-        console.log(this.courseArray);
+        // console.log(this.courseArray);
         for (let i = 0; i < this.courseArray.length; i++) {
           this.getCountOfStudents(i, this.courseArray[i].id!);
         }

@@ -13,6 +13,7 @@ import { CategoriesPageComponent } from "./main/categories-page/categories-page.
 import { AuthTrainerGuard } from "./trainer.guard";
 import { CoursesPageComponent } from "./main/courses-page/courses-page.component";
 import { TrainersPageComponent } from "./main/trainers-page/trainers-page.component";
+import { CoursesDetailsPageComponent } from "./main/courses-details-page/courses-details-page.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -37,7 +38,9 @@ const routes: Routes = [
 
       {
         path: "courses",
-        children: [],
+        children: [
+          { path: "details/:courseId", component: CoursesDetailsPageComponent },
+        ],
       },
 
       {
