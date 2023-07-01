@@ -1,4 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { CategororyService } from "src/app/_services/categorory.service";
+import { CoursesService } from "src/app/_services/courses.service";
+import { StudentService } from "src/app/_services/student.service";
+import { TrainerService } from "src/app/_services/trainer.service";
 
 @Component({
   selector: "app-counts",
@@ -11,7 +15,12 @@ export class CountsComponent implements OnInit {
   studentCount: number = 0;
   trainerCount: number = 0;
 
-  constructor() {}
+  constructor(
+    private categoryService: CategororyService,
+    private courseService: CoursesService,
+    private studentService: StudentService,
+    private trainerService: TrainerService
+  ) {}
 
   ngOnInit(): void {
     this.getCategoriesCount();
@@ -31,11 +40,77 @@ export class CountsComponent implements OnInit {
   projectcountstop3!: any;
   projectcountstop4!: any;
 
-  getCategoriesCount() {}
+  getCategoriesCount() {
+    this.categoryService.getCategoriesCount().subscribe(
+      (res) => {
+        this.categoryCount = res;
+        // console.log(res);
+        this.projectcountstop3 = setInterval(() => {
+          this.categoriesCounter++;
+          if (this.categoriesCounter == this.categoryCount) {
+            clearInterval(this.projectcountstop3);
+          }
+        }, 8);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 
-  getCoursesCount() {}
+  getCoursesCount() {
+    this.courseService.getCoursesCount().subscribe(
+      (res) => {
+        this.courseCount = res;
+        // console.log(res);
+        this.projectcountstop2 = setInterval(() => {
+          this.coursesCounter++;
+          if (this.coursesCounter == this.courseCount) {
+            clearInterval(this.projectcountstop2);
+          }
+        }, 8);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 
-  getStudentsCount() {}
+  getStudentsCount() {
+    this.studentService.getStudentsCount().subscribe(
+      (res) => {
+        this.studentCount = res;
+        // console.log(res);
+        this.projectcountstop1 = setInterval(() => {
+          this.studentsCounter++;
+          // console.log(this.studentCount);
 
-  getTrainersCount() {}
+          if (this.studentsCounter == this.studentCount) {
+            clearInterval(this.projectcountstop1);
+          }
+        }, 8);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  getTrainersCount() {
+    this.trainerService.getTrainersCount().subscribe(
+      (res) => {
+        this.trainerCount = res;
+        // console.log(res);
+        this.projectcountstop4 = setInterval(() => {
+          this.trainersCounter++;
+          if (this.trainersCounter == this.trainerCount) {
+            clearInterval(this.projectcountstop4);
+          }
+        }, 8);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 }

@@ -23,7 +23,7 @@ const routes: Routes = [
     children: [
       {
         path: "home",
-        canActivate: [AuthTrainerGuard],
+
         component: HomePageComponent,
       },
       { path: "about", component: AboutPageComponent },

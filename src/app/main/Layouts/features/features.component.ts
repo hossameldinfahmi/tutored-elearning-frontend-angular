@@ -20,7 +20,7 @@ export class FeaturesComponent implements OnInit {
     this.categoryService.getcategories().subscribe(
       (res) => {
         this.catarray = res.data;
-        // console.log(res);
+        console.log(res);
       },
       (err) => {
         console.log(err);
