@@ -10,6 +10,7 @@ import { HomePageComponent } from "./main/home-page/home-page.component";
 import { ContactPageComponent } from "./main/contact-page/contact-page.component";
 import { AboutPageComponent } from "./main/about-page/about-page.component";
 import { CategoriesPageComponent } from "./main/categories-page/categories-page.component";
+import { AuthTrainerGuard } from "./trainer.guard";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -17,7 +18,11 @@ const routes: Routes = [
   {
     path: "main",
     children: [
-      { path: "home", component: HomePageComponent },
+      {
+        path: "home",
+        canActivate: [AuthTrainerGuard],
+        component: HomePageComponent,
+      },
       { path: "about", component: AboutPageComponent },
       { path: "login", component: MainLoginComponent },
       { path: "login/student", component: LoginStudentComponent },

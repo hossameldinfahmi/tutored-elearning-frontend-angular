@@ -18,3 +18,15 @@ export interface Trainer {
   linkedin?: string;
   courses?: Course[];
 }
+
+export interface LoginResponse {
+  name: string;
+  id: number;
+  role: string;
+  access_token: string;
+  token_type: string;
+  expires_in: number;
+  accessToken?: string;
+  tokenType?: string;
+  expiresIn?: number;
+}

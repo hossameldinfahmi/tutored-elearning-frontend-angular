@@ -1,26 +1,33 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { EventEmitter, Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { environment } from "src/environments/environment";
-import { Trainer } from "../_models/trainer.model";
+import { Trainer, LoginResponse } from "../_models/trainer.model";
 import { tap } from "rxjs/operators";
-
-interface LoginResponse {
-  name: string;
-  id: number;
-  role: string;
-  access_token: string;
-  token_type: string;
-  expires_in: number;
-}
 
 @Injectable({
   providedIn: "root",
 })
 export class TrainerService {
   trainerloginservice: EventEmitter<any> = new EventEmitter<any>();
+  private currentTrainerSubject: BehaviorSubject<LoginResponse> =
+    new BehaviorSubject<LoginResponse>({
+      name: "",
+      id: 0,
+      role: "",
+      access_token: "",
+      token_type: "",
+      expires_in: 0,
+      accessToken: "",
+      tokenType: "",
+      expiresIn: 0,
+    });
 
   constructor(private httpClient: HttpClient) {}
+
+  get currentUser(): Observable<LoginResponse> {
+    return this.currentTrainerSubject.asObservable();
+  }
 
   getAllTrainers(): Observable<{
     data: Trainer[];
@@ -85,6 +92,17 @@ export class TrainerService {
       .post<LoginResponse>(environment.baseUrl + "trainers/login", data)
       .pipe(
         tap((response: LoginResponse) => {
+          this.currentTrainerSubject.next({
+            name: response.name,
+            id: response.id,
+            role: response.role,
+            access_token: response.access_token,
+            token_type: response.token_type,
+            expires_in: response.expires_in,
+            accessToken: response.accessToken,
+            tokenType: response.tokenType,
+            expiresIn: response.expiresIn,
+          });
           localStorage.setItem("access_token", response.access_token);
         })
       );
@@ -119,6 +137,17 @@ export class TrainerService {
       .pipe(
         tap(() => {
           localStorage.removeItem("access_token");
+          this.currentTrainerSubject.next({
+            name: "",
+            id: 0,
+            role: "",
+            access_token: "",
+            token_type: "",
+            expires_in: 0,
+            accessToken: "",
+            tokenType: "",
+            expiresIn: 0,
+          });
         })
       );
   }
