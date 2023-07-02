@@ -6,7 +6,6 @@ a:hover {
   text-decoration: none;
 }
 pagination-controls {
-  float: left !important;
   margin: 20px;
   margin-top: 90px !important;
   position: relative !important;
