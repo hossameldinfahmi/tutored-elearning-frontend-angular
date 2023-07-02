@@ -26,7 +26,7 @@ export class NavbarMainComponent implements OnInit {
     this.checktoken();
     if (localStorage.getItem("role") == "isTrainer") this.checkUser = "trainer";
     else this.checkUser = "student";
-    // console.log(this.checkUser);
+    console.log(this.checkUser);
 
     this.studentService.studentloginservice.subscribe(
       (next) => {

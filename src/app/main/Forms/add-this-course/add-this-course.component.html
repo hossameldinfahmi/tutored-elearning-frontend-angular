@@ -17,7 +17,6 @@
         <div class="card main-forms">
           <div class="card-body">
             <h4 class="card-title text-center">Add New Course</h4>
-
             <form class="forms-sample" [formGroup]="form">
               <div class="form-group">
                 <label>Course Name :</label>
@@ -33,6 +32,26 @@
                   placeholder="Name"
                   name="name"
                 />
+                <div
+                  *ngIf="
+                    form.controls['name'].invalid &&
+                    form.controls['name'].touched
+                  "
+                  class="text-danger small"
+                >
+                  <div *ngIf="form.controls['name'].errors?.['required']">
+                    Name is required
+                  </div>
+                  <div *ngIf="form.controls['name'].errors?.['minlength']">
+                    Name must be at least 3 characters
+                  </div>
+                  <div *ngIf="form.controls['name'].errors?.['maxlength']">
+                    Name must be at most 191 characters
+                  </div>
+                  <div *ngIf="form.controls['name'].errors?.['pattern']">
+                    Name can only contain alphabets and spaces
+                  </div>
+                </div>
               </div>
 
               <div class="form-group">
@@ -45,41 +64,28 @@
                     id="image"
                     class="form-control"
                     (change)="uploadImage($event)"
+                    required
                   />
                   <div
-                    *ngIf="f['image'].errors?.['required']"
-                    style="color: red"
+                    *ngIf="
+                      form.controls['image'].invalid &&
+                      form.controls['image'].touched
+                    "
+                    class="text-danger small"
                   >
-                    image is required
+                    <div *ngIf="form.controls['image'].errors?.['required']">
+                      Image is required
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <!-- <div class="form-group">
-                <label for="">Trainer</label>
-                <select
-                  ngModel
-                  class="form-control"
-                  name="trainer_id"
-                  formControlName="trainer_id"
-                  id=""
-                >
-                  <option
-                    *ngFor="let trainer of trainers; let i = index"
-                    [value]="trainer.id"
-                  >
-                    {{ trainer.fname }}
-                  </option>
-                </select>
-              </div> -->
-
               <div class="form-group">
                 <label>Category :</label>
                 <select
-                  ngModel
-                  class="form-control"
                   formControlName="category_id"
                   required
+                  class="form-control"
                   id=""
                   name="category_id"
                 >
@@ -90,6 +96,19 @@
                     {{ category.name }}
                   </option>
                 </select>
+                <div
+                  *ngIf="
+                    form.controls['category_id'].invalid &&
+                    form.controls['category_id'].touched
+                  "
+                  class="text-danger small"
+                >
+                  <div
+                    *ngIf="form.controls['category_id'].errors?.['required']"
+                  >
+                    Category is required
+                  </div>
+                </div>
               </div>
 
               <div class="form-group">
@@ -100,9 +119,24 @@
                   type="text"
                   class="form-control"
                   id="exampleInputName1"
-                  placeholder="Name"
+                  placeholder="Price"
                   name="price"
+                  pattern="[0-9]+(\.[0-9][0-9]?)?"
                 />
+                <div
+                  *ngIf="
+                    form.controls['price'].invalid &&
+                    form.controls['price'].touched
+                  "
+                  class="text-danger small"
+                >
+                  <div *ngIf="form.controls['price'].errors?.['required']">
+                    Price is required
+                  </div>
+                  <div *ngIf="form.controls['price'].errors?.['pattern']">
+                    Price must be a valid number
+                  </div>
+                </div>
               </div>
 
               <div class="form-group">
@@ -110,10 +144,25 @@
                 <input
                   formControlName="duration"
                   required
-                  placeholder="Name"
+                  placeholder="Duration"
                   class="form-control"
                   name="duration"
+                  pattern="[0-9]+(\.[0-9][0-9]?)?"
                 />
+                <div
+                  *ngIf="
+                    form.controls['duration'].invalid &&
+                    form.controls['duration'].touched
+                  "
+                  class="text-danger small"
+                >
+                  <div *ngIf="form.controls['duration'].errors?.['required']">
+                    Duration is required
+                  </div>
+                  <div *ngIf="form.controls['duration'].errors?.['pattern']">
+                    Duration must be a valid number
+                  </div>
+                </div>
               </div>
 
               <div class="form-group">
@@ -124,9 +173,20 @@
                   type="text"
                   class="form-control"
                   id="exampleInputName1"
-                  placeholder="Name"
+                  placeholder="Prerequisites"
                   name="preq"
                 />
+                <div
+                  *ngIf="
+                    form.controls['preq'].invalid &&
+                    form.controls['preq'].touched
+                  "
+                  class="text-danger small"
+                >
+                  <div *ngIf="form.controls['preq'].errors?.['required']">
+                    Prerequisites are required
+                  </div>
+                </div>
               </div>
 
               <div class="form-group">
@@ -137,9 +197,20 @@
                   type="text"
                   class="form-control"
                   id="exampleInputName1"
-                  placeholder="Name"
+                  placeholder="Description"
                   name="desc"
                 />
+                <div
+                  *ngIf="
+                    form.controls['desc'].invalid &&
+                    form.controls['desc'].touched
+                  "
+                  class="text-danger small"
+                >
+                  <div *ngIf="form.controls['desc'].errors?.['required']">
+                    Description is required
+                  </div>
+                </div>
               </div>
 
               <button
@@ -148,10 +219,10 @@
                 class="btn btn-fw btn-success col-sm-12 mb-3 main-btns text-light"
                 routerLink="/main/trainer/courses"
                 (click)="onsubmit(form)"
+                [disabled]="form.invalid"
               >
                 Submit
               </button>
-              <!-- <button class="btn btn-light" (click)="resetForm(categoryForm)">Cancel</button> -->
             </form>
           </div>
         </div>

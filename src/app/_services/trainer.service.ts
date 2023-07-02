@@ -3,8 +3,16 @@ import { EventEmitter, Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 import { Trainer, LoginResponse } from "../_models/trainer.model";
-import { tap } from "rxjs/operators";
 
+import { tap } from "rxjs/operators";
+interface trainer {
+  name: string;
+  id: number;
+  role: string;
+  access_token: any;
+  token_type: any;
+  expires_in: any;
+}
 @Injectable({
   providedIn: "root",
 })
@@ -85,21 +93,6 @@ export class TrainerService {
     }>(environment.baseUrl + "trainers/register", data);
   }
 
-  updateTrainer(
-    id: number,
-    updatedTrainer: any
-  ): Observable<{ data: Trainer; status: boolean; error: any[] }> {
-    const token: string = localStorage.getItem("access_token")!;
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-    return this.httpClient.post<{
-      data: Trainer;
-      status: boolean;
-      error: any[];
-    }>(`${environment.baseUrl}trainers/${id}`, updatedTrainer, { headers });
-  }
-
   loginTrainer(data: any): Observable<LoginResponse> {
     return this.httpClient
       .post<LoginResponse>(environment.baseUrl + "trainers/login", data)
@@ -124,12 +117,33 @@ export class TrainerService {
     return this.httpClient.get<number>(`${environment.baseUrl}trainers/count`);
   }
 
-  getCoursesOfTrainer(id: number): Observable<Trainer> {
-    const token: string = localStorage.getItem("access_token")!;
+  updateTrainer(
+    id: number,
+    updatedTrainer: any
+  ): Observable<{ data: Trainer; status: boolean; error: any[] }> {
+    const token: string = localStorage.getItem("Authorization")!;
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
+      Authorization: token,
     });
+    return this.httpClient.post<{
+      data: Trainer;
+      status: boolean;
+      error: any[];
+    }>(`${environment.baseUrl}trainers/${id}`, updatedTrainer, { headers });
+  }
 
+  checkTrainer(data: any): Observable<trainer> {
+    return this.httpClient.post<trainer>(
+      environment.baseUrl + "trainers/login",
+      data
+    );
+  }
+
+  getCoursesOfTrainer(id: number): Observable<Trainer> {
+    const token: string = localStorage.getItem("Authorization")!;
+    const headers = new HttpHeaders({
+      Authorization: token,
+    });
     return this.httpClient.get<Trainer>(
       `${environment.baseUrl}trainer/courses/${id}`,
       { headers }
@@ -137,9 +151,9 @@ export class TrainerService {
   }
 
   logoutTrainer() {
-    const token: string = localStorage.getItem("access_token")!;
+    const token: string = localStorage.getItem("Authorization")!;
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
+      Authorization: token,
     });
 
     return this.httpClient

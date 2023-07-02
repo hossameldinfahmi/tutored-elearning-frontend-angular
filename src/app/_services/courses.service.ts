@@ -25,16 +25,14 @@ export class CoursesService {
     // })
     return this.httpClient.get<Course>(environment.baseUrl + "courses/" + id);
   }
-
   create(data: any) {
     const token: string = localStorage.getItem("Authorization")!;
+    console.log(token);
+
     const headers = new HttpHeaders({
       Authorization: token,
     });
 
-    console.log("====================================");
-    console.log(headers);
-    console.log("====================================");
     return this.httpClient.post(environment.baseUrl + "courses", data, {
       headers,
     });
