@@ -12,6 +12,7 @@ import { Trainer } from "src/app/_models/trainer.model";
 import { CategororyService } from "src/app/_services/categorory.service";
 import { CoursesService } from "src/app/_services/courses.service";
 import { TrainerService } from "src/app/_services/trainer.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-add-this-course",
@@ -23,7 +24,8 @@ export class AddThisCourseComponent implements OnInit {
     private courseService: CoursesService,
     private categoryService: CategororyService,
     private trainerService: TrainerService,
-    private formbuilder: FormBuilder
+    private formbuilder: FormBuilder,
+    private toastr: ToastrService
   ) {}
 
   categories!: Category[];
@@ -122,19 +124,21 @@ export class AddThisCourseComponent implements OnInit {
     this.data.name = form.value.name;
     this.data.img = form.value.image;
     this.data.price = form.value.price;
-    this.data.duration = form.value.duration;
+    this.data.duration = parseInt(form.value.duration);
     this.data.trainer_id = parseInt(this.trainerId);
     this.data.category_id = form.value.category_id;
     this.data.desc = form.value.desc;
     this.data.preq = form.value.preq;
 
-    console.log(this.data);
+    console.log(formdata.get("name"));
     this.courseService.create(formdata).subscribe(
       (res) => {
         console.log(res);
+        this.toastr.success("Course added successfully!");
       },
       (err) => {
         console.log("Error adding course");
+        this.toastr.error("An error occurred while adding the course.");
         console.log(err);
       }
     );
