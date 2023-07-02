@@ -1,0 +1,95 @@
+<div class="col-12 grid-margin stretch-card text-primary">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title text-center">Update Exam</h4>
+
+      <form class="forms-sample" #examForm="ngForm">
+        <div class="form-group">
+          <label for="exampleInputName1">Name :</label>
+
+          <input
+            #examNameInput="ngModel"
+            ngModel
+            required
+            minlength="3"
+            maxlength="191"
+            pattern="^[a-zA-Z0-9 _.-]*$"
+            type="text"
+            class="form-control"
+            id="exampleInputName1"
+            placeholder="Name"
+            name="examName"
+            [ngModel]="this.examContent.name"
+          />
+          <span
+            *ngIf="examNameInput.touched && examNameInput.invalid && examNameInput.errors?.['required']"
+            style="color: red"
+            class="alert"
+            >This field is required *</span
+          >
+          <span
+            *ngIf="examNameInput.errors?.['minlength']"
+            style="color: red"
+            class="alert"
+            >Please enter more than 2 characters *</span
+          >
+          <span
+            *ngIf="examNameInput.errors?.['maxlength']"
+            style="color: red"
+            class="alert"
+            >Please enter less than 192 characters *</span
+          >
+          <span
+            *ngIf="examNameInput.errors?.['pattern']"
+            style="color: red"
+            class="alert"
+            >Please enter alphabets characters only *</span
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label for="">Course :</label>
+          <select
+            #courseinput="ngModel"
+            ngModel
+            placeholder="select maximum score"
+            required
+            class="form-control"
+            name="course_id"
+          >
+            <option *ngFor="let coureses of courese" [value]="coureses.id">
+              {{ coureses.name }}
+            </option>
+            <span
+              *ngIf="courseinput.touched && courseinput.invalid && courseinput.errors?.['required']"
+              style="color: red"
+              class="alert"
+              >This field is required *</span
+            >
+          </select>
+        </div>
+
+
+        <div class="form-group">
+          <label for="exampleInputName1">Maximum score :</label>
+          <input #maxscoreInput=ngModel ngModel required  type="text" class="form-control" id="exampleInputName3" placeholder="max_score" name="max_score"               [ngModel]="this.examContent.max_score"
+          />
+              <span *ngIf="maxscoreInput.touched && maxscoreInput.invalid && maxscoreInput.errors?.['required']" style="color: red;" class="alert" >This field is required *</span>
+          </div>
+
+
+          <button
+            type="submit"
+            (click)="updateExam(this.examContent.id!, examForm)"
+            routerLink="/dashboard/exams"
+            class="btn btn-primary mr-2"
+            [disabled]="!examForm.valid"
+          >
+            Submit
+          </button>
+        <button class="btn btn-light" (click)="resetForm(examForm)">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>

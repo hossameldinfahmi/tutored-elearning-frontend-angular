@@ -70,6 +70,11 @@ import { AddCategoryComponent } from "./dashboard/Forms/add-category/add-categor
 import { AddCourseComponent } from "./dashboard/Forms/add-course/add-course.component";
 import { AddCourseContentComponent } from "./dashboard/Forms/add-course-content/add-course-content.component";
 import { AddExamComponent } from "./dashboard/Forms/add-exam/add-exam.component";
+import { AddQuestionComponent } from "./dashboard/Forms/add-question/add-question.component";
+import { UpdateQuestionComponent } from "./dashboard/Forms/update-question/update-question.component";
+import { UpdateExamComponent } from "./dashboard/Forms/update-exam/update-exam.component";
+import { UpdateCourseComponent } from "./dashboard/Forms/update-course/update-course.component";
+import { UpdateCategoryComponent } from "./dashboard/Forms/update-category/update-category.component";
 
 @NgModule({
   declarations: [
@@ -145,6 +150,7 @@ import { AddExamComponent } from "./dashboard/Forms/add-exam/add-exam.component"
     CoursesComponent,
     CategoriesComponent,
     CourseContentComponent,
+
     TrainersComponent,
     ExamsComponent,
     FeedbacksComponent,
@@ -158,6 +164,11 @@ import { AddExamComponent } from "./dashboard/Forms/add-exam/add-exam.component"
     AddCourseComponent,
     AddCourseContentComponent,
     AddExamComponent,
+    AddQuestionComponent,
+    UpdateQuestionComponent,
+    UpdateExamComponent,
+    UpdateCourseComponent,
+    UpdateCategoryComponent,
   ],
 
   imports: [

@@ -1,0 +1,83 @@
+<div class="col-12 grid-margin stretch-card text-primary ">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title text-center ">Update Question</h4>
+
+
+      <form class="forms-sample" #questionForm=ngForm>
+        <div class="form-group">
+          <label for="exampleInputName1">Question :</label>
+          <input #headerNameInput=ngModel ngModel required minlength="3" maxlength="255"  type="text" class="form-control" id="exampleInputName1" placeholder="Enter Question " name="header" [(ngModel)]="this.Question.header" />
+              <span *ngIf="headerNameInput.touched && headerNameInput.invalid && headerNameInput.errors?.['required']" style="color: red;" class="alert" >This field is required *</span>
+              <span *ngIf="headerNameInput.errors?.['minlength']" style="color: red;" class="alert">Please enter more than 2 characters *</span>
+              <span *ngIf="headerNameInput.errors?.['maxlength']" style="color: red;" class="alert">Please enter less than 192 characters *</span>
+          </div>
+
+
+
+          <div class="form-group">
+            <label for="exampleInputName1">Choice_1  :</label>
+            <input #choice_1NameInput=ngModel ngModel required minlength="1" maxlength="255"  type="text" class="form-control" id="exampleInputName1" placeholder="Enter choice_1 " name="choice_1" [ngModel]="this.Question.choice_1" />
+                <span *ngIf="choice_1NameInput.touched && choice_1NameInput.invalid && choice_1NameInput.errors?.['required']" style="color: red;" class="alert" >This field is required *</span>
+                <span *ngIf="choice_1NameInput.errors?.['minlength']" style="color: red;" class="alert">Please enter more than 2 characters *</span>
+                <span *ngIf="choice_1NameInput.errors?.['maxlength']" style="color: red;" class="alert">Please enter less than 192 characters *</span>
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="exampleInputName1">Choice_2  :</label>
+              <input #choice_2NameInput=ngModel ngModel required minlength="1" maxlength="255"  type="text" class="form-control" id="exampleInputName1" placeholder="Enter choice_2 " name="choice_2"   [ngModel]="this.Question.choice_2"  />
+                  <span *ngIf="choice_2NameInput.touched && choice_2NameInput.invalid && choice_2NameInput.errors?.['required']" style="color: red;" class="alert" >This field is required *</span>
+                  <span *ngIf="choice_2NameInput.errors?.['minlength']" style="color: red;" class="alert">Please enter more than 2 characters *</span>
+                  <span *ngIf="choice_2NameInput.errors?.['maxlength']" style="color: red;" class="alert">Please enter less than 192 characters *</span>
+              </div>
+
+
+
+              <div class="form-group">
+                <label for="exampleInputName1">Choice_3  :</label>
+                <input #choice_3NameInput=ngModel ngModel required minlength="1" maxlength="255"  type="text" class="form-control" id="exampleInputName1" placeholder="Enter choice_3 " name="choice_3"   [ngModel]="this.Question.choice_3"  />
+                    <span *ngIf="choice_3NameInput.touched && choice_3NameInput.invalid && choice_3NameInput.errors?.['required']" style="color: red;" class="alert" >This field is required *</span>
+                    <span *ngIf="choice_3NameInput.errors?.['minlength']" style="color: red;" class="alert">Please enter more than 2 characters *</span>
+                    <span *ngIf="choice_3NameInput.errors?.['maxlength']" style="color: red;" class="alert">Please enter less than 192 characters *</span>
+                </div>
+
+
+                <div class="form-group">
+                  <label for="exampleInputName1">Choice_4  :</label>
+                  <input #choice_4NameInput=ngModel ngModel required minlength="1" maxlength="255"  type="text" class="form-control" id="exampleInputName1" placeholder="Enter choice_4" name="choice_4"   [ngModel]="this.Question.choice_4"  />
+                      <span *ngIf="choice_4NameInput.touched && choice_4NameInput.invalid && choice_4NameInput.errors?.['required']" style="color: red;" class="alert" >This field is required *</span>
+                      <span *ngIf="choice_4NameInput.errors?.['minlength']" style="color: red;" class="alert">Please enter more than 2 characters *</span>
+                      <span *ngIf="choice_4NameInput.errors?.['maxlength']" style="color: red;" class="alert">Please enter less than 192 characters *</span>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="exampleInputName1">Answer  :</label>
+                    <input #answerNameInput=ngModel ngModel required minlength="1" maxlength="255"  type="text" class="form-control" id="exampleInputName1" placeholder="Enter answer" name="answer"  [ngModel]="this.Question.answer"  />
+                        <span *ngIf="answerNameInput.touched && answerNameInput.invalid && answerNameInput.errors?.['required']" style="color: red;" class="alert" >This field is required *</span>
+                        <span *ngIf="answerNameInput.errors?.['minlength']" style="color: red;" class="alert">Please enter more than 2 characters *</span>
+                        <span *ngIf="answerNameInput.errors?.['maxlength']" style="color: red;" class="alert">Please enter less than 192 characters *</span>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="exampleInputName1">Score  :</label>
+                      <input #scoreNameInput=ngModel ngModel required maxlength="20"  type="number" class="form-control" id="exampleInputName1" placeholder="Enter score" name="score"  [ngModel]="this.Question.score"/>
+                          <span *ngIf="scoreNameInput.touched && scoreNameInput.invalid && scoreNameInput.errors?.['required']" style="color: red;" class="alert" >This field is required *</span>
+                      </div>
+
+
+
+
+
+
+
+        <button type="submit" class="btn btn-primary mr-2" [disabled]="!questionForm.valid" (click)="updateQuestion(this.Question.id!,questionForm)"
+        > update </button>
+        <button class="btn btn-light" (click)="resetForm(questionForm)">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>

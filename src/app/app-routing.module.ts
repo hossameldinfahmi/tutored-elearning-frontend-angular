@@ -43,6 +43,11 @@ import { AddCategoryComponent } from "./dashboard/Forms/add-category/add-categor
 import { AddCourseComponent } from "./dashboard/Forms/add-course/add-course.component";
 import { AddCourseContentComponent } from "./dashboard/Forms/add-course-content/add-course-content.component";
 import { AddExamComponent } from "./dashboard/Forms/add-exam/add-exam.component";
+import { AddQuestionComponent } from "./dashboard/Forms/add-question/add-question.component";
+import { UpdateQuestionComponent } from "./dashboard/Forms/update-question/update-question.component";
+import { UpdateExamComponent } from "./dashboard/Forms/update-exam/update-exam.component";
+import { UpdateCourseComponent } from "./dashboard/Forms/update-course/update-course.component";
+import { UpdateCategoryComponent } from "./dashboard/Forms/update-category/update-category.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -154,6 +159,14 @@ const routes: Routes = [
         component: AddCourseContentComponent,
       },
       { path: "add-exam", component: AddExamComponent },
+      { path: "add-question/:id", component: AddQuestionComponent },
+      {
+        path: "update-question/:id/:exam_id",
+        component: UpdateQuestionComponent,
+      },
+      { path: "update-exam/:id", component: UpdateExamComponent },
+      { path: "update-course/:id", component: UpdateCourseComponent },
+      { path: "update-category/:id", component: UpdateCategoryComponent },
     ],
   },
 ];
