@@ -38,6 +38,11 @@ import { FeedbacksComponent } from "./dashboard/feedbacks/feedbacks.component";
 import { QuestionsComponent } from "./dashboard/questions/questions/questions.component";
 import { StudentsComponent } from "./dashboard/students/students.component";
 import { TrainersComponent } from "./dashboard/trainers/trainers.component";
+import { AddAdminComponent } from "./dashboard/Forms/add-admin/add-admin.component";
+import { AddCategoryComponent } from "./dashboard/Forms/add-category/add-category.component";
+import { AddCourseComponent } from "./dashboard/Forms/add-course/add-course.component";
+import { AddCourseContentComponent } from "./dashboard/Forms/add-course-content/add-course-content.component";
+import { AddExamComponent } from "./dashboard/Forms/add-exam/add-exam.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -121,12 +126,6 @@ const routes: Routes = [
             component: CourseExamDetailsComponent,
           },
           { path: "exam/:examId", component: QuestionsDetailsComponent },
-          { path: "contactus", component: ContactUsComponent },
-          { path: "trainers", component: TrainersComponent },
-          { path: "exams", component: ExamsComponent },
-          { path: "feedbacks", component: FeedbacksComponent },
-          { path: "questions/:id", component: QuestionsComponent },
-          { path: "students", component: StudentsComponent },
         ],
       },
       { path: "student/update", component: UpdateStudentComponent },
@@ -141,6 +140,20 @@ const routes: Routes = [
       { path: "home", component: StatisticsComponent },
       { path: "categories", component: CategoriesComponent },
       { path: "courses", component: CoursesComponent },
+      { path: "add-admin", component: AddAdminComponent },
+      { path: "contactus", component: ContactUsComponent },
+      { path: "trainers", component: TrainersComponent },
+      { path: "exams", component: ExamsComponent },
+      { path: "feedbacks", component: FeedbacksComponent },
+      { path: "questions/:id", component: QuestionsComponent },
+      { path: "students", component: StudentsComponent },
+      { path: "add-category", component: AddCategoryComponent },
+      { path: "add-course", component: AddCourseComponent },
+      {
+        path: "add-course-content/:courseId/:courseName",
+        component: AddCourseContentComponent,
+      },
+      { path: "add-exam", component: AddExamComponent },
     ],
   },
 ];

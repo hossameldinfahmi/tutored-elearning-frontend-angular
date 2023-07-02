@@ -1,0 +1,84 @@
+<div class="col-12 grid-margin stretch-card text-primary">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title text-center">Add New Admin</h4>
+      <form class="forms-sample" #AdminForm="ngForm">
+        <div class="form-group">
+          <label for="exampleInputName1">Name :</label>
+          <input
+            #adminfname="ngModel"
+            ngModel
+            required
+            minlength="3"
+            maxlength="191"
+            pattern="[A-Za-z ]+"
+            type="text"
+            class="form-control"
+            id="exampleInputName1"
+            placeholder="Name"
+            name="name"
+            ngModel
+          />
+          <span
+            *ngIf="adminfname.touched && adminfname.invalid && adminfname.errors?.['required']"
+            style="color: red"
+            class="alert"
+            >This field is required *</span
+          >
+          <span
+            *ngIf="adminfname.errors?.['minlength']"
+            style="color: red"
+            class="alert"
+            >Please enter more than 2 characters *</span
+          >
+          <span
+            *ngIf="adminfname.errors?.['maxlength']"
+            style="color: red"
+            class="alert"
+            >Please enter less than 192 characters *</span
+          >
+          <span
+            *ngIf="adminfname.errors?.['pattern']"
+            style="color: red"
+            class="alert"
+            >Please enter alphabets characters only *</span
+          >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail3">Email address :</label>
+          <input
+            #adminEmail="ngModel"
+            ngModel
+            type="email"
+            class="form-control"
+            id="exampleInputEmail3"
+            placeholder="Email"
+            name="email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword4">Password :</label>
+          <input
+            #adminPassword="ngModel"
+            ngModel
+            type="password"
+            class="form-control"
+            id="exampleInputPassword4"
+            placeholder="Password"
+            name="password"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary mr-2"
+          [disabled]="!AdminForm.valid"
+          (click)="addAdmin(AdminForm)"
+        >
+          Submit
+        </button>
+        <button class="btn btn-light">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>

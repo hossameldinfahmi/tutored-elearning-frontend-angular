@@ -65,6 +65,11 @@ import { QuestionsComponent } from "./dashboard/questions/questions/questions.co
 import { StudentsComponent } from "./dashboard/students/students.component";
 import { TrainersComponent } from "./dashboard/trainers/trainers.component";
 import { ContactUsComponent } from "./dashboard/contact-us/contact-us.component";
+import { AddAdminComponent } from "./dashboard/Forms/add-admin/add-admin.component";
+import { AddCategoryComponent } from "./dashboard/Forms/add-category/add-category.component";
+import { AddCourseComponent } from "./dashboard/Forms/add-course/add-course.component";
+import { AddCourseContentComponent } from "./dashboard/Forms/add-course-content/add-course-content.component";
+import { AddExamComponent } from "./dashboard/Forms/add-exam/add-exam.component";
 
 @NgModule({
   declarations: [
@@ -146,6 +151,13 @@ import { ContactUsComponent } from "./dashboard/contact-us/contact-us.component"
     QuestionsComponent,
     StudentsComponent,
     ContactUsComponent,
+
+    //forms Dashboard
+    AddAdminComponent,
+    AddCategoryComponent,
+    AddCourseComponent,
+    AddCourseContentComponent,
+    AddExamComponent,
   ],
 
   imports: [
