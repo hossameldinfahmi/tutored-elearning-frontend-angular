@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { EventEmitter, Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable, tap } from "rxjs";
 import { environment } from "src/environments/environment";
 import { Student } from "../_models/student.model";
+import { LoginResponse } from "../_models/trainer.model";
 interface student {
   name: string;
   access_token: any;
@@ -16,7 +17,18 @@ interface student {
 })
 export class StudentService {
   studentloginservice: EventEmitter<any> = new EventEmitter<any>();
-
+  private currentStudentSubject: BehaviorSubject<LoginResponse> =
+    new BehaviorSubject<LoginResponse>({
+      name: "",
+      id: 0,
+      role: "",
+      access_token: "",
+      token_type: "",
+      expires_in: 0,
+      accessToken: "",
+      tokenType: "",
+      expiresIn: 0,
+    });
   constructor(private httpClient: HttpClient) {}
   getAllStudents(): Observable<{
     data: Student[];
@@ -111,8 +123,25 @@ export class StudentService {
     const headers = new HttpHeaders({
       Authorization: token,
     });
-    return this.httpClient.post(`${environment.baseUrl}student/logout`, null, {
-      headers,
-    });
+    return this.httpClient
+      .post(`${environment.baseUrl}student/logout`, null, {
+        headers,
+      })
+      .pipe(
+        tap(() => {
+          localStorage.removeItem("access_token");
+          this.currentStudentSubject.next({
+            name: "",
+            id: 0,
+            role: "",
+            access_token: "",
+            token_type: "",
+            expires_in: 0,
+            accessToken: "",
+            tokenType: "",
+            expiresIn: 0,
+          });
+        })
+      );
   }
 }
