@@ -1,0 +1,45 @@
+form.checkout {
+    max-width: 500px;
+    height: 200px;
+    
+    /* margin: 2rem auto; */
+    margin: 100px auto;
+    text-align: center;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    /* padding: 1rem 2rem; */
+    padding: 50px;
+    background: white;
+    font-family: monospace;
+    color: #525252;
+    font-size: 1.1rem;
+}
+form.checkout button {
+    padding: 0.5rem 1rem;
+    color: white;
+    background: rgb(120, 199, 104);
+    border: none;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+form.checkout button:active {
+    background: rgb(31, 126, 36);
+}
+.__PrivateStripeElement
+{
+  width: 200px!important;
+}
+.elemnt
+{
+  width: 200px;
+}
+iframe{
+  width: 1000px;
+}
+.form-row{
+  width :20rem !important;
+}
+.StripeElement
+{
+  width: 700px !important;
+}

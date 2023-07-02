@@ -48,6 +48,16 @@ import { UpdateQuestionComponent } from "./dashboard/Forms/update-question/updat
 import { UpdateExamComponent } from "./dashboard/Forms/update-exam/update-exam.component";
 import { UpdateCourseComponent } from "./dashboard/Forms/update-course/update-course.component";
 import { UpdateCategoryComponent } from "./dashboard/Forms/update-category/update-category.component";
+import { PaymentComponent } from "./main/payment/payment.component";
+import { FeedbackFormComponent } from "./main/Layouts/feedback-form/feedback-form.component";
+import { VideoComponent } from "./main/Layouts/video/video.component";
+import { ResultComponent } from "./main/result/result.component";
+import { AddThisExamComponent } from "./main/Forms/add-this-exam/add-this-exam.component";
+import { EditThisExamComponent } from "./main/Forms/edit-this-exam/edit-this-exam.component";
+import { AddThisQuestionComponent } from "./main/Forms/add-this-question/add-this-question.component";
+import { EditThisQuestionComponent } from "./main/Forms/edit-this-question/edit-this-question.component";
+import { ChatDialogComponent } from "./chat/chat-dialog/chat-dialog.component";
+import { CourseContentComponent } from "./dashboard/course-content/course-content.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -55,9 +65,9 @@ const routes: Routes = [
   {
     path: "main",
     children: [
+      { path: "", redirectTo: "/home", pathMatch: "full" },
       {
         path: "home",
-
         component: HomePageComponent,
       },
       { path: "about", component: AboutPageComponent },
@@ -65,22 +75,32 @@ const routes: Routes = [
       { path: "login/student", component: LoginStudentComponent },
       { path: "register", component: RegisterComponent },
       { path: "register/student", component: RegisterStudentComponent },
+      { path: "student/courses", component: MyCoursesComponent },
       { path: "contact", component: ContactPageComponent },
       { path: "categories", component: CategoriesPageComponent },
       { path: "courses", component: CoursesPageComponent },
       { path: "trainers", component: TrainersPageComponent },
       { path: "search", component: SearchComponent },
+      { path: "feedback-form/:courseId", component: FeedbackFormComponent },
 
       {
         path: "courses",
         children: [
           { path: "details/:courseId", component: CoursesDetailsPageComponent },
+          { path: "details/:courseId/videos", component: VideoComponent },
+
           {
             path: "details/:courseId/videos/exam",
             component: ExamPageComponent,
           },
+          {
+            path: "details/:courseId/videos/exam/result",
+            component: ResultComponent,
+          },
         ],
       },
+
+      { path: "payment/:courseId", component: PaymentComponent },
 
       {
         path: "categories",
@@ -123,23 +143,41 @@ const routes: Routes = [
             canActivate: [AuthTrainerGuard],
             component: EditThisCourseContentComponent,
           },
-
-          { path: "update", component: UpdateTrainerComponent },
-          { path: "logout", redirectTo: "main/login", pathMatch: "full" },
           {
             path: "course/details/:courseId/exams",
             component: CourseExamDetailsComponent,
           },
+          {
+            path: "course/details/:courseId/:exam_id/edit-exam",
+            component: EditThisExamComponent,
+          },
+          {
+            path: "course/details/:courseId/add-exam",
+            component: AddThisExamComponent,
+          },
           { path: "exam/:examId", component: QuestionsDetailsComponent },
+          {
+            path: "exam/:examId/add-question",
+            component: AddThisQuestionComponent,
+          },
+          {
+            path: "exam/:examId/update-question/:questionId",
+            component: EditThisQuestionComponent,
+          },
+          { path: "update", component: UpdateTrainerComponent },
+          { path: "logout", redirectTo: "main/login", pathMatch: "full" },
         ],
       },
       { path: "student/update", component: UpdateStudentComponent },
+      { path: "chat", component: ChatDialogComponent },
     ],
   },
 
   {
     path: "dashboard",
     children: [
+      { path: "", redirectTo: "/home", pathMatch: "full" },
+
       { path: "login", component: LoginComponent },
       { path: "admins", component: AdminsComponent },
       { path: "home", component: StatisticsComponent },
@@ -155,6 +193,14 @@ const routes: Routes = [
       { path: "add-category", component: AddCategoryComponent },
       { path: "add-course", component: AddCourseComponent },
       {
+        path: "contents/:courseId/:courseName",
+        component: CourseContentComponent,
+      },
+      {
+        path: "edit-course-content/:id/:courseId/:courseName",
+        component: EditThisCourseContentComponent,
+      },
+      {
         path: "add-course-content/:courseId/:courseName",
         component: AddCourseContentComponent,
       },
@@ -167,6 +213,7 @@ const routes: Routes = [
       { path: "update-exam/:id", component: UpdateExamComponent },
       { path: "update-course/:id", component: UpdateCourseComponent },
       { path: "update-category/:id", component: UpdateCategoryComponent },
+      { path: "payment", component: PaymentComponent },
     ],
   },
 ];

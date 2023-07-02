@@ -1,0 +1,21 @@
+<main id="main" data-aos="fade-in">
+  <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs">
+    <div class="container">
+      <h2 class="my-2">{{courseName}} Course Exam Result</h2>
+    </div>
+  </div>
+  <!-- End Breadcrumbs -->
+  <div class="container">
+    <div class="row mt-5">
+      <div class="card my-5 main-forms text-center">
+        <h1 class="mt-5">Congratulations {{studentName}}</h1>
+
+        <h4>Your exam result is:</h4>
+
+        <h5>{{ newresult.degree }} / {{exam_max_score}}</h5>
+        <a class="main-btns btn text-light m-5" routerLink="/main/home" (click)="removeID()">Back to home</a>
+      </div>
+    </div>
+  </div>
+</main>

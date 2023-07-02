@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
+    "@fireflysemantics/angular-stripe-service": "^1.0.6",
     "@fortawesome/fontawesome-free": "^6.4.0",
     "@ng-bootstrap/ng-bootstrap": "^14.1.0",
     "@popperjs/core": "^2.11.6",
@@ -35,6 +36,8 @@
     "popper.js": "^1.16.1",
     "pusher-js": "^8.2.0",
     "rxjs": "~7.8.0",
+    "stripe": "^8.205.0",
+    "stripe-angular": "^1.7.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },

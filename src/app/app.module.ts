@@ -76,6 +76,14 @@ import { UpdateExamComponent } from "./dashboard/Forms/update-exam/update-exam.c
 import { UpdateCourseComponent } from "./dashboard/Forms/update-course/update-course.component";
 import { UpdateCategoryComponent } from "./dashboard/Forms/update-category/update-category.component";
 import { ChatDialogComponent } from "./chat/chat-dialog/chat-dialog.component";
+import { PaymentComponent } from "./main/payment/payment.component";
+import { FeedbackFormComponent } from "./main/Layouts/feedback-form/feedback-form.component";
+import { VideoComponent } from "./main/Layouts/video/video.component";
+import { ResultComponent } from "./main/result/result.component";
+import { AddThisExamComponent } from "./main/Forms/add-this-exam/add-this-exam.component";
+import { EditThisExamComponent } from "./main/Forms/edit-this-exam/edit-this-exam.component";
+import { AddThisQuestionComponent } from "./main/Forms/add-this-question/add-this-question.component";
+import { EditThisQuestionComponent } from "./main/Forms/edit-this-question/edit-this-question.component";
 
 @NgModule({
   declarations: [
@@ -94,6 +102,9 @@ import { ChatDialogComponent } from "./chat/chat-dialog/chat-dialog.component";
     EditThisCourseContentComponent,
     AddThisCourseContentComponent,
     SearchComponent,
+    FeedbackFormComponent,
+    VideoComponent,
+    ResultComponent,
 
     //home Page
     HomePageComponent,
@@ -140,7 +151,13 @@ import { ChatDialogComponent } from "./chat/chat-dialog/chat-dialog.component";
     ExamPageComponent,
     CourseExamDetailsComponent,
     QuestionsDetailsComponent,
+    AddThisExamComponent,
+    EditThisExamComponent,
 
+    // questions
+
+    AddThisQuestionComponent,
+    EditThisQuestionComponent,
     // Dashboard
     LoginComponent,
     AdminsComponent,
@@ -170,9 +187,11 @@ import { ChatDialogComponent } from "./chat/chat-dialog/chat-dialog.component";
     UpdateExamComponent,
     UpdateCourseComponent,
     UpdateCategoryComponent,
-
     // Chat
     ChatDialogComponent,
+
+    //payment
+    PaymentComponent,
   ],
 
   imports: [

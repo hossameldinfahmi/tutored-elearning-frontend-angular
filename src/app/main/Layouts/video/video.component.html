@@ -1,0 +1,61 @@
+  <div style="margin-bottom: 100px;"></div>
+  <!-- ======= Cource Details Tabs Section ======= -->
+    <section id="cource-details-tabs" class="cource-details-tabs">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="row">
+            <div class="col-lg-3">
+              <ul class="nav nav-tabs flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Welcome to the course</a>
+                </li>
+                <li class="nav-item" *ngFor="let content of contentArr; let i=index">
+                  <a class="nav-link " data-bs-toggle="tab" href="#tab-{{i+2}}">{{content.name}}</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " data-bs-toggle="tab" [routerLink]="'/main/feedback-form/'+id">Send Feedback</a>
+                 
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link "  *ngIf="active==false" data-bs-toggle="tab" [routerLink]="'/main/courses/details/'+id+'/videos/exam'">Take Exam</a>
+                  <a *ngIf="active==true" class="nav-link" data-bs-toggle="tab" [routerLink]="'/main/courses/details/'+id+'/videos/exam/result'"> Show Result</a>
+
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-9 mt-4 mt-lg-0" >
+              <div class="tab-content">
+
+                <div class="tab-pane active show" id="tab-1">
+                  <div class="row">
+                    <div class="col-lg-8 details order-2 order-lg-1" >
+                      <iframe width="700" height="400" src="https://www.youtube.com/embed/cpP-fCo8Dn4">
+                      </iframe>
+                    </div>
+                  </div>
+                </div>
+                <div *ngFor="let url of urlSecuredArr ; let i=index"  class="tab-pane" id="tab-{{i+2}}">
+                  <div class="row">
+                    <!-- <h1>{{i}}</h1> -->
+                    <div class="col-lg-8 details order-2 order-lg-1" >
+                      <!-- <h3>cont {{i+1}}</h3> -->
+                      <iframe width="700" height="400"[src]="url">
+                      </iframe>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </section><!-- End Cource Details Tabs Section -->
+  
+
+
+
+
+ 

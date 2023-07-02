@@ -12,9 +12,15 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(
-    request: HttpRequest<unknown>,
+    req: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+    return next.handle(req);
   }
 }
+
+// let token = localStorage.getItem("Authorization");
+// const authReq = req.clone({
+//   headers: req.headers.set("x-auth-token", `${token}`),
+// });
+// return next.handle(authReq);

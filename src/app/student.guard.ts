@@ -22,10 +22,10 @@ export class StudentGuard implements CanActivate {
   ): Observable<boolean> | Promise<boolean> | boolean {
     return this.trainerService.currentUser.pipe(
       map((currentTrainer: LoginResponse) => {
-        if (currentTrainer && currentTrainer.role === "isTrainer") {
+        if (currentTrainer && currentTrainer.role === "isStudent") {
           return true;
         } else {
-          this.router.navigate(["/main/trainer/login"], {
+          this.router.navigate(["/main/login/student"], {
             queryParams: {
               returnUrl: state.url,
             },

@@ -1,0 +1,40 @@
+ <!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+    
+
+    <div class="container" data-aos="fade-up">
+
+      <div class="row mt-5">
+
+       
+
+        <div class="col-lg-8 mt-5 mt-lg-0" >
+
+          <form  method="post" role="form" class="php-email-form mt-5" #feedForm=ngForm>
+           
+
+            <div class="form-group mt-5">
+              <textarea class="form-control" #subNameInput=ngModel ngModel minlength="3" pattern="^[a-zA-Z0-9 _.-]*$" maxlength="191" name="desc" rows="5" placeholder="desc" required></textarea>
+            
+            </div>   <span *ngIf="subNameInput.touched && subNameInput.invalid && subNameInput.errors?.['required']" style="color: red;" class="alert" >This field is required *</span>
+         
+          
+          
+          
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message" >Your message has been sent. Thank you!</div>
+            </div>
+            <div class="text-center">
+              <button type="submit"  (click)="addFeedback(feedForm)" [disabled]="!feedForm.valid" >Send Message</button></div>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Contact Section -->
+
+
