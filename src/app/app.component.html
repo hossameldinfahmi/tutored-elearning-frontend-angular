@@ -12,18 +12,18 @@
 <script src="https://checkout.stripe.com/checkout.js"></script>
 
 <app-navbar-main *ngIf="active1 == true"></app-navbar-main>
-<router-outlet *ngIf="active1 == true"></router-outlet>
+<router-outlet></router-outlet>
 <app-footer *ngIf="active1 == true"></app-footer>
 
 <app-nav-bar *ngIf="active == true"></app-nav-bar>
 <div class="container-scroller" *ngIf="active == true">
-  <app-side-bar *ngIf="active == true"></app-side-bar>
-  <div class="container-fluid page-body-wrapper" *ngIf="active == true">
-    <div class="main-panel" *ngIf="active == true">
-      <router-outlet *ngIf="active == true"></router-outlet>
+  <app-side-bar></app-side-bar>
+  <div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+      <router-outlet></router-outlet>
     </div>
   </div>
-  <app-stfooter class="fixed-bottom" *ngIf="active == true"></app-stfooter>
+  <app-stfooter class="fixed-bottom"></app-stfooter>
 </div>
 
 <router-outlet *ngIf="active3 == true"></router-outlet>

@@ -26,6 +26,7 @@ import { AddThisCourseComponent } from "./main/Forms/add-this-course/add-this-co
 import { EditThisCourseComponent } from "./main/Forms/edit-this-course/edit-this-course.component";
 import { AdminsComponent } from "./dashboard/admins/admins.component";
 import { LoginComponent } from "./dashboard/login/login.component";
+import { StatisticsComponent } from "./dashboard/statistics/statistics.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -114,6 +115,7 @@ const routes: Routes = [
     children: [
       { path: "login", component: LoginComponent },
       { path: "admins", component: AdminsComponent },
+      { path: "home", component: StatisticsComponent },
     ],
   },
 ];

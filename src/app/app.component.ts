@@ -46,7 +46,7 @@ export class AppComponent {
           this.logindash !== this.routeurl3 &&
           role != "isAdmin"
         ) {
-          this.router.navigate(["/dashboard/login"]);
+          // this.router.navigate(["/dashboard/login"]);
         }
 
         if (this.url2 == this.routeurl2) {
@@ -65,16 +65,4 @@ export class AppComponent {
       }
     });
   }
-
-  config: SwiperOptions = {
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    spaceBetween: 30,
-  };
 }

@@ -52,6 +52,7 @@ import { AdminsComponent } from "./dashboard/admins/admins.component";
 import { StfooterComponent } from "./dashboard/stfooter/stfooter.component";
 import { NavBarComponent } from "./dashboard/nav-bar/nav-bar.component";
 import { SideBarComponent } from "./dashboard/side-bar/side-bar.component";
+import { StatisticsComponent } from "./dashboard/statistics/statistics.component";
 
 @NgModule({
   declarations: [
@@ -120,6 +121,7 @@ import { SideBarComponent } from "./dashboard/side-bar/side-bar.component";
     StfooterComponent,
     NavBarComponent,
     SideBarComponent,
+    StatisticsComponent,
   ],
 
   imports: [

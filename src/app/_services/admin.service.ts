@@ -50,7 +50,6 @@ export class AdminService {
     const headers = new HttpHeaders({
       Authorization: token,
     });
-    // console.log(data);
 
     return this.httpClient.post<Admin>(
       `${environment.baseUrl}admins/add-admin`,
