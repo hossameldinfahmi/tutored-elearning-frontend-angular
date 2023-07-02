@@ -39,7 +39,6 @@ import { CoursesDetailsPageComponent } from "./main/courses-details-page/courses
 import { CategoryCoursesComponent } from "./main/category-courses/category-courses.component";
 import { CourseContentDetailsComponent } from "./main/course-content-details/course-content-details.component";
 import { MyCoursesComponent } from "./main/my-courses/my-courses.component";
-import { SearchComponent } from "./main/search/search.component";
 import { ExamPageComponent } from "./main/exam-page/exam-page.component";
 import { UpdateStudentComponent } from "./main/Forms/update-student/update-student.component";
 import { UpdateTrainerComponent } from "./main/Forms/update-trainer/update-trainer.component";
@@ -53,6 +52,10 @@ import { StfooterComponent } from "./dashboard/stfooter/stfooter.component";
 import { NavBarComponent } from "./dashboard/nav-bar/nav-bar.component";
 import { SideBarComponent } from "./dashboard/side-bar/side-bar.component";
 import { StatisticsComponent } from "./dashboard/statistics/statistics.component";
+import { CourseExamDetailsComponent } from "./main/course-exam-details/course-exam-details.component";
+import { QuestionsDetailsComponent } from "./main/questions-details/questions-details.component";
+import { SearchComponent } from "./search/search.component";
+import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { CoursesComponent } from "./dashboard/courses/courses.component";
 import { CategoriesComponent } from "./dashboard/categories/categories.component";
 import { CourseContentComponent } from "./dashboard/course-content/course-content.component";
@@ -73,6 +76,7 @@ import { CourseContentComponent } from "./dashboard/course-content/course-conten
     AddThisCourseComponent,
     EditThisCourseContentComponent,
     AddThisCourseContentComponent,
+    SearchComponent,
 
     //home Page
     HomePageComponent,
@@ -117,6 +121,8 @@ import { CourseContentComponent } from "./dashboard/course-content/course-conten
 
     // Exam
     ExamPageComponent,
+    CourseExamDetailsComponent,
+    QuestionsDetailsComponent,
 
     // Dashboard
     LoginComponent,
@@ -131,6 +137,7 @@ import { CourseContentComponent } from "./dashboard/course-content/course-conten
   ],
 
   imports: [
+    Ng2SearchPipeModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
