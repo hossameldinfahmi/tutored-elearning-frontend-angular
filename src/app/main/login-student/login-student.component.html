@@ -46,12 +46,14 @@
           <button
             type="submit"
             id="submitBtn"
-            class="btn text-light border-none mr-2 main-btns"
-            routerLink="/main/home"
+            class="btn btn-primary m-2"
             [disabled]="!studentLoginForm.valid"
             (click)="login(studentLoginForm)"
           >
             Sign In
+          </button>
+          <button class="btn btn-light" (click)="resetForm(studentLoginForm)">
+            Cancel
           </button>
         </form>
       </div>

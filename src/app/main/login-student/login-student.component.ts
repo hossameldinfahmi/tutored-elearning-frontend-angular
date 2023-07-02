@@ -44,4 +44,7 @@ export class LoginStudentComponent implements OnInit {
       }
     );
   }
+  resetForm(form: NgForm) {
+    form.reset();
+  }
 }

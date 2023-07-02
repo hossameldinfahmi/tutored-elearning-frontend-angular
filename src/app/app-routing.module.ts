@@ -58,6 +58,7 @@ import { AddThisQuestionComponent } from "./main/Forms/add-this-question/add-thi
 import { EditThisQuestionComponent } from "./main/Forms/edit-this-question/edit-this-question.component";
 import { ChatDialogComponent } from "./chat/chat-dialog/chat-dialog.component";
 import { CourseContentComponent } from "./dashboard/course-content/course-content.component";
+import { EditCourseContentComponent } from "./Forms/edit-course-content/edit-course-content.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -139,9 +140,8 @@ const routes: Routes = [
             component: AddThisCourseContentComponent,
           },
           {
-            path: "course/details/:courseId/:contentId/edit-content",
-            canActivate: [AuthTrainerGuard],
-            component: EditThisCourseContentComponent,
+            path: "edit-course-content/:id/:courseId/:courseName",
+            component: EditCourseContentComponent,
           },
           {
             path: "course/details/:courseId/exams",
