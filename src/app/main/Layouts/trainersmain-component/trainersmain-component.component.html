@@ -1,6 +1,10 @@
 <!-- ======= Trainers Section ======= -->
 <section id="trainers" class="trainers">
   <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Trainers</h2>
+      <p>Popular Trainers</p>
+    </div>
     <div class="row" data-aos="zoom-in" data-aos-delay="100">
       <div
         *ngFor="
@@ -28,7 +32,8 @@
 
       <pagination-controls
         (pageChange)="p = $event"
-        style="float: right; margin: 10px"
+        style="margin: 10px"
+        class="d-flex justify-content-center"
       ></pagination-controls>
     </div>
   </div>

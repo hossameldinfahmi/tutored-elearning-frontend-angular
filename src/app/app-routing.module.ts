@@ -140,9 +140,8 @@ const routes: Routes = [
             component: AddThisCourseContentComponent,
           },
           {
-            path: "course/details/:courseId/:contentId/edit-content",
-            canActivate: [AuthTrainerGuard],
-            component: EditThisCourseContentComponent,
+            path: "edit-course-content/:id/:courseId/:courseName",
+            component: EditCourseContentComponent,
           },
           {
             path: "course/details/:courseId/exams",
