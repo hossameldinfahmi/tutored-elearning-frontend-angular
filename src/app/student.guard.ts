@@ -7,20 +7,20 @@ import {
 } from "@angular/router";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { TrainerService } from "./_services/trainer.service";
 import { LoginResponse } from "src/app/_models/trainer.model";
+import { StudentService } from "./_services/student.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class StudentGuard implements CanActivate {
-  constructor(private router: Router, private trainerService: TrainerService) {}
+  constructor(private router: Router, private studentService: StudentService) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.trainerService.currentUser.pipe(
+    return this.studentService.currentUser.pipe(
       map((currentTrainer: LoginResponse) => {
         if (currentTrainer && currentTrainer.role === "isStudent") {
           return true;

@@ -46,6 +46,10 @@ export class StudentService {
     }>(`${environment.baseUrl}students`, { headers });
   }
 
+  get currentUser(): Observable<any> {
+    return this.currentStudentSubject.asObservable();
+  }
+
   addStudent(
     newStudent: Student
   ): Observable<{ data: Student; status: boolean; error: any[] }> {

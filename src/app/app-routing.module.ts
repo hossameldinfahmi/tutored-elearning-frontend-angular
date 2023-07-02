@@ -59,6 +59,9 @@ import { EditThisQuestionComponent } from "./main/Forms/edit-this-question/edit-
 import { ChatDialogComponent } from "./chat/chat-dialog/chat-dialog.component";
 import { CourseContentComponent } from "./dashboard/course-content/course-content.component";
 import { EditCourseContentComponent } from "./Forms/edit-course-content/edit-course-content.component";
+import { StudentGuard } from "./student.guard";
+import { IsLoggedGuard } from "./is-logged.guard";
+import { AdminGardGuard } from "./admin-gard.guard";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -73,10 +76,22 @@ const routes: Routes = [
       },
       { path: "about", component: AboutPageComponent },
       { path: "login", component: MainLoginComponent },
-      { path: "login/student", component: LoginStudentComponent },
+      {
+        path: "login/student",
+        canActivate: [IsLoggedGuard],
+        component: LoginStudentComponent,
+      },
       { path: "register", component: RegisterComponent },
-      { path: "register/student", component: RegisterStudentComponent },
-      { path: "student/courses", component: MyCoursesComponent },
+      {
+        path: "register/student",
+        canActivate: [IsLoggedGuard],
+        component: RegisterStudentComponent,
+      },
+      {
+        path: "student/courses",
+        canActivate: [StudentGuard],
+        component: MyCoursesComponent,
+      },
       { path: "contact", component: ContactPageComponent },
       { path: "categories", component: CategoriesPageComponent },
       { path: "courses", component: CoursesPageComponent },
@@ -113,8 +128,16 @@ const routes: Routes = [
       {
         path: "trainer",
         children: [
-          { path: "register", component: TrainerRegisterComponent },
-          { path: "login", component: TrainerLoginComponent },
+          {
+            path: "register",
+            canActivate: [IsLoggedGuard],
+            component: TrainerRegisterComponent,
+          },
+          {
+            path: "login",
+            canActivate: [IsLoggedGuard],
+            component: TrainerLoginComponent,
+          },
           {
             path: "courses",
             canActivate: [AuthTrainerGuard],
@@ -132,6 +155,7 @@ const routes: Routes = [
           },
           {
             path: "course/details/:courseId",
+            canActivate: [AuthTrainerGuard],
             component: CourseContentDetailsComponent,
           },
           {
@@ -140,35 +164,58 @@ const routes: Routes = [
             component: AddThisCourseContentComponent,
           },
           {
+            path: "course/details/:courseId/:contentId/edit-content",
+            canActivate: [AuthTrainerGuard],
+            component: EditThisCourseContentComponent,
+          },
+          {
             path: "edit-course-content/:id/:courseId/:courseName",
+            canActivate: [AuthTrainerGuard],
             component: EditCourseContentComponent,
           },
           {
             path: "course/details/:courseId/exams",
+            canActivate: [AuthTrainerGuard],
             component: CourseExamDetailsComponent,
           },
           {
             path: "course/details/:courseId/:exam_id/edit-exam",
+            canActivate: [AuthTrainerGuard],
             component: EditThisExamComponent,
           },
           {
             path: "course/details/:courseId/add-exam",
+            canActivate: [AuthTrainerGuard],
             component: AddThisExamComponent,
           },
-          { path: "exam/:examId", component: QuestionsDetailsComponent },
+          {
+            path: "exam/:examId",
+            canActivate: [AuthTrainerGuard],
+            component: QuestionsDetailsComponent,
+          },
           {
             path: "exam/:examId/add-question",
+            canActivate: [AuthTrainerGuard],
             component: AddThisQuestionComponent,
           },
           {
             path: "exam/:examId/update-question/:questionId",
+            canActivate: [AuthTrainerGuard],
             component: EditThisQuestionComponent,
           },
-          { path: "update", component: UpdateTrainerComponent },
+          {
+            path: "update",
+            canActivate: [AuthTrainerGuard],
+            component: UpdateTrainerComponent,
+          },
           { path: "logout", redirectTo: "main/login", pathMatch: "full" },
         ],
       },
-      { path: "student/update", component: UpdateStudentComponent },
+      {
+        path: "student/update",
+        canActivate: [StudentGuard],
+        component: UpdateStudentComponent,
+      },
       { path: "chat", component: ChatDialogComponent },
     ],
   },
@@ -176,44 +223,132 @@ const routes: Routes = [
   {
     path: "dashboard",
     children: [
-      { path: "", redirectTo: "/home", pathMatch: "full" },
+      { path: "", redirectTo: "/main/home", pathMatch: "full" },
 
-      { path: "login", component: LoginComponent },
-      { path: "admins", component: AdminsComponent },
-      { path: "home", component: StatisticsComponent },
-      { path: "categories", component: CategoriesComponent },
-      { path: "courses", component: CoursesComponent },
-      { path: "add-admin", component: AddAdminComponent },
-      { path: "contactus", component: ContactUsComponent },
-      { path: "trainers", component: TrainersComponent },
-      { path: "exams", component: ExamsComponent },
-      { path: "feedbacks", component: FeedbacksComponent },
-      { path: "questions/:id", component: QuestionsComponent },
-      { path: "students", component: StudentsComponent },
-      { path: "add-category", component: AddCategoryComponent },
-      { path: "add-course", component: AddCourseComponent },
+      {
+        path: "login",
+        canActivate: [IsLoggedGuard],
+        component: LoginComponent,
+      },
+      {
+        path: "admins",
+        canActivate: [AdminGardGuard],
+        component: AdminsComponent,
+      },
+      {
+        path: "home",
+        canActivate: [AdminGardGuard],
+        component: StatisticsComponent,
+      },
+      {
+        path: "categories",
+        canActivate: [AdminGardGuard],
+        component: CategoriesComponent,
+      },
+      {
+        path: "courses",
+        canActivate: [AdminGardGuard],
+        component: CoursesComponent,
+      },
+      {
+        path: "add-admin",
+        canActivate: [AdminGardGuard],
+        component: AddAdminComponent,
+      },
+      {
+        path: "contactus",
+        canActivate: [AdminGardGuard],
+        component: ContactUsComponent,
+      },
+      {
+        path: "trainers",
+        canActivate: [AdminGardGuard],
+        component: TrainersComponent,
+      },
+      {
+        path: "exams",
+        canActivate: [AdminGardGuard],
+        component: ExamsComponent,
+      },
+      {
+        path: "feedbacks",
+        canActivate: [AdminGardGuard],
+        component: FeedbacksComponent,
+      },
+      {
+        path: "questions/:id",
+        canActivate: [AdminGardGuard],
+        component: QuestionsComponent,
+      },
+      {
+        path: "students",
+        canActivate: [AdminGardGuard],
+        component: StudentsComponent,
+      },
+      {
+        path: "add-category",
+        canActivate: [AdminGardGuard],
+        component: AddCategoryComponent,
+      },
+      {
+        path: "add-course",
+        canActivate: [AdminGardGuard],
+        component: AddCourseComponent,
+      },
       {
         path: "contents/:courseId/:courseName",
+        canActivate: [AdminGardGuard],
+
         component: CourseContentComponent,
       },
       {
         path: "edit-course-content/:id/:courseId/:courseName",
+        canActivate: [AdminGardGuard],
+
         component: EditCourseContentComponent,
       },
       {
         path: "add-course-content/:courseId/:courseName",
+        canActivate: [AdminGardGuard],
+
         component: AddCourseContentComponent,
       },
-      { path: "add-exam", component: AddExamComponent },
-      { path: "add-question/:id", component: AddQuestionComponent },
+      {
+        path: "add-exam",
+        canActivate: [AdminGardGuard],
+        component: AddExamComponent,
+      },
+      {
+        path: "add-question/:id",
+        canActivate: [AdminGardGuard],
+        component: AddQuestionComponent,
+      },
       {
         path: "update-question/:id/:exam_id",
+        canActivate: [AdminGardGuard],
+
         component: UpdateQuestionComponent,
       },
-      { path: "update-exam/:id", component: UpdateExamComponent },
-      { path: "update-course/:id", component: UpdateCourseComponent },
-      { path: "update-category/:id", component: UpdateCategoryComponent },
-      { path: "payment", component: PaymentComponent },
+      {
+        path: "update-exam/:id",
+        canActivate: [AdminGardGuard],
+        component: UpdateExamComponent,
+      },
+      {
+        path: "update-course/:id",
+        canActivate: [AdminGardGuard],
+        component: UpdateCourseComponent,
+      },
+      {
+        path: "update-category/:id",
+        canActivate: [AdminGardGuard],
+        component: UpdateCategoryComponent,
+      },
+      {
+        path: "payment",
+        canActivate: [AdminGardGuard],
+        component: PaymentComponent,
+      },
     ],
   },
 ];
