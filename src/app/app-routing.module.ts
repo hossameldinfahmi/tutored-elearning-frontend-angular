@@ -32,6 +32,7 @@ import { StatisticsComponent } from "./dashboard/statistics/statistics.component
 import { CourseExamDetailsComponent } from "./main/course-exam-details/course-exam-details.component";
 import { QuestionsDetailsComponent } from "./main/questions-details/questions-details.component";
 import { SearchComponent } from "./search/search.component";
+import { TrainersComponent } from "./dashboard/trainers/trainers.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -129,6 +130,7 @@ const routes: Routes = [
       { path: "home", component: StatisticsComponent },
       { path: "categories", component: CategoriesComponent },
       { path: "courses", component: CoursesComponent },
+      { path: "trainers", component: TrainersComponent },
     ],
   },
 ];
