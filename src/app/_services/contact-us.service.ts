@@ -16,7 +16,7 @@ export class ContactUsService {
       Authorization: token,
     });
     return this.httpClient.get<Contactus[]>(
-      `${environment.baseUrl}Contact_us`,
+      `${environment.baseUrl}contact_us`,
       { headers }
     );
   }
@@ -27,14 +27,14 @@ export class ContactUsService {
       Authorization: token,
     });
     return this.httpClient.delete<Contactus>(
-      environment.baseUrl + "Contact_us/" + id,
+      environment.baseUrl + "contact_us/" + id,
       { headers }
     );
   }
 
   addContact(newContact: Contactus): Observable<Contactus> {
     return this.httpClient.post<Contactus>(
-      `${environment.baseUrl}Contact_us`,
+      `${environment.baseUrl}contact_us`,
       newContact
     );
   }

@@ -2,18 +2,22 @@
 
 .sidebar {
   min-height: calc(100vh - #{$navbar-height});
-background: linear-gradient(to bottom, #e6e5f2, #4599cd);
+  background: linear-gradient(to bottom, #81e291, #81e291);
   font-family: $type1;
   padding: 0;
   width: $sidebar-width-lg;
   z-index: 11;
-  transition: width $action-transition-duration $action-transition-timing-function,
+  transition: width $action-transition-duration
+      $action-transition-timing-function,
     background $action-transition-duration $action-transition-timing-function;
-  -webkit-transition: width $action-transition-duration $action-transition-timing-function,
+  -webkit-transition: width $action-transition-duration
+      $action-transition-timing-function,
     background $action-transition-duration $action-transition-timing-function;
-  -moz-transition: width $action-transition-duration $action-transition-timing-function,
+  -moz-transition: width $action-transition-duration
+      $action-transition-timing-function,
     background $action-transition-duration $action-transition-timing-function;
-  -ms-transition: width $action-transition-duration $action-transition-timing-function,
+  -ms-transition: width $action-transition-duration
+      $action-transition-timing-function,
     background $action-transition-duration $action-transition-timing-function;
   .sidebar-brand-wrapper {
     width: auto;
@@ -66,7 +70,7 @@ background: linear-gradient(to bottom, #e6e5f2, #4599cd);
         white-space: nowrap;
         padding: $sidebar-menu-padding-y 0 $sidebar-menu-padding-y 0;
         color: $sidebar-light-menu-color;
-        transition: all .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
 
         i {
           color: inherit;

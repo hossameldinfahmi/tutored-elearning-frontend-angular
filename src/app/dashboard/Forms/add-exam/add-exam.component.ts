@@ -20,7 +20,7 @@ export class AddExamComponent implements OnInit {
   newexam: Exam = {
     id: 0,
     course_id: 0,
-    name: "",
+    title: "",
     max_score: 0,
   };
   courses!: Course[];
@@ -35,7 +35,7 @@ export class AddExamComponent implements OnInit {
     this.getAllCourses();
   }
   addExam(form: NgForm) {
-    this.newexam.name = form.value["examName"];
+    this.newexam.title = form.value["examName"];
     this.newexam.course_id = form.value["course_id"];
     this.newexam.max_score = form.value["max_score"];
     // console.log(this.newContent);

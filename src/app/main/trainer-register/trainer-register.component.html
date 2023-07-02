@@ -20,27 +20,28 @@
                 id="fname"
                 placeholder="First Name"
                 name="fname"
+                [ngModelOptions]="{ updateOn: 'blur' }"
               />
               <span
-                *ngIf="firstNameInput.touched && firstNameInput.invalid && firstNameInput.errors?.['required']"
+                *ngIf="firstNameInput.dirty && firstNameInput.invalid && firstNameInput.errors?.['required']"
                 style="color: red"
                 class="alert"
                 >This field is required *</span
               >
               <span
-                *ngIf="firstNameInput.errors?.['minlength']"
+                *ngIf="firstNameInput.dirty && firstNameInput.errors?.['minlength']"
                 style="color: red"
                 class="alert"
                 >Please enter more than 3 characters *</span
               >
               <span
-                *ngIf="firstNameInput.errors?.['maxlength']"
+                *ngIf="firstNameInput.dirty && firstNameInput.errors?.['maxlength']"
                 style="color: red"
                 class="alert"
                 >Please enter less than 20 characters *</span
               >
               <span
-                *ngIf="firstNameInput.errors?.['pattern']"
+                *ngIf="firstNameInput.dirty && firstNameInput.errors?.['pattern']"
                 style="color: red"
                 class="alert"
                 >Please enter alphabets characters only *</span
@@ -61,27 +62,28 @@
                 id="lname"
                 placeholder="Last Name"
                 name="lname"
+                [ngModelOptions]="{ updateOn: 'blur' }"
               />
               <span
-                *ngIf="lastNameInput.touched && lastNameInput.invalid && lastNameInput.errors?.['required']"
+                *ngIf="lastNameInput.dirty && lastNameInput.invalid && lastNameInput.errors?.['required']"
                 style="color: red"
                 class="alert"
                 >This field is required *</span
               >
               <span
-                *ngIf="lastNameInput.errors?.['minlength']"
+                *ngIf="lastNameInput.dirty && lastNameInput.errors?.['minlength']"
                 style="color: red"
                 class="alert"
                 >Please enter more than 3 characters *</span
               >
               <span
-                *ngIf="lastNameInput.errors?.['maxlength']"
+                *ngIf="lastNameInput.dirty && lastNameInput.errors?.['maxlength']"
                 style="color: red"
                 class="alert"
                 >Please enter less than 20 characters *</span
               >
               <span
-                *ngIf="lastNameInput.errors?.['pattern']"
+                *ngIf="lastNameInput.dirty && lastNameInput.errors?.['pattern']"
                 style="color: red"
                 class="alert"
                 >Please enter alphabets characters only *</span
@@ -106,6 +108,7 @@
                   id="male"
                   value="male"
                   checked
+                  [ngModelOptions]="{ updateOn: 'blur' }"
                 />
                 <label
                   class="form-check-label"
@@ -124,6 +127,7 @@
                   name="gender"
                   id="female"
                   value="female"
+                  [ngModelOptions]="{ updateOn: 'blur' }"
                 />
                 <label
                   class="form-check-label"
@@ -133,88 +137,125 @@
                   Female
                 </label>
               </div>
+              <span
+                *ngIf="genderInput.dirty && genderInput.invalid && genderInput.errors?.['required']"
+                style="color: red"
+                class="alert"
+                >Please select a gender *</span
+              >
             </div>
-            <span
-              *ngIf="genderInput.touched && genderInput.invalid && genderInput.errors?.['required']"
-              style="color: red"
-              class="alert"
-              >This field is required *</span
-            >
           </fieldset>
+          <div class="form-row mt-3">
+            <div class="col">
+              <label for="email">Email :</label>
+              <input
+                #emailInput="ngModel"
+                ngModel
+                required
+                email
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Email"
+                name="email"
+                [ngModelOptions]="{ updateOn: 'blur' }"
+              />
+              <span
+                *ngIf="emailInput.dirty && emailInput.invalid && emailInput.errors?.['required']"
+                style="color: red"
+                class="alert"
+                >This field is required *</span
+              >
+              <span
+                *ngIf="emailInput.dirty && emailInput.errors?.['email']"
+                style="color: red"
+                class="alert"
+                >Please enter a valid email address *</span
+              >
+            </div>
 
-          <div class="form-group">
+            <div class="col">
+              <label for="password">Password :</label>
+              <input
+                #passwordInput="ngModel"
+                ngModel
+                required
+                minlength="8"
+                maxlength="16"
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Password"
+                name="password"
+                [ngModelOptions]="{ updateOn: 'blur' }"
+              />
+              <span
+                *ngIf="passwordInput.dirty && passwordInput.invalid && passwordInput.errors?.['required']"
+                style="color: red"
+                class="alert"
+                >This field is required *</span
+              >
+              <span
+                *ngIf="passwordInput.dirty && passwordInput.errors?.['minlength']"
+                style="color: red"
+                class="alert"
+                >Please enter at least 8 characters *</span
+              >
+              <span
+                *ngIf="passwordInput.dirty && passwordInput.errors?.['maxlength']"
+                style="color: red"
+                class="alert"
+                >Please enter less than 16 characters *</span
+              >
+            </div>
+          </div>
+          <div class="form-group mt-3">
             <label for="phone">Phone :</label>
             <input
               #phoneInput="ngModel"
               ngModel
               required
+              minlength="10"
+              maxlength="14"
+              pattern="^[0-9+]*$"
               type="text"
               class="form-control"
               id="phone"
               placeholder="Phone"
               name="phone"
+              [ngModelOptions]="{ updateOn: 'blur' }"
             />
             <span
-              *ngIf="phoneInput.touched && phoneInput.invalid && phoneInput.errors?.['required']"
+              *ngIf="phoneInput.dirty && phoneInput.invalid && phoneInput.errors?.['required']"
               style="color: red"
               class="alert"
               >This field is required *</span
             >
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email :</label>
-            <input
-              #emailInput="ngModel"
-              ngModel
-              required
-              type="text"
-              class="form-control"
-              id="email"
-              placeholder="Email Address"
-              name="email"
-            />
             <span
-              *ngIf="emailInput.touched && emailInput.invalid && emailInput.errors?.['required']"
+              *ngIf="phoneInput.dirty && phoneInput.errors?.['minlength']"
               style="color: red"
               class="alert"
-              >This field is required *</span
+              >Please enter at least 10 digits *</span
             >
-          </div>
-
-          <div class="form-group">
-            <label for="password">Password :</label>
-            <input
-              #passwordInput="ngModel"
-              ngModel
-              required
-              type="password"
-              class="form-control"
-              id="password"
-              placeholder="Password"
-              name="password"
-            />
             <span
-              *ngIf="passwordInput.touched && passwordInput.invalid && passwordInput.errors?.['required']"
+              *ngIf="phoneInput.dirty && phoneInput.errors?.['maxlength']"
               style="color: red"
               class="alert"
-              >This field is required *</span
+              >Please enter less than 14 digits *</span
+            >
+            <span
+              *ngIf="phoneInput.dirty && phoneInput.errors?.['pattern']"
+              style="color: red"
+              class="alert"
+              >Please enter numbers and + sign only *</span
             >
           </div>
-
           <button
             type="submit"
-            class="btn btn-primary m-4"
-            id="submitBtn"
-            (click)="addTrainer(trainerRegisterForm)"
+            class="btn btn-primary mr-2 mt-3"
+            [disabled]="trainerRegisterForm.invalid"
           >
-            Register
-          </button>
-          <button
-            class="btn btn-light"
-            (click)="resetForm(trainerRegisterForm)"
-          >
-            Cancel
+            Submit
           </button>
         </form>
       </div>

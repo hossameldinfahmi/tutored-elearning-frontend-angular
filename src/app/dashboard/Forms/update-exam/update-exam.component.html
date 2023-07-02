@@ -19,7 +19,7 @@
             id="exampleInputName1"
             placeholder="Name"
             name="examName"
-            [ngModel]="this.examContent.name"
+            [ngModel]="this.examContent.title"
           />
           <span
             *ngIf="examNameInput.touched && examNameInput.invalid && examNameInput.errors?.['required']"
@@ -47,7 +47,6 @@
           >
         </div>
 
-
         <div class="form-group">
           <label for="">Course :</label>
           <select
@@ -70,25 +69,39 @@
           </select>
         </div>
 
-
         <div class="form-group">
           <label for="exampleInputName1">Maximum score :</label>
-          <input #maxscoreInput=ngModel ngModel required  type="text" class="form-control" id="exampleInputName3" placeholder="max_score" name="max_score"               [ngModel]="this.examContent.max_score"
+          <input
+            #maxscoreInput="ngModel"
+            ngModel
+            required
+            type="text"
+            class="form-control"
+            id="exampleInputName3"
+            placeholder="max_score"
+            name="max_score"
+            [ngModel]="this.examContent.max_score"
           />
-              <span *ngIf="maxscoreInput.touched && maxscoreInput.invalid && maxscoreInput.errors?.['required']" style="color: red;" class="alert" >This field is required *</span>
-          </div>
-
-
-          <button
-            type="submit"
-            (click)="updateExam(this.examContent.id!, examForm)"
-            routerLink="/dashboard/exams"
-            class="btn btn-primary mr-2"
-            [disabled]="!examForm.valid"
+          <span
+            *ngIf="maxscoreInput.touched && maxscoreInput.invalid && maxscoreInput.errors?.['required']"
+            style="color: red"
+            class="alert"
+            >This field is required *</span
           >
-            Submit
-          </button>
-        <button class="btn btn-light" (click)="resetForm(examForm)">Cancel</button>
+        </div>
+
+        <button
+          type="submit"
+          (click)="updateExam(this.examContent.id!, examForm)"
+          routerLink="/dashboard/exams"
+          class="btn btn-primary mr-2"
+          [disabled]="!examForm.valid"
+        >
+          Submit
+        </button>
+        <button class="btn btn-light" (click)="resetForm(examForm)">
+          Cancel
+        </button>
       </form>
     </div>
   </div>
