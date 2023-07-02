@@ -26,6 +26,8 @@ import { AddThisCourseComponent } from "./main/Forms/add-this-course/add-this-co
 import { EditThisCourseComponent } from "./main/Forms/edit-this-course/edit-this-course.component";
 import { AdminsComponent } from "./dashboard/admins/admins.component";
 import { LoginComponent } from "./dashboard/login/login.component";
+import { CategoriesComponent } from "./dashboard/categories/categories.component";
+import { CoursesComponent } from "./dashboard/courses/courses.component";
 import { StatisticsComponent } from "./dashboard/statistics/statistics.component";
 
 const routes: Routes = [
@@ -116,6 +118,8 @@ const routes: Routes = [
       { path: "login", component: LoginComponent },
       { path: "admins", component: AdminsComponent },
       { path: "home", component: StatisticsComponent },
+      { path: "categories", component: CategoriesComponent },
+      { path: "courses", component: CoursesComponent },
     ],
   },
 ];

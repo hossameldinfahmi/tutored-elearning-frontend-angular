@@ -53,6 +53,9 @@ import { StfooterComponent } from "./dashboard/stfooter/stfooter.component";
 import { NavBarComponent } from "./dashboard/nav-bar/nav-bar.component";
 import { SideBarComponent } from "./dashboard/side-bar/side-bar.component";
 import { StatisticsComponent } from "./dashboard/statistics/statistics.component";
+import { CoursesComponent } from "./dashboard/courses/courses.component";
+import { CategoriesComponent } from "./dashboard/categories/categories.component";
+import { CourseContentComponent } from "./dashboard/course-content/course-content.component";
 
 @NgModule({
   declarations: [
@@ -122,6 +125,9 @@ import { StatisticsComponent } from "./dashboard/statistics/statistics.component
     NavBarComponent,
     SideBarComponent,
     StatisticsComponent,
+    CoursesComponent,
+    CategoriesComponent,
+    CourseContentComponent,
   ],
 
   imports: [
