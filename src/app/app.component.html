@@ -11,12 +11,12 @@
 
 <script src="https://checkout.stripe.com/checkout.js"></script>
 
-<app-navbar-main *ngIf="active1 == true"></app-navbar-main>
+<app-navbar-main></app-navbar-main>
 <router-outlet></router-outlet>
-<app-footer *ngIf="active1 == true"></app-footer>
+<app-footer></app-footer>
 
-<app-nav-bar *ngIf="active == true"></app-nav-bar>
-<div class="container-scroller" *ngIf="active == true">
+<app-nav-bar></app-nav-bar>
+<div class="container-scroller">
   <app-side-bar></app-side-bar>
   <div class="container-fluid page-body-wrapper">
     <div class="main-panel">
@@ -26,4 +26,4 @@
   <app-stfooter class="fixed-bottom"></app-stfooter>
 </div>
 
-<router-outlet *ngIf="active3 == true"></router-outlet>
+<router-outlet></router-outlet>

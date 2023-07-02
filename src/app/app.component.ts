@@ -45,7 +45,7 @@ export class AppComponent {
           this.logindash !== this.routeurl3 &&
           role != "isAdmin"
         ) {
-          this.router.navigate(["/dashboard/login"]);
+          // this.router.navigate(["/dashboard/login"]);
         }
 
         if (this.url2 == this.routeurl2) {

@@ -37,6 +37,7 @@ import { ExamsComponent } from "./dashboard/exams/exams.component";
 import { FeedbacksComponent } from "./dashboard/feedbacks/feedbacks.component";
 import { QuestionsComponent } from "./dashboard/questions/questions/questions.component";
 import { StudentsComponent } from "./dashboard/students/students.component";
+import { TrainersComponent } from "./dashboard/trainers/trainers.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -120,6 +121,7 @@ const routes: Routes = [
             component: CourseExamDetailsComponent,
           },
           { path: "exam/:examId", component: QuestionsDetailsComponent },
+          { path: "exam/:examId", component: QuestionsDetailsComponent },
         ],
       },
       { path: "student/update", component: UpdateStudentComponent },
@@ -134,11 +136,6 @@ const routes: Routes = [
       { path: "home", component: StatisticsComponent },
       { path: "categories", component: CategoriesComponent },
       { path: "courses", component: CoursesComponent },
-      { path: "contactus", component: ContactUsComponent },
-      { path: "exams", component: ExamsComponent },
-      { path: "feedbacks", component: FeedbacksComponent },
-      { path: "questions/:id", component: QuestionsComponent },
-      { path: "students", component: StudentsComponent },
     ],
   },
 ];
