@@ -58,6 +58,7 @@ import { AddThisQuestionComponent } from "./main/Forms/add-this-question/add-thi
 import { EditThisQuestionComponent } from "./main/Forms/edit-this-question/edit-this-question.component";
 import { ChatDialogComponent } from "./chat/chat-dialog/chat-dialog.component";
 import { CourseContentComponent } from "./dashboard/course-content/course-content.component";
+import { EditCourseContentComponent } from "./Forms/edit-course-content/edit-course-content.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -198,7 +199,7 @@ const routes: Routes = [
       },
       {
         path: "edit-course-content/:id/:courseId/:courseName",
-        component: EditThisCourseContentComponent,
+        component: EditCourseContentComponent,
       },
       {
         path: "add-course-content/:courseId/:courseName",

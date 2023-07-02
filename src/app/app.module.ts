@@ -84,6 +84,7 @@ import { AddThisExamComponent } from "./main/Forms/add-this-exam/add-this-exam.c
 import { EditThisExamComponent } from "./main/Forms/edit-this-exam/edit-this-exam.component";
 import { AddThisQuestionComponent } from "./main/Forms/add-this-question/add-this-question.component";
 import { EditThisQuestionComponent } from "./main/Forms/edit-this-question/edit-this-question.component";
+import { EditCourseContentComponent } from "./Forms/edit-course-content/edit-course-content.component";
 
 @NgModule({
   declarations: [
@@ -187,6 +188,7 @@ import { EditThisQuestionComponent } from "./main/Forms/edit-this-question/edit-
     UpdateExamComponent,
     UpdateCourseComponent,
     UpdateCategoryComponent,
+    EditCourseContentComponent,
     // Chat
     ChatDialogComponent,
 

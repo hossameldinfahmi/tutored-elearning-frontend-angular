@@ -73,9 +73,9 @@ export class TrainerService {
   }
 
   deleteTrainerById(id: number): Observable<Trainer> {
-    const token: string = localStorage.getItem("access_token")!;
+    const token: string = localStorage.getItem("Authorization")!;
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
+      Authorization: token,
     });
     return this.httpClient.delete<Trainer>(
       environment.baseUrl + "trainers/" + id,

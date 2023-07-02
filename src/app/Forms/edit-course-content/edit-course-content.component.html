@@ -1,0 +1,110 @@
+<div class="col-12 grid-margin stretch-card text-primary">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title text-center">Edit Course Content</h4>
+
+
+
+        <form class="forms-sample" #courseContentForm="ngForm">
+         
+
+          <div class="form-group">
+            <label for="exampleInputName2">Name :</label>
+            <input
+              #contentNameInput="ngModel"
+              ngModel
+              [ngModel]="this.courseContent.name"
+              required
+              minlength="3"
+              maxlength="20"
+              pattern="^[a-zA-Z0-9 _.-]*$"
+              type="text"
+              class="form-control"
+              id="exampleInputName2"
+              placeholder="Name"
+              name="contentName"
+            />
+            <span
+              *ngIf="contentNameInput.touched && contentNameInput.invalid && contentNameInput.errors?.['required']"
+              style="color: red"
+              class="alert"
+              >This field is required *</span
+            >
+            <span
+              *ngIf="contentNameInput.errors?.['minlength']"
+              style="color: red"
+              class="alert"
+              >Please enter more than 3 characters *</span
+            >
+            <span
+              *ngIf="contentNameInput.errors?.['maxlength']"
+              style="color: red"
+              class="alert"
+              >Please enter less than 20 characters *</span
+            >
+            <span
+              *ngIf="contentNameInput.errors?.['pattern']"
+              style="color: red"
+              class="alert"
+              >Please enter alphabets characters only *</span
+            >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputName3">Content :</label>
+            <input
+              #courseContentInput="ngModel"
+              ngModel
+              [ngModel]="this.courseContent.content"
+              required
+              minlength="3"
+              maxlength="255"
+              pattern="^[a-zA-Z0-9 _./:-]*$"
+              type="text"
+              class="form-control"
+              id="exampleInputName3"
+              placeholder="Content"
+              name="courseContent"
+            />
+            <span
+              *ngIf="courseContentInput.touched && courseContentInput.invalid && courseContentInput.errors?.['required']"
+              style="color: red"
+              class="alert"
+              >This field is required *</span
+            >
+            <span
+              *ngIf="courseContentInput.errors?.['minlength']"
+              style="color: red"
+              class="alert"
+              >Please enter more than 3 characters *</span
+            >
+            <span
+              *ngIf="courseContentInput.errors?.['maxlength']"
+              style="color: red"
+              class="alert"
+              >Please enter less than 255 characters *</span
+            >
+            <span
+              *ngIf="courseContentInput.errors?.['pattern']"
+              style="color: red"
+              class="alert"
+              >Please enter alphabets characters only *</span
+            >
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary mr-2"
+            [disabled]="!courseContentForm.valid"
+            routerLink="/dashboard/contents"
+            (click)="updateCourseContent(this.courseContent.id!,courseContentForm)"
+          >
+            Edit
+          </button>
+
+          <button class="btn btn-light" (click)="resetForm(courseContentForm)">Cancel</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
