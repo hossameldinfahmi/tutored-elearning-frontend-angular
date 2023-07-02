@@ -75,6 +75,7 @@ import { UpdateQuestionComponent } from "./dashboard/Forms/update-question/updat
 import { UpdateExamComponent } from "./dashboard/Forms/update-exam/update-exam.component";
 import { UpdateCourseComponent } from "./dashboard/Forms/update-course/update-course.component";
 import { UpdateCategoryComponent } from "./dashboard/Forms/update-category/update-category.component";
+import { ChatDialogComponent } from "./chat/chat-dialog/chat-dialog.component";
 
 @NgModule({
   declarations: [
@@ -169,6 +170,9 @@ import { UpdateCategoryComponent } from "./dashboard/Forms/update-category/updat
     UpdateExamComponent,
     UpdateCourseComponent,
     UpdateCategoryComponent,
+
+    // Chat
+    ChatDialogComponent,
   ],
 
   imports: [
