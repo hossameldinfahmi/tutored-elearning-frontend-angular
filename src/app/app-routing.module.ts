@@ -53,8 +53,7 @@ const routes: Routes = [
       { path: "categories", component: CategoriesPageComponent },
       { path: "courses", component: CoursesPageComponent },
       { path: "trainers", component: TrainersPageComponent },
-      { path: 'search', component: SearchComponent },
-
+      { path: "search", component: SearchComponent },
 
       {
         path: "courses",
@@ -115,8 +114,7 @@ const routes: Routes = [
             path: "course/details/:courseId/exams",
             component: CourseExamDetailsComponent,
           },
-          { path: 'exam/:examId', component: QuestionsDetailsComponent },
-
+          { path: "exam/:examId", component: QuestionsDetailsComponent },
         ],
       },
       { path: "student/update", component: UpdateStudentComponent },
