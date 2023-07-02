@@ -1,0 +1,54 @@
+<div class="col-12 grid-margin stretch-card text-primary ">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title text-center">Sign Up</h4>
+
+
+        <form class="forms-sample" #studentForm=ngForm>
+       
+    
+
+          <div class="form-group">
+            <label for="exampleInputName2">Name :</label>
+            <input #firstNameInput=ngModel ngModel required  type="text" class="form-control" id="exampleInputName2" placeholder="Name" name="fname" />
+      
+            </div>
+
+
+            <div class="form-group">
+                <label for="exampleInputName2">last Name :</label>
+                <input #lastNameInput=ngModel ngModel required  type="text" class="form-control" id="exampleInputName2" placeholder="lName" name="lname" />
+                  
+                </div>
+
+
+
+
+
+          <div class="form-group">
+            <label for="exampleInputName3">gender :</label>
+            <input #genderInput=ngModel ngModel required   type="text" class="form-control" id="exampleInputName3" placeholder="gender" name="gender" />
+               </div>
+
+            <div class="form-group">
+                <label for="exampleInputName4">phone :</label>
+                <input #phoneContentInput=ngModel ngModel required   type="text" class="form-control" id="exampleInputName4" placeholder="placeholder" name="phone" />
+  
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName3">email :</label>
+                    <input #emailInput=ngModel ngModel required   type="text" class="form-control" id="exampleInputName3" placeholder="placeholder" name="email" />
+      
+                    </div>    
+                      <div class="form-group">
+                        <label for="exampleInputName3">pass :</label>
+                        <input #passInput=ngModel ngModel required   type="text" class="form-control" id="exampleInputName3" placeholder="placeholder" name="pass" />
+          
+                        </div>
+
+          <!-- <button type="submit" class="btn btn-primary mr-2" [disabled]="!studentForm.valid" routerLink="/main/register" (click)="addStudent(studentForm)"> Submit </button> -->
+          <button class="btn btn-light" (click)="resetForm(studentForm)">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>

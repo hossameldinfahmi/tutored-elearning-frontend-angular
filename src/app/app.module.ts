@@ -60,6 +60,10 @@ import { CoursesComponent } from "./dashboard/courses/courses.component";
 import { CategoriesComponent } from "./dashboard/categories/categories.component";
 import { CourseContentComponent } from "./dashboard/course-content/course-content.component";
 import { ContactUsComponent } from "./dashboard/contact-us/contact-us.component";
+import { ExamsComponent } from "./dashboard/exams/exams.component";
+import { FeedbacksComponent } from "./dashboard/feedbacks/feedbacks.component";
+import { QuestionsComponent } from "./dashboard/questions/questions/questions.component";
+import { StudentsComponent } from "./dashboard/students/students.component";
 
 @NgModule({
   declarations: [
@@ -136,6 +140,10 @@ import { ContactUsComponent } from "./dashboard/contact-us/contact-us.component"
     CategoriesComponent,
     CourseContentComponent,
     ContactUsComponent,
+    ExamsComponent,
+    FeedbacksComponent,
+    QuestionsComponent,
+    StudentsComponent,
   ],
 
   imports: [
