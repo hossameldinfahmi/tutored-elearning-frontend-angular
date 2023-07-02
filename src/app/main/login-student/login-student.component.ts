@@ -30,14 +30,11 @@ export class LoginStudentComponent implements OnInit {
       (res) => {
         console.log(res);
         localStorage.setItem("Authorization", "bearer " + res.access_token);
-        localStorage.setItem("role", res.role);
         localStorage.setItem("id", res.id + "");
-        sessionStorage.setItem("role", res.role);
-        sessionStorage.setItem("id", res.id + "");
+        localStorage.setItem("role", res.role);
         localStorage.setItem("name", res.name);
-        this.router.navigate(["/main/home"]);
         this.studentService.studentloginservice.emit(res);
-        this.router.navigate(["/dashboard"]);
+        this.router.navigate(["/main/home"]);
       },
       (err: Error) => {
         console.log("Error login");

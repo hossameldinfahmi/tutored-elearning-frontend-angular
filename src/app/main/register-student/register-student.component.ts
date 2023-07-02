@@ -39,8 +39,8 @@ export class RegisterStudentComponent implements OnInit {
 
     this.studentService.addStudent(this.newStudent).subscribe(
       (res) => {
-        this.toastr.success("Trainer added successfully!", "Success");
-        this.router.navigate(["/main/trainer/login"]);
+        this.router.navigate(["main/login/student"]);
+        this.toastr.success("student added successfully!", "Success");
         form.reset();
       },
       (err: HttpErrorResponse) => {
