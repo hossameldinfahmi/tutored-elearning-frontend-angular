@@ -39,7 +39,6 @@ import { CoursesDetailsPageComponent } from "./main/courses-details-page/courses
 import { CategoryCoursesComponent } from "./main/category-courses/category-courses.component";
 import { CourseContentDetailsComponent } from "./main/course-content-details/course-content-details.component";
 import { MyCoursesComponent } from "./main/my-courses/my-courses.component";
-import { SearchComponent } from "./main/search/search.component";
 import { ExamPageComponent } from "./main/exam-page/exam-page.component";
 import { UpdateStudentComponent } from "./main/Forms/update-student/update-student.component";
 import { UpdateTrainerComponent } from "./main/Forms/update-trainer/update-trainer.component";
@@ -53,6 +52,10 @@ import { StfooterComponent } from "./dashboard/stfooter/stfooter.component";
 import { NavBarComponent } from "./dashboard/nav-bar/nav-bar.component";
 import { SideBarComponent } from "./dashboard/side-bar/side-bar.component";
 import { StatisticsComponent } from "./dashboard/statistics/statistics.component";
+import { CourseExamDetailsComponent } from "./main/course-exam-details/course-exam-details.component";
+import { QuestionsDetailsComponent } from "./main/questions-details/questions-details.component";
+import { SearchComponent } from "./search/search.component";
+import { Ng2SearchPipeModule } from "ng2-search-filter";
 
 @NgModule({
   declarations: [
@@ -70,6 +73,7 @@ import { StatisticsComponent } from "./dashboard/statistics/statistics.component
     AddThisCourseComponent,
     EditThisCourseContentComponent,
     AddThisCourseContentComponent,
+    SearchComponent,
 
     //home Page
     HomePageComponent,
@@ -114,6 +118,8 @@ import { StatisticsComponent } from "./dashboard/statistics/statistics.component
 
     // Exam
     ExamPageComponent,
+    CourseExamDetailsComponent,
+    QuestionsDetailsComponent,
 
     // Dashboard
     LoginComponent,
@@ -125,6 +131,7 @@ import { StatisticsComponent } from "./dashboard/statistics/statistics.component
   ],
 
   imports: [
+    Ng2SearchPipeModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

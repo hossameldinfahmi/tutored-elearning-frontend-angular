@@ -27,6 +27,9 @@ import { EditThisCourseComponent } from "./main/Forms/edit-this-course/edit-this
 import { AdminsComponent } from "./dashboard/admins/admins.component";
 import { LoginComponent } from "./dashboard/login/login.component";
 import { StatisticsComponent } from "./dashboard/statistics/statistics.component";
+import { CourseExamDetailsComponent } from "./main/course-exam-details/course-exam-details.component";
+import { QuestionsDetailsComponent } from "./main/questions-details/questions-details.component";
+import { SearchComponent } from "./search/search.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -48,6 +51,8 @@ const routes: Routes = [
       { path: "categories", component: CategoriesPageComponent },
       { path: "courses", component: CoursesPageComponent },
       { path: "trainers", component: TrainersPageComponent },
+      { path: 'search', component: SearchComponent },
+
 
       {
         path: "courses",
@@ -104,6 +109,12 @@ const routes: Routes = [
 
           { path: "update", component: UpdateTrainerComponent },
           { path: "logout", redirectTo: "main/login", pathMatch: "full" },
+          {
+            path: "course/details/:courseId/exams",
+            component: CourseExamDetailsComponent,
+          },
+          { path: 'exam/:examId', component: QuestionsDetailsComponent },
+
         ],
       },
       { path: "student/update", component: UpdateStudentComponent },
