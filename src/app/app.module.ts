@@ -189,6 +189,8 @@ import { EditCourseContentComponent } from "./Forms/edit-course-content/edit-cou
     UpdateCourseComponent,
     UpdateCategoryComponent,
     EditCourseContentComponent,
+
+    EditCourseContentComponent,
     // Chat
     ChatDialogComponent,
 
