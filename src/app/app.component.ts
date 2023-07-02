@@ -2,7 +2,6 @@ import { Component } from "@angular/core";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { map, Observable } from "rxjs";
 import { Category } from "./_models/category.model";
-import { SwiperOptions } from "swiper";
 
 @Component({
   selector: "app-root",

@@ -32,6 +32,7 @@ import { StatisticsComponent } from "./dashboard/statistics/statistics.component
 import { CourseExamDetailsComponent } from "./main/course-exam-details/course-exam-details.component";
 import { QuestionsDetailsComponent } from "./main/questions-details/questions-details.component";
 import { SearchComponent } from "./search/search.component";
+import { ContactUsComponent } from "./dashboard/contact-us/contact-us.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -53,8 +54,7 @@ const routes: Routes = [
       { path: "categories", component: CategoriesPageComponent },
       { path: "courses", component: CoursesPageComponent },
       { path: "trainers", component: TrainersPageComponent },
-      { path: 'search', component: SearchComponent },
-
+      { path: "search", component: SearchComponent },
 
       {
         path: "courses",
@@ -115,8 +115,7 @@ const routes: Routes = [
             path: "course/details/:courseId/exams",
             component: CourseExamDetailsComponent,
           },
-          { path: 'exam/:examId', component: QuestionsDetailsComponent },
-
+          { path: "exam/:examId", component: QuestionsDetailsComponent },
         ],
       },
       { path: "student/update", component: UpdateStudentComponent },
@@ -131,6 +130,7 @@ const routes: Routes = [
       { path: "home", component: StatisticsComponent },
       { path: "categories", component: CategoriesComponent },
       { path: "courses", component: CoursesComponent },
+      { path: "contactus", component: ContactUsComponent },
     ],
   },
 ];
