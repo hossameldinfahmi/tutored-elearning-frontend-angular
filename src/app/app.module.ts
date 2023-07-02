@@ -49,6 +49,9 @@ import { AddThisCourseComponent } from "./main/Forms/add-this-course/add-this-co
 import { EditThisCourseComponent } from "./main/Forms/edit-this-course/edit-this-course.component";
 import { LoginComponent } from "./dashboard/login/login.component";
 import { AdminsComponent } from "./dashboard/admins/admins.component";
+import { StfooterComponent } from "./dashboard/stfooter/stfooter.component";
+import { NavBarComponent } from "./dashboard/nav-bar/nav-bar.component";
+import { SideBarComponent } from "./dashboard/side-bar/side-bar.component";
 
 @NgModule({
   declarations: [
@@ -114,6 +117,9 @@ import { AdminsComponent } from "./dashboard/admins/admins.component";
     // Dashboard
     LoginComponent,
     AdminsComponent,
+    StfooterComponent,
+    NavBarComponent,
+    SideBarComponent,
   ],
 
   imports: [

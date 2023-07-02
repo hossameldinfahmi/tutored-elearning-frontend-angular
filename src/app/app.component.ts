@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { map, Observable } from "rxjs";
+import { Category } from "./_models/category.model";
+import { SwiperOptions } from "swiper";
 
 @Component({
   selector: "app-root",
@@ -21,6 +23,7 @@ export class AppComponent {
   logindash: string = "/dashboard/login";
   routeurl3!: string;
 
+  // CategoryArray:Category[]=[{Id:1,img:"../../assets/images/faces-clipart/pic-1.png",name:"web development"},{Id:2,img:"../../assets/images/faces-clipart/pic-1.png",name:"design development"}];
   constructor(public router: Router) {
     this.router.events.subscribe((events) => {
       if (events instanceof NavigationEnd) {
@@ -57,7 +60,21 @@ export class AppComponent {
           this.active1 = false;
           this.active = false;
         }
+
+        // console.log(this.active,this.active1,this.active3,this.routeurl3);
       }
     });
   }
+
+  config: SwiperOptions = {
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    spaceBetween: 30,
+  };
 }

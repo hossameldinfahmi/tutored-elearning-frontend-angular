@@ -1,0 +1,212 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
+      <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/dashboard/images/online.png" alt="logo" /></a>
+
+      <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="index.html"><img src="assets/dashboard/images/logo-mini.svg" alt="logo" /></a>
+    </div>
+    <ul class="nav">
+      <li class="nav-item nav-profile">
+        <a class="nav-link">
+          <div class="nav-profile-image">
+            <img src="assets/dashboard/images/faces/face1.jpg" alt="profile" />
+            <span class="login-status online"></span>
+            <!--change to offline or busy as needed-->
+          </div>
+          <div class="nav-profile-text d-flex flex-column pr-3">
+            <span class="font-weight-medium ">{{name}}</span>
+          </div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard/home">
+          <i class="mdi mdi-home menu-icon"></i>
+          <span class="menu-title">Home</span>
+        </a>
+      </li>
+
+     
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#admins" aria-expanded="false" aria-controls="admins">
+          <i class="mdi mdi-contacts menu-icon"></i>
+          <span class="menu-title">Admins</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="admins">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/admins">
+                <i class="fa fa-bars pe-2" aria-hidden="true"></i>
+                <span class="menu-title">List Admins</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/add-admin">
+                <i class="fa fa-plus pe-2" aria-hidden="true"></i>
+                <span class="menu-title">Add Admin</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#trainers" aria-expanded="false" aria-controls="trainers">
+          <i class="mdi mdi-account menu-icon"></i>
+          <span class="menu-title">Trainers</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="trainers">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/trainers">
+                <i class="fa fa-bars pe-2" aria-hidden="true"></i>
+                <span class="menu-title">List Trainers</span>
+              </a>
+            </li>
+           
+          </ul>
+        </div>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#students" aria-expanded="false" aria-controls="students">
+          <i class="mdi mdi-account-multiple menu-icon"></i>
+          <span class="menu-title">Students</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="students">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/students">
+                <i class="fa fa-bars pe-2" aria-hidden="true"></i>
+                <span class="menu-title">List Students</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#categories" aria-expanded="false" aria-controls="categories">
+          <i class="mdi mdi-book-multiple menu-icon"></i>
+          <span class="menu-title">Categories</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="categories">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/categories">
+                <i class="fa fa-bars pe-2" aria-hidden="true"></i>
+                <span class="menu-title">List Categories</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/add-category">
+                <i class="fa fa-plus pe-2" aria-hidden="true"></i>
+                <span class="menu-title">Add Category</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#courses" aria-expanded="false" aria-controls="courses">
+          <i class="mdi mdi-book-open-page-variant menu-icon"></i>
+          <span class="menu-title">Courses</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="courses">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/courses">
+                <i class="fa fa-bars pe-2" aria-hidden="true"></i>
+                <span class="menu-title">List Courses</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/add-course">
+                <i class="fa fa-plus pe-2" aria-hidden="true"></i>
+                <span class="menu-title">Add Course</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#contact-us" aria-expanded="false" aria-controls="contact-us">
+          <i class="mdi mdi-contact-mail menu-icon"></i>
+          <span class="menu-title">Contact Us</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="contact-us">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/contactus">
+                <i class="fa fa-bars pe-2" aria-hidden="true"></i>
+                <span class="menu-title">List all</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#feeback" aria-expanded="false" aria-controls="feeback">
+          <i class="mdi mdi-comment-account menu-icon"></i>
+          <span class="menu-title">Feedback</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="feeback">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/feedbacks">
+                <i class="fa fa-bars pe-2" aria-hidden="true"></i>
+                <span class="menu-title">List all</span>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#exam" aria-expanded="false" aria-controls="exam">
+          <i class="mdi mdi-comment-multiple-outline menu-icon"></i>
+          <span class="menu-title">Exam </span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="exam">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/exams">
+                <i class="fa fa-bars pe-2" aria-hidden="true"></i>
+                <span class="menu-title">List all</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/add-exam">
+                <i class="fa fa-plus pe-2" aria-hidden="true"></i>
+                <span class="menu-title">Add exam</span>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+      </li>
+
+
+
+    </ul>
+  </nav>
