@@ -33,10 +33,13 @@ export class CourseContentService {
   }
 
   getContentofspacificCourse(id: number): Observable<CourseContent[]> {
+    console.log(id);
+
     const token: string = localStorage.getItem("Authorization")!;
     const headers = new HttpHeaders({
       Authorization: token,
     });
+
     return this.httpClient.get<CourseContent[]>(
       `${environment.baseUrl}course_content/show/${id}`,
       { headers }

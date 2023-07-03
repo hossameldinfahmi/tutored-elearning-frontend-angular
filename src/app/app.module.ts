@@ -87,6 +87,7 @@ import { EditThisQuestionComponent } from "./main/Forms/edit-this-question/edit-
 import { EditCourseContentComponent } from "./Forms/edit-course-content/edit-course-content.component";
 import { BooleanPipe } from "./pipe-transform.pipe";
 import { AddThisLiveCourseComponent } from "./main/Forms/add-this-live-course/add-this-course-content.component";
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
   declarations: [
@@ -202,6 +203,7 @@ import { AddThisLiveCourseComponent } from "./main/Forms/add-this-live-course/ad
 
     //live
     AddThisLiveCourseComponent,
+      SafePipe,
   ],
 
   imports: [

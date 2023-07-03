@@ -18,9 +18,7 @@ export class ExamResultService {
     const headers = new HttpHeaders({
       Authorization: token,
     });
-    console.log(data);
 
-    //localhost:8000/api/courses/1/exams/2/degree
     http: return this.httpClient.get<result>(
       `${environment.baseUrl}courses/${course_id}/exams/${data.exam_id}/degree`,
       { headers }
@@ -43,6 +41,33 @@ export class ExamResultService {
       {
         headers,
       }
+    );
+  }
+
+  updateProgress(courseId: number, progress: number): Observable<any> {
+    const token: string = localStorage.getItem("Authorization")!;
+    const headers = new HttpHeaders({
+      Authorization: token,
+      "Content-Type": "application/json",
+    });
+
+    const body = { progress: progress };
+
+    return this.httpClient.put<any>(
+      `${environment.baseUrl}courses/${courseId}/progress`,
+      body,
+      { headers }
+    );
+  }
+  getProgress(courseId: number): Observable<any> {
+    const token: string = localStorage.getItem("Authorization")!;
+    const headers = new HttpHeaders({
+      Authorization: token,
+    });
+
+    return this.httpClient.get<any>(
+      `${environment.baseUrl}courses/${courseId}/progress`,
+      { headers }
     );
   }
 }
