@@ -272,6 +272,27 @@
           </div>
         </div>
       </div>
+
+      <div class="tab-pane mt-5" id="feedbacks">
+        <h3 class="mb-2">Course Feedbacks</h3>
+
+        <div *ngFor="let feedback of feedbacks">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">" {{ feedback.review }} "</h5>
+
+              <p class="text-warning font-italic">
+                <i class="fas fa-star"></i>
+                The Rating: {{ feedback.rating }}/5
+              </p>
+
+              <p class="text-muted">
+                Added At : {{ feedback.created_at | date }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   <!-- End Cource Details Tabs Section -->

@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { FeedbackFormComponent } from './feedback-form.component';
+import { FeedbackFormComponent } from "./feedback-form.component";
 
-describe('FeedbackFormComponent', () => {
+describe("FeedbackFormComponent", () => {
   let component: FeedbackFormComponent;
   let fixture: ComponentFixture<FeedbackFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FeedbackFormComponent ]
-    })
-    .compileComponents();
+      declarations: [FeedbackFormComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('FeedbackFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

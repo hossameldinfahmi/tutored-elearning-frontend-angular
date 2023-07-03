@@ -25,13 +25,13 @@
                       #genderInput="ngModel"
                       ngModel
                       [name]="question.id"
-                      [value]="question.choice_1"
+                      [value]="question.choices[0].text"
                     />
                     <label
                       class="form-check-label"
                       style="color: black; font-weight: normal"
                     >
-                      {{ question.choice_1 }}
+                      {{ question.choices[0].text }}
                     </label>
                   </div>
                   <div class="form-check">
@@ -41,13 +41,13 @@
                       #genderInput="ngModel"
                       ngModel
                       [name]="question.id"
-                      [value]="question.choice_2"
+                      [value]="question.choices[1].text"
                     />
                     <label
                       class="form-check-label"
                       style="color: black; font-weight: normal"
                     >
-                      {{ question.choice_2 }}
+                      {{ question.choices[1].text }}
                     </label>
                   </div>
                   <div class="form-check">
@@ -57,13 +57,13 @@
                       #genderInput="ngModel"
                       ngModel
                       [name]="question.id"
-                      [value]="question.choice_3"
+                      [value]="question.choices[2].text"
                     />
                     <label
                       class="form-check-label"
                       style="color: black; font-weight: normal"
                     >
-                      {{ question.choice_3 }}
+                      {{ question.choices[2].text }}
                     </label>
                   </div>
                   <div class="form-check">
@@ -73,13 +73,13 @@
                       #genderInput="ngModel"
                       ngModel
                       [name]="question.id"
-                      [value]="question.choice_4"
+                      [value]="question.choices[3].text"
                     />
                     <label
                       class="form-check-label"
                       style="color: black; font-weight: normal"
                     >
-                      {{ question.choice_4 }}
+                      {{ question.choices[3].text }}
                     </label>
                   </div>
                   <span
@@ -94,10 +94,10 @@
               <button
                 class="btn btn-light main-btns"
                 id="submitBtn"
+                (click)="addAnswers(examForm)"
                 [routerLink]="
                   '/main/courses/details/' + id + '/videos/exam/result'
                 "
-                (click)="addAnswers(examForm)"
               >
                 Submit answers
               </button>

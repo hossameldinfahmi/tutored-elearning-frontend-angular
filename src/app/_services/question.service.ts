@@ -39,7 +39,7 @@ export class QuestionService {
       data: ExamQuestion[];
       status: boolean;
       error: any;
-    }>(`${environment.baseUrl}exams/${id}/questions`, { headers });
+    }>(`${environment.baseUrl}courses/${id}/exams-with-questions`, { headers });
   }
 
   getAllQuestion(): Observable<{
@@ -90,6 +90,7 @@ export class QuestionService {
     const headers = new HttpHeaders({
       Authorization: token,
     });
+
     return this.httpClient.post<{
       data: Question[];
       status: boolean;

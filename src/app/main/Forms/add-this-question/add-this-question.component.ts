@@ -55,19 +55,19 @@ export class AddThisQuestionComponent implements OnInit {
     let choices = [
       {
         text: form.value["choice_1"],
-        is_correct: form.value["correctAnswer1"],
+        is_correct: form.value["correctAnswer1"] || false,
       },
       {
         text: form.value["choice_2"],
-        is_correct: form.value["correctAnswer2"],
+        is_correct: form.value["correctAnswer2"] || false,
       },
       {
         text: form.value["choice_3"],
-        is_correct: form.value["correctAnswer3"],
+        is_correct: form.value["correctAnswer3"] || false,
       },
       {
         text: form.value["choice_4"],
-        is_correct: form.value["correctAnswer4"],
+        is_correct: form.value["correctAnswer4"] || false,
       },
     ];
 

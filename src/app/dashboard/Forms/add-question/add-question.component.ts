@@ -55,10 +55,10 @@ export class AddQuestionComponent implements OnInit {
   }
   addQuestion(form: NgForm) {
     this.data.header = form.value["header"];
-    this.data.choice_1 = form.value["choice_1"];
-    this.data.choice_2 = form.value["choice_2"];
-    this.data.choice_3 = form.value["choice_3"];
-    this.data.choice_4 = form.value["choice_4"];
+    this.data.choice_1 = form.value["choice_1"] || false;
+    this.data.choice_2 = form.value["choice_2"] || false;
+    this.data.choice_3 = form.value["choice_3"] || false;
+    this.data.choice_4 = form.value["choice_4"] || false;
     this.data.answer = form.value["answer"];
     this.data.score = form.value["score"];
     // this.data.exam_id = form.value['exam_id'];

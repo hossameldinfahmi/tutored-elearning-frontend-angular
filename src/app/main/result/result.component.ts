@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { CoursesService } from 'src/app/_services/courses.service';
-import { ExamResultService, result } from 'src/app/_services/exam-result.service';
-import { ExamsService } from 'src/app/_services/exams.service';
-import { StudentService } from 'src/app/_services/student.service';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { CoursesService } from "src/app/_services/courses.service";
+import {
+  ExamResultService,
+  result,
+} from "src/app/_services/exam-result.service";
+import { ExamsService } from "src/app/_services/exams.service";
+import { StudentService } from "src/app/_services/student.service";
 
 @Component({
-  selector: 'app-result',
-  templateUrl: './result.component.html',
-  styleUrls: ['./result.component.css'],
+  selector: "app-result",
+  templateUrl: "./result.component.html",
+  styleUrls: ["./result.component.css"],
 })
 export class ResultComponent implements OnInit {
   constructor(
@@ -21,10 +24,10 @@ export class ResultComponent implements OnInit {
   result: result = {
     student_id: 0,
     exam_id: 0,
-    degree: 0
+    degree: 0,
   };
 
-  newresult: result = {
+  newresult: any = {
     student_id: 0,
     exam_id: 0,
     degree: 0,
@@ -33,32 +36,35 @@ export class ResultComponent implements OnInit {
   course_id: number = 0;
   exam_id: number = 0;
   exam_max_score: number = 0;
-  studentName: string = localStorage.getItem('name')!;
+  studentName: string = localStorage.getItem("name")!;
   courseName!: string;
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      this.course_id = params['courseId'];
+      this.course_id = params["courseId"];
       // console.log(params);
     });
     this.getresult();
     this.getCourseById(this.course_id);
-    this.getExamById(parseInt(localStorage.getItem('exam_id')!));
+    this.getExamById(parseInt(localStorage.getItem("exam_id")!));
   }
 
   getresult() {
-    this.result.student_id = parseInt(localStorage.getItem('id')!);
-    this.result.exam_id = parseInt(localStorage.getItem('exam_id')!);
+    this.result.student_id = parseInt(localStorage.getItem("id")!);
+    this.result.exam_id = parseInt(localStorage.getItem("exam_id")!);
     // console.log(this.result);
 
-    this.resultService.getresult(this.result).subscribe(
+    this.resultService.getresult(this.result, this.course_id).subscribe(
       (res) => {
-        this.newresult = res;
+        this.newresult = res.exam_degree;
+        console.log("====================================");
+        console.log(this.newresult);
+        console.log("====================================");
         // console.log(this.newresult);
       },
 
       (err) => {
-        console.log('cant load data from exam question');
+        console.log("cant load data from exam question");
         console.log(err);
       }
     );
@@ -69,7 +75,6 @@ export class ResultComponent implements OnInit {
       (res) => {
         this.courseName = res.name!;
         // console.log(res);
-        
       },
       (err) => {
         console.log(err);
@@ -78,7 +83,6 @@ export class ResultComponent implements OnInit {
   }
 
   getExamById(id: number) {
-    
     this.examService.getexam(id).subscribe(
       (res) => {
         this.exam_max_score = res.data.max_score!;
@@ -90,10 +94,7 @@ export class ResultComponent implements OnInit {
     );
   }
 
-
-  removeID()
-  {
+  removeID() {
     localStorage.removeItem("exam_id");
   }
-  
 }

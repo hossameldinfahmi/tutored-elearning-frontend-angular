@@ -1,3 +1,4 @@
+<!-- ======= Contact Section ======= -->
 <section id="contact" class="contact">
   <div class="container" data-aos="fade-up">
     <div class="row mt-5">
@@ -13,11 +14,12 @@
               class="form-control"
               #subNameInput="ngModel"
               ngModel
-              minlength="10"
+              minlength="3"
+              pattern="^[a-zA-Z0-9 _.-]*$"
               maxlength="191"
               name="desc"
               rows="5"
-              placeholder="Please enter your feedback"
+              placeholder="desc"
               required
             ></textarea>
           </div>
@@ -38,12 +40,6 @@
             style="color: red"
             class="alert"
             >This field is required *</span
-          >
-          <span
-            *ngIf="subNameInput.touched && subNameInput.invalid && subNameInput.errors?.['minlength']"
-            style="color: red"
-            class="alert"
-            >Please enter at least 10 characters *</span
           >
 
           <div class="my-3">
@@ -67,3 +63,4 @@
     </div>
   </div>
 </section>
+<!-- End Contact Section -->

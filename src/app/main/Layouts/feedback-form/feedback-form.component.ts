@@ -20,12 +20,11 @@ export class FeedbackFormComponent implements OnInit {
     id: 0,
     course: { id: 0, name: "" },
     student: { fname: "" },
+
     review: "",
-    rating: 0,
     course_id: 0,
     student_id: 0,
   };
-
   id!: number;
   //recieved= false;
   ngOnInit(): void {
@@ -37,15 +36,18 @@ export class FeedbackFormComponent implements OnInit {
 
   addFeedback(form: NgForm) {
     this.newfeedback.review = form.value["desc"];
-    this.newfeedback.rating = form.value["rating"];
     this.newfeedback.student_id = parseInt(localStorage.getItem("id")!);
     this.newfeedback.course_id = this.id;
     this.newfeedback.name = localStorage.getItem("name")!;
+
+    // console.log(this.newfeedback);
 
     this.feedbackService
       .addFeeback(this.newfeedback, this.newfeedback.course_id)
       .subscribe(
         (res) => {
+          // this.coursesContentsArr = res;
+          // console.log(res);
           this.router.navigate([`main/courses/details/${this.id}/videos`]);
         },
         (err) => {

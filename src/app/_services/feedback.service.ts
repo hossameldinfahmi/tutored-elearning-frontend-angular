@@ -17,7 +17,7 @@ export class FeedbackService {
 
   getFeedbackById(id: number): Observable<Feedback> {
     return this.httpClient.get<Feedback>(
-      environment.baseUrl + "feedbacks/" + id
+      `${environment.baseUrl}courses/${id}/feedbacks`
     );
   }
 

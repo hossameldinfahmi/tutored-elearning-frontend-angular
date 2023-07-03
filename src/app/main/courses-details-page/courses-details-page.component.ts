@@ -7,6 +7,7 @@ import { CoursesService } from "src/app/_services/courses.service";
 import { CourseStudent } from "src/app/_models/course_student.model";
 import { CourseStudentService } from "src/app/_services/course-student.service";
 import { QuestionService } from "src/app/_services/question.service";
+import { FeedbackService } from "src/app/_services/feedback.service";
 @Component({
   selector: "app-courses-details-page",
   templateUrl: "./courses-details-page.component.html",
@@ -14,6 +15,7 @@ import { QuestionService } from "src/app/_services/question.service";
 })
 export class CoursesDetailsPageComponent implements OnInit {
   checkUser!: string;
+  feedbacks!: any[];
 
   coursedetails: Course = {
     id: 1,
@@ -32,12 +34,12 @@ export class CoursesDetailsPageComponent implements OnInit {
     },
     trainer: {
       id: 4,
-      fname: "sara",
-      lname: "sara",
-      gender: "female",
+      fname: "hossam",
+      lname: "fahmy",
+      gender: "male",
       phone: "52748349",
       img: "img.png",
-      email: "sara@gmain.com",
+      email: "hossam@gmain.com",
       password: "53478",
       facebook: "asdgh",
       twitter: "dscnjksd",
@@ -56,6 +58,7 @@ export class CoursesDetailsPageComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private courseService: CoursesService,
     private coursestudent: CourseStudentService,
+    private feedbackService: FeedbackService,
     private question: QuestionService
   ) {}
 
@@ -82,6 +85,12 @@ export class CoursesDetailsPageComponent implements OnInit {
       }
     });
     this.getAllexamQuestions();
+    this.feedbackService
+      .getFeedbackById(this.id)
+      .subscribe((feedbacks: any) => {
+        this.feedbacks = feedbacks.feedbacks;
+        console.log(this.feedbacks);
+      });
   }
 
   getAllexamQuestions() {
@@ -90,7 +99,6 @@ export class CoursesDetailsPageComponent implements OnInit {
         this.examQuestion = res.data;
         console.log(this.examQuestion);
         localStorage.setItem("exam_id", this.examQuestion[0].exam_id);
-        console.log(this.examQuestion[0].exam_id);
       },
       (err) => {
         console.log("cant load data from exam question");
