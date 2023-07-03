@@ -17,19 +17,34 @@ interface student {
 })
 export class StudentService {
   studentloginservice: EventEmitter<any> = new EventEmitter<any>();
-  private currentStudentSubject: BehaviorSubject<LoginResponse> =
-    new BehaviorSubject<LoginResponse>({
-      name: "",
-      id: 0,
-      role: "",
-      access_token: "",
-      token_type: "",
-      expires_in: 0,
-      accessToken: "",
-      tokenType: "",
-      expiresIn: 0,
-    });
-  constructor(private httpClient: HttpClient) {}
+  private currentStudentSubject: BehaviorSubject<LoginResponse | null> =
+    new BehaviorSubject<LoginResponse | null>(null);
+
+  constructor(private httpClient: HttpClient) {
+    const token: string | null = localStorage.getItem("Authorization");
+    const id: number | null = localStorage.getItem("id")
+      ? Number(localStorage.getItem("id"))
+      : null;
+    const name: string | null = localStorage.getItem("name");
+    const role: string | null = localStorage.getItem("role");
+
+    if (token && id && name && role) {
+      const loginResponse: LoginResponse = {
+        name: name,
+        id: id,
+        role: role,
+        access_token: token,
+        token_type: "bearer",
+        expires_in: 0,
+        accessToken: "",
+        tokenType: "",
+        expiresIn: 0,
+      };
+      this.currentStudentSubject.next(loginResponse);
+    } else {
+      this.currentStudentSubject.next(null);
+    }
+  }
   getAllStudents(): Observable<{
     data: Student[];
     status: boolean;
@@ -44,6 +59,10 @@ export class StudentService {
       status: boolean;
       error: any[];
     }>(`${environment.baseUrl}students`, { headers });
+  }
+
+  get currentUser(): Observable<any> {
+    return this.currentStudentSubject.asObservable();
   }
 
   addStudent(

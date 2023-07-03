@@ -36,9 +36,9 @@
                   >
                     {{ courseContent.name }}
                   </option> -->
-                  <!-- [selected]="this.CourseContentArray[0].course_id.Id===courseContent.Id" -->
-                  <!-- <option value="1" [selected]="this.CourseContentArray[0].course_id?.Id===1">1</option> -->
-                <!-- </select>
+              <!-- [selected]="this.CourseContentArray[0].course_id.Id===courseContent.Id" -->
+              <!-- <option value="1" [selected]="this.CourseContentArray[0].course_id?.Id===1">1</option> -->
+              <!-- </select>
                 <span
                   *ngIf="courseIdInput.touched && courseIdInput.invalid && courseIdInput.errors?.['required'] && courseIdInput.value===''"
                   style="color: red"
@@ -133,9 +133,9 @@
               <button
                 type="submit"
                 id="submitBtn"
-                class="btn text-light mr-2 main-btns"
+                class="btn btn-primary m-2"
                 [disabled]="!courseContentForm.valid"
-                [routerLink]="'/main/trainer/course/details/'+id"
+                [routerLink]="'/main/trainer/course/details/' + id"
                 (click)="
                   updateCourseContent(this.courseContent.id!, courseContentForm)
                 "
@@ -144,7 +144,7 @@
               </button>
 
               <button
-                class="btn text-light main-btns"
+                class="btn btn-light"
                 (click)="resetForm(courseContentForm)"
               >
                 Cancel

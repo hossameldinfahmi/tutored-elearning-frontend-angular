@@ -19,7 +19,6 @@
             <h4 class="card-title text-center">Add New Course Content</h4>
 
             <form class="forms-sample" #courseContentForm="ngForm">
-
               <div class="form-group">
                 <label for="exampleInputName2">Name :</label>
                 <input
@@ -104,15 +103,15 @@
               <button
                 type="submit"
                 id="submitBtn"
-                class="btn text-light mr-2 main-btns"
+                class="btn btn-primary m-2"
                 [disabled]="!courseContentForm.valid"
-                [routerLink]="'/main/trainer/course/details/'+id"
+                [routerLink]="'/main/trainer/course/details/' + id"
                 (click)="addCourseContent(courseContentForm)"
               >
                 Submit
               </button>
               <button
-                class="btn text-light main-btns"
+                class="btn btn-light"
                 (click)="resetForm(courseContentForm)"
               >
                 Cancel
