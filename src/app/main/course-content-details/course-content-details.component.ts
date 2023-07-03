@@ -56,7 +56,8 @@ export class CourseContentDetailsComponent implements OnInit {
   getAllLiveCoursesContents() {
     this.CourseContentService.getCourseLive(this.id).subscribe(
       (res) => {
-        this.LiveCorses = res;
+        this.LiveCorses = res.data;
+        console.log(res);
       },
       (err) => {
         console.log("Error getting courses contents");

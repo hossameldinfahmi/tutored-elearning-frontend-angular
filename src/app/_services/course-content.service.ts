@@ -88,16 +88,21 @@ export class CourseContentService {
 
   addCourseLive(newContent: CourseContent): Observable<CourseContent> {
     const token: string = localStorage.getItem("Authorization")!;
+    console.log(token);
+    console.log("====================================");
+    console.log(newContent);
+    console.log("====================================");
+
     const headers = new HttpHeaders({
       Authorization: token,
     });
     return this.httpClient.post<CourseContent>(
-      `${environment.baseUrl}zoom_classes/`,
+      `${environment.baseUrl}zoom_classes`,
       newContent,
       { headers }
     );
   }
-  getCourseLive(id: number): Observable<CourseContent> {
+  getCourseLive(id: number): Observable<any> {
     const token: string = localStorage.getItem("Authorization")!;
     const headers = new HttpHeaders({
       Authorization: token,

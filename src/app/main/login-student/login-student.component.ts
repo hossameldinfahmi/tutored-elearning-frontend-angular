@@ -28,14 +28,11 @@ export class LoginStudentComponent implements OnInit {
     this.data.password = form.value.password;
     this.studentService.checkStudent(this.data).subscribe(
       (res: any) => {
-        console.log(res);
         localStorage.setItem("Authorization", "bearer " + res.access_token);
         localStorage.setItem("id", res.id + "");
         localStorage.setItem("role", res.role);
         localStorage.setItem("name", res.name);
         this.studentService.studentloginservice.emit(res);
-        this.toastr.error(res);
-
         this.router.navigate(["/main/home"]);
       },
       (err: any) => {
