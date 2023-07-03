@@ -166,7 +166,7 @@
                   type="text"
                   class="form-control"
                   id="exampleInputName1"
-                  placeholder="Enter choice_4"
+                  placeholder="Enter choice_4 "
                   name="choice_4"
                 />
                 <span
@@ -190,95 +190,100 @@
               </div>
 
               <div class="form-group">
-                <label for="exampleInputName1"
-                  >Correct Answer is (write the answer) :</label
-                >
-                <input
-                  #answerNameInput="ngModel"
-                  ngModel
-                  required
-                  minlength="1"
-                  maxlength="255"
-                  type="text"
-                  class="form-control"
-                  id="exampleInputName1"
-                  placeholder="Enter answer"
-                  name="answer"
-                />
-                <span
-                  *ngIf="answerNameInput.touched && answerNameInput.invalid && answerNameInput.errors?.['required']"
-                  style="color: red"
-                  class="alert"
-                  >This field is required *</span
-                >
-                <span
-                  *ngIf="answerNameInput.errors?.['minlength']"
-                  style="color: red"
-                  class="alert"
-                  >Please enter more than 1 characters *</span
-                >
-                <span
-                  *ngIf="answerNameInput.errors?.['maxlength']"
-                  style="color: red"
-                  class="alert"
-                  >Please enter less than 255 characters *</span
-                >
+                <label>Correct Answers:</label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="correctAnswer1"
+                    id="correctAnswer1"
+                    [(ngModel)]="data.correctAnswer1"
+                  />
+                  <label class="form-check-label" for="correctAnswer1">
+                    Choice 1
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="correctAnswer2"
+                    id="correctAnswer2"
+                    [(ngModel)]="data.correctAnswer2"
+                  />
+                  <label class="form-check-label" for="correctAnswer2">
+                    Choice 2
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="correctAnswer3"
+                    id="correctAnswer3"
+                    [(ngModel)]="data.correctAnswer3"
+                  />
+                  <label class="form-check-label" for="correctAnswer3">
+                    Choice 3
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="correctAnswer4"
+                    id="correctAnswer4"
+                    [(ngModel)]="data.correctAnswer4"
+                  />
+                  <label class="form-check-label" for="correctAnswer4">
+                    Choice 4
+                  </label>
+                </div>
               </div>
 
               <div class="form-group">
-                <label for="exampleInputName1">Score of question :</label>
+                <label for="exampleInputName1">Score:</label>
                 <input
-                  #scoreNameInput="ngModel"
+                  #scoreInput="ngModel"
                   ngModel
                   required
-                  maxlength="20"
+                  min="0"
+                  max="100"
                   type="number"
                   class="form-control"
                   id="exampleInputName1"
-                  placeholder="Enter score"
+                  placeholder="Enter Score"
                   name="score"
                 />
                 <span
-                  *ngIf="scoreNameInput.touched && scoreNameInput.invalid && scoreNameInput.errors?.['required']"
+                  *ngIf="scoreInput.touched && scoreInput.invalid && scoreInput.errors?.['required']"
                   style="color: red"
                   class="alert"
                   >This field is required *</span
                 >
+                <span
+                  *ngIf="scoreInput.errors?.['min']"
+                  style="color: red"
+                  class="alert"
+                  >Please enter a value greater than or equal to 0 *</span
+                >
+                <span
+                  *ngIf="scoreInput.errors?.['max']"
+                  style="color: red"
+                  class="alert"
+                  >Please enter a value less than or equal to 100 *</span
+                >
               </div>
 
-              <!-- <div class="form-group">
-          <label for="">exam</label>
-          <select
-            #examInput="ngModel"
-            ngModel
-            placeholder="select maximum score"
-            required
-            class="form-control"
-            name="exam_id"
-          >
-            <option *ngFor="let exa of exam" [value]="exa.id">
-              {{ exa.name }}
-            </option>
-            <span
-              *ngIf="examInput.touched && examInput.invalid && examInput.errors?.['required']"
-              style="color: red"
-              class="alert"
-              >This field is required *</span
-            >
-          </select>
-        </div> -->
-
               <button
-                id="submitBtn"
                 type="submit"
-                class="btn main-btns btn-success text-light mr-2"
+                [disabled]="questionForm.invalid"
+                class="btn btn-primary mr-2"
                 (click)="addQuestion(questionForm)"
               >
                 Submit
               </button>
-              <button class="btn btn-light" (click)="resetForm(questionForm)">
-                Cancel
-              </button>
+              <button type="reset" class="btn btn-light">Cancel</button>
             </form>
           </div>
         </div>

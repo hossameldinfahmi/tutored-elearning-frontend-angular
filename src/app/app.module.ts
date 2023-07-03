@@ -85,9 +85,11 @@ import { EditThisExamComponent } from "./main/Forms/edit-this-exam/edit-this-exa
 import { AddThisQuestionComponent } from "./main/Forms/add-this-question/add-this-question.component";
 import { EditThisQuestionComponent } from "./main/Forms/edit-this-question/edit-this-question.component";
 import { EditCourseContentComponent } from "./Forms/edit-course-content/edit-course-content.component";
+import { BooleanPipe } from "./pipe-transform.pipe";
 
 @NgModule({
   declarations: [
+    BooleanPipe,
     //main Component
     AppComponent,
 

@@ -51,14 +51,21 @@
                     <td>{{ question.id }}</td>
                     <td>{{ question.header }}</td>
                     <td>
-                      <ul>
-                        <li>{{ question.choice_1 }}</li>
-                        <li>{{ question.choice_2 }}</li>
-                        <li>{{ question.choice_3 }}</li>
-                        <li>{{ question.choice_4 }}</li>
-                      </ul>
+                      <ol>
+                        <li>{{ question.choices[0].text }}</li>
+                        <li>{{ question.choices[1].text }}</li>
+                        <li>{{ question.choices[2].text }}</li>
+                        <li>{{ question.choices[3].text }}</li>
+                      </ol>
                     </td>
-                    <td>{{ question.answer }}</td>
+                    <td>
+                      <ol>
+                        <li>{{ question.choices[0].is_correct | boolean }}</li>
+                        <li>{{ question.choices[1].is_correct | boolean }}</li>
+                        <li>{{ question.choices[2].is_correct | boolean }}</li>
+                        <li>{{ question.choices[3].is_correct | boolean }}</li>
+                      </ol>
+                    </td>
                     <td>{{ question.score }}</td>
                     <td>
                       <a
