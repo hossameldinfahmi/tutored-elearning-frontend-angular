@@ -1,40 +1,69 @@
- <!-- ======= Contact Section ======= -->
 <section id="contact" class="contact">
-    
+  <div class="container" data-aos="fade-up">
+    <div class="row mt-5">
+      <div class="col-lg-8 mt-5 mt-lg-0">
+        <form
+          method="post"
+          role="form"
+          class="php-email-form mt-5"
+          #feedForm="ngForm"
+        >
+          <div class="form-group mt-5">
+            <textarea
+              class="form-control"
+              #subNameInput="ngModel"
+              ngModel
+              minlength="10"
+              maxlength="191"
+              name="desc"
+              rows="5"
+              placeholder="Please enter your feedback"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group mt-3">
+            <label for="rating">Rating:</label>
+            <input
+              type="number"
+              class="form-control"
+              name="rating"
+              ngModel
+              min="1"
+              max="5"
+              required
+            />
+          </div>
+          <span
+            *ngIf="subNameInput.touched && subNameInput.invalid && subNameInput.errors?.['required']"
+            style="color: red"
+            class="alert"
+            >This field is required *</span
+          >
+          <span
+            *ngIf="subNameInput.touched && subNameInput.invalid && subNameInput.errors?.['minlength']"
+            style="color: red"
+            class="alert"
+            >Please enter at least 10 characters *</span
+          >
 
-    <div class="container" data-aos="fade-up">
-
-      <div class="row mt-5">
-
-       
-
-        <div class="col-lg-8 mt-5 mt-lg-0" >
-
-          <form  method="post" role="form" class="php-email-form mt-5" #feedForm=ngForm>
-           
-
-            <div class="form-group mt-5">
-              <textarea class="form-control" #subNameInput=ngModel ngModel minlength="3" pattern="^[a-zA-Z0-9 _.-]*$" maxlength="191" name="desc" rows="5" placeholder="desc" required></textarea>
-            
-            </div>   <span *ngIf="subNameInput.touched && subNameInput.invalid && subNameInput.errors?.['required']" style="color: red;" class="alert" >This field is required *</span>
-         
-          
-          
-          
-            <div class="my-3">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message" >Your message has been sent. Thank you!</div>
+          <div class="my-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">
+              Your message has been sent. Thank you!
             </div>
-            <div class="text-center">
-              <button type="submit"  (click)="addFeedback(feedForm)" [disabled]="!feedForm.valid" >Send Message</button></div>
-          </form>
-
-        </div>
-
+          </div>
+          <div class="text-center">
+            <button
+              type="submit"
+              (click)="addFeedback(feedForm)"
+              [disabled]="!feedForm.valid"
+            >
+              Send Message
+            </button>
+          </div>
+        </form>
       </div>
-
     </div>
-  </section><!-- End Contact Section -->
-
-
+  </div>
+</section>

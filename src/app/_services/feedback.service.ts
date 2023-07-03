@@ -21,14 +21,16 @@ export class FeedbackService {
     );
   }
 
-  addFeeback(newFeedback: Feedback): Observable<Feedback> {
-    // console.log(newFeedback)
+  addFeeback(newFeedback: Feedback, id: any): Observable<Feedback> {
+    console.log(newFeedback);
+    console.log(id);
+
     const token: string = localStorage.getItem("Authorization")!;
     const headers = new HttpHeaders({
       Authorization: token,
     });
     return this.httpClient.post<Feedback>(
-      `${environment.baseUrl}feedbacks`,
+      `${environment.baseUrl}courses/${id}/feedback`,
       newFeedback,
       { headers }
     );
