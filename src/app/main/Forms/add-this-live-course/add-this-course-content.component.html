@@ -1,0 +1,173 @@
+<main id="main" data-aos="fade-in">
+  <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs">
+    <div class="container">
+      <h2 class="my-2">Add New Live Course</h2>
+    </div>
+  </div>
+  <!-- End Breadcrumbs -->
+  <div class="container-fluid">
+    <div class="row mt-5">
+      <div class="col-12 grid-margin stretch-card text-primary">
+        <div class="card main-forms">
+          <div class="card-body">
+            <h4 class="card-title text-center">Add New Live Course</h4>
+
+            <form class="forms-sample" #courseContentForm="ngForm">
+              <div class="form-group">
+                <label for="exampleInputName1">Meeting_id :</label>
+                <input
+                  #mettingIdInput="ngModel"
+                  ngModel
+                  required
+                  type="number"
+                  class="form-control"
+                  id="exampleInputName1"
+                  placeholder="Meeting_id"
+                  name="MeetingIdName"
+                />
+                <span
+                  *ngIf="mettingIdInput.touched && mettingIdInput.invalid && mettingIdInput.errors?.['required']"
+                  style="color: red"
+                  class="alert"
+                  >This field is required *</span
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputName2">Topic :</label>
+                <input
+                  #topicInput="ngModel"
+                  ngModel
+                  required
+                  type="text"
+                  class="form-control"
+                  id="exampleInputName2"
+                  placeholder="Topic"
+                  name="topicContent"
+                />
+                <span
+                  *ngIf="topicInput.touched && topicInput.invalid && topicInput.errors?.['required']"
+                  style="color: red"
+                  class="alert"
+                  >This field is required *</span
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputName3">Start_time :</label>
+                <input
+                  #startTimeInput="ngModel"
+                  ngModel
+                  required
+                  type="text"
+                  class="form-control"
+                  id="exampleInputName3"
+                  placeholder="Start Time"
+                  name="startTime"
+                />
+                <span
+                  *ngIf="startTimeInput.touched && startTimeInput.invalid && startTimeInput.errors?.['required']"
+                  style="color: red"
+                  class="alert"
+                  >This field is required *</span
+                >
+              </div>
+              <div class="form-group">
+                <label for="exampleInputName4">Duration :</label>
+                <input
+                  #durationInput="ngModel"
+                  ngModel
+                  required
+                  type="number"
+                  class="form-control"
+                  id="exampleInputName4"
+                  placeholder="Duration"
+                  name="durationContent"
+                />
+                <span
+                  *ngIf="durationInput.touched && durationInput.invalid && durationInput.errors?.['required']"
+                  style="color: red"
+                  class="alert"
+                  >This field is required *</span
+                >
+              </div>
+              <div class="form-group">
+                <label for="exampleInputName5">Password :</label>
+                <input
+                  #passwordInput="ngModel"
+                  ngModel
+                  required
+                  type="text"
+                  class="form-control"
+                  id="exampleInputName5"
+                  placeholder="Password"
+                  name="password"
+                />
+                <span
+                  *ngIf="passwordInput.touched && passwordInput.invalid && passwordInput.errors?.['required']"
+                  style="color: red"
+                  class="alert"
+                  >This field is required *</span
+                >
+              </div>
+              <div class="form-group">
+                <label for="exampleInputName6">Join URL :</label>
+                <input
+                  #joinUrlInput="ngModel"
+                  ngModel
+                  required
+                  type="text"
+                  class="form-control"
+                  id="exampleInputName6"
+                  placeholder="Join URL"
+                  name="joinUrl"
+                />
+                <span
+                  *ngIf="joinUrlInput.touched && joinUrlInput.invalid && joinUrlInput.errors?.['required']"
+                  style="color: red"
+                  class="alert"
+                  >This field is required *</span
+                >
+              </div>
+              <div class="form-group">
+                <label for="exampleInputName7">Start URL :</label>
+                <input
+                  #StartUrlInput="ngModel"
+                  ngModel
+                  required
+                  type="text"
+                  class="form-control"
+                  id="exampleInputName7"
+                  placeholder="Start URL"
+                  name="StartUrl"
+                />
+                <span
+                  *ngIf="StartUrlInput.touched && StartUrlInput.invalid && StartUrlInput.errors?.['required']"
+                  style="color: red"
+                  class="alert"
+                  >This field is required *</span
+                >
+              </div>
+              <button
+                type="submit"
+                id="submitBtn"
+                class="btn btn-primary m-2"
+                [disabled]="!courseContentForm.valid"
+                (click)="addCourseContent(courseContentForm)"
+              >
+                Submit
+              </button>
+              <button
+                class="btn btn-light"
+                (click)="resetForm(courseContentForm)"
+              >
+                Cancel
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

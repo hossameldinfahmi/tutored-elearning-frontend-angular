@@ -126,6 +126,9 @@ export class EditThisCourseComponent implements OnInit {
     formdata.append("desc", form.value.desc);
     formdata.append("preq", form.value.preq);
 
+    console.log("====================================");
+    console.log(formdata);
+    console.log("====================================");
     this.courseService.updatecourse(id, formdata).subscribe(
       (res) => {
         this.router.navigate(["/main/trainer/courses"]);

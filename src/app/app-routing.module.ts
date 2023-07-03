@@ -62,6 +62,7 @@ import { EditCourseContentComponent } from "./Forms/edit-course-content/edit-cou
 import { StudentGuard } from "./student.guard";
 import { IsLoggedGuard } from "./is-logged.guard";
 import { AdminGardGuard } from "./admin-gard.guard";
+import { AddThisLiveCourseComponent } from "./main/Forms/add-this-live-course/add-this-course-content.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -209,6 +210,12 @@ const routes: Routes = [
             component: UpdateTrainerComponent,
           },
           { path: "logout", redirectTo: "main/login", pathMatch: "full" },
+          // live
+          {
+            path: "course/details/:courseId/add-live",
+            canActivate: [AuthTrainerGuard],
+            component: AddThisLiveCourseComponent,
+          },
         ],
       },
       {

@@ -82,4 +82,37 @@ export class CourseContentService {
       { headers }
     );
   }
+
+  addCourseLive(newContent: CourseContent): Observable<CourseContent> {
+    const token: string = localStorage.getItem("Authorization")!;
+    const headers = new HttpHeaders({
+      Authorization: token,
+    });
+    return this.httpClient.post<CourseContent>(
+      `${environment.baseUrl}zoom_classes/`,
+      newContent,
+      { headers }
+    );
+  }
+  getCourseLive(id: number): Observable<CourseContent> {
+    const token: string = localStorage.getItem("Authorization")!;
+    const headers = new HttpHeaders({
+      Authorization: token,
+    });
+    return this.httpClient.get<CourseContent>(
+      `${environment.baseUrl}zoom_classes/${id}`,
+      { headers }
+    );
+  }
+
+  deleteCourseLive(id: number) {
+    const token: string = localStorage.getItem("Authorization")!;
+    const headers = new HttpHeaders({
+      Authorization: token,
+    });
+    return this.httpClient.delete<CourseContent>(
+      `${environment.baseUrl}zoom_classes/${id}`,
+      { headers }
+    );
+  }
 }
