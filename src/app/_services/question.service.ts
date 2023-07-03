@@ -29,10 +29,9 @@ export interface ExamQuestion {
 export class QuestionService {
   constructor(private httpClient: HttpClient) {}
 
-  getexamQuestions(
-    id: number
-  ): Observable<{ data: ExamQuestion[]; status: boolean; error: any }> {
+  getexamQuestions(id: number): Observable<any> {
     const token: string = localStorage.getItem("Authorization")!;
+
     const headers = new HttpHeaders({
       Authorization: token,
     });

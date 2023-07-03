@@ -45,7 +45,7 @@ export class ExamPageComponent implements OnInit {
     this.question.getexamQuestions(this.id).subscribe(
       (res) => {
         this.examQuestion = res.data;
-        // console.log(this.examQuestion);
+        console.log(res);
         localStorage.setItem("exam_id", this.examQuestion[0].exam_id);
       },
       (err) => {
