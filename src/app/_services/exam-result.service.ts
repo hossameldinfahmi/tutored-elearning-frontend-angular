@@ -43,4 +43,31 @@ export class ExamResultService {
       }
     );
   }
+
+  updateProgress(courseId: number, progress: number): Observable<any> {
+    const token: string = localStorage.getItem("Authorization")!;
+    const headers = new HttpHeaders({
+      Authorization: token,
+      "Content-Type": "application/json",
+    });
+
+    const body = { progress: progress };
+
+    return this.httpClient.put<any>(
+      `${environment.baseUrl}courses/${courseId}/progress`,
+      body,
+      { headers }
+    );
+  }
+  getProgress(courseId: number): Observable<any> {
+    const token: string = localStorage.getItem("Authorization")!;
+    const headers = new HttpHeaders({
+      Authorization: token,
+    });
+
+    return this.httpClient.get<any>(
+      `${environment.baseUrl}courses/${courseId}/progress`,
+      { headers }
+    );
+  }
 }

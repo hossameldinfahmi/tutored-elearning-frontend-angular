@@ -31,6 +31,7 @@ export class VideoComponent implements OnInit {
     degree: 0,
   };
 
+  newProgress: number = 0;
   active: boolean = false;
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -39,6 +40,16 @@ export class VideoComponent implements OnInit {
       if (this.id) {
         this.getCourseContent(this.id);
       }
+      this.resultService.getProgress(this.id).subscribe(
+        (data) => {
+          this.newProgress = data.progress;
+
+          console.log(data);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
     });
     this.getresult();
     this.activatedRoute.params.subscribe((params) => {
@@ -87,14 +98,32 @@ export class VideoComponent implements OnInit {
     );
   }
   progress: number = 0;
-
+  curr: number = 0;
   onTabClick(i: number) {
-    let curr = i + 1;
-    let totatl = this.contentArr.length;
-    this.progress = (curr / totatl) * 100;
+    let total = this.contentArr.length;
+    if (i >= this.curr - 1) {
+      this.curr = i + 1;
+    }
+    this.progress = (this.curr / total) * 100;
 
-    console.log("====================================");
-    console.log(this.progress);
-    console.log("====================================");
+    this.resultService.updateProgress(this.id, this.progress).subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+
+    this.resultService.getProgress(this.id).subscribe(
+      (data) => {
+        this.newProgress = data.progress;
+
+        console.log(data);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 }
