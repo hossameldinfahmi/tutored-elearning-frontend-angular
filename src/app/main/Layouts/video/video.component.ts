@@ -41,6 +41,12 @@ export class VideoComponent implements OnInit {
       }
     });
     this.getresult();
+    this.activatedRoute.params.subscribe((params) => {
+      const courseId = params["courseId"];
+      if (courseId) {
+        this.result.exam_id = courseId;
+      }
+    });
   }
 
   url: any;
@@ -51,12 +57,9 @@ export class VideoComponent implements OnInit {
       (res) => {
         this.contentArr = res;
         for (let index = 0; index < this.contentArr.length; index++) {
-          this.urlArr[index] = this.contentArr[index].content!;
-          this.url = this.sanitizer.bypassSecurityTrustResourceUrl(
-            this.urlArr[index]
-          );
-          this.urlSecuredArr[index] =
-            this.sanitizer.bypassSecurityTrustResourceUrl(this.urlArr[index]);
+          const url = this.contentArr[index].content!;
+          const securedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+          this.urlSecuredArr[index] = securedUrl;
         }
       },
       (err) => {
@@ -67,13 +70,9 @@ export class VideoComponent implements OnInit {
   }
   getresult() {
     this.result.student_id = parseInt(localStorage.getItem("id")!);
-    this.result.exam_id = parseInt(localStorage.getItem("exam_id")!);
-    // console.log(this.result)
 
-    this.resultService.getresult(this.result, this.id).subscribe(
+    this.resultService.getresult(this.result, this.result.exam_id).subscribe(
       (res) => {
-        // console.log(res)
-
         this.newresult = res;
         if (Object.keys(res).length === 0) {
           this.active = false;
@@ -86,5 +85,16 @@ export class VideoComponent implements OnInit {
         console.log("student result not found");
       }
     );
+  }
+  progress: number = 0;
+
+  onTabClick(i: number) {
+    let curr = i + 1;
+    let totatl = this.contentArr.length;
+    this.progress = (curr / totatl) * 100;
+
+    console.log("====================================");
+    console.log(this.progress);
+    console.log("====================================");
   }
 }

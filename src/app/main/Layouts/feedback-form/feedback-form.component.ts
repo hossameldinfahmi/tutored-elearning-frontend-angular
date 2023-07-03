@@ -20,7 +20,7 @@ export class FeedbackFormComponent implements OnInit {
     id: 0,
     course: { id: 0, name: "" },
     student: { fname: "" },
-
+    rating: 0,
     review: "",
     course_id: 0,
     student_id: 0,
@@ -39,6 +39,7 @@ export class FeedbackFormComponent implements OnInit {
     this.newfeedback.student_id = parseInt(localStorage.getItem("id")!);
     this.newfeedback.course_id = this.id;
     this.newfeedback.name = localStorage.getItem("name")!;
+    this.newfeedback.rating = form.value["rating"];
 
     // console.log(this.newfeedback);
 

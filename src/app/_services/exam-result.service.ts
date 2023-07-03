@@ -18,9 +18,7 @@ export class ExamResultService {
     const headers = new HttpHeaders({
       Authorization: token,
     });
-    console.log(data);
 
-    //localhost:8000/api/courses/1/exams/2/degree
     http: return this.httpClient.get<result>(
       `${environment.baseUrl}courses/${course_id}/exams/${data.exam_id}/degree`,
       { headers }
