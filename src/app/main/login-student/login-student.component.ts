@@ -27,22 +27,39 @@ export class LoginStudentComponent implements OnInit {
     this.data.email = form.value.email;
     this.data.password = form.value.password;
     this.studentService.checkStudent(this.data).subscribe(
-      (res) => {
+      (res: any) => {
         console.log(res);
         localStorage.setItem("Authorization", "bearer " + res.access_token);
         localStorage.setItem("id", res.id + "");
         localStorage.setItem("role", res.role);
         localStorage.setItem("name", res.name);
         this.studentService.studentloginservice.emit(res);
+        this.toastr.error(res);
+
         this.router.navigate(["/main/home"]);
       },
-      (err: Error) => {
-        console.log("Error login");
-        this.toastr.error(
-          "Login failed. Please check your email and password."
-        );
+      (err: any) => {
+        if (err.status === 403) {
+          this.toastr.error("Your email address is not verified.");
+        } else {
+          this.toastr.error(
+            "Login failed. Please check your email and password."
+          );
+        }
       }
     );
+  }
+  resendVerificationEmail() {
+    this.studentService
+      .resendMail(this.data.email, this.data.password)
+      .subscribe(
+        (data) => {
+          this.toastr.success("Verfiction Mail Sent Successfully!", "Success");
+        },
+        (error) => {
+          this.toastr.error("Something went wrong", "Error");
+        }
+      );
   }
   resetForm(form: NgForm) {
     form.reset();

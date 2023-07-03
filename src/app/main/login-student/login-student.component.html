@@ -46,14 +46,18 @@
           <button
             type="submit"
             id="submitBtn"
-            class="btn btn-primary m-2"
+            class="btn btn-success m-2"
             [disabled]="!studentLoginForm.valid"
             (click)="login(studentLoginForm)"
           >
             Sign In
           </button>
-          <button class="btn btn-light" (click)="resetForm(studentLoginForm)">
-            Cancel
+          <button
+            class="btn m-4 btn-primary border-0 main-btns"
+            [disabled]="!studentLoginForm.valid"
+            (click)="resendVerificationEmail()"
+          >
+            Resend Verfiction Mail
           </button>
         </form>
       </div>

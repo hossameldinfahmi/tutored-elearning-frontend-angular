@@ -163,4 +163,14 @@ export class StudentService {
         })
       );
   }
+  resendMail(email: any, password: any): Observable<any> {
+    const token: string = localStorage.getItem("Authorization")!;
+
+    const body = { email: email };
+
+    return this.httpClient.post<any>(
+      `${environment.baseUrl}email/verify/resend`,
+      body
+    );
+  }
 }
