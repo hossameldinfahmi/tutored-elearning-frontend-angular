@@ -121,6 +121,44 @@
                   </tr>
                 </tbody>
               </table>
+
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>meeting_id</th>
+                    <th>topic</th>
+                    <th>start_at</th>
+                    <th>duration</th>
+                    <th>password</th>
+                    <th>join</th>
+                    <th>delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let course of LiveCorses; let i = index">
+                    <td>{{ course.meeting_id }}</td>
+                    <td>{{ course.topic }}</td>
+                    <td>{{ course.start_at }}</td>
+                    <td>{{ course.duration }}</td>
+                    <td>{{ course.password }}</td>
+
+                    <td>
+                      <a class="h3 text-warning" [href]="course.join_url">
+                        here
+                      </a>
+                    </td>
+                    <td>
+                      <a
+                        class="h3 text-danger"
+                        style="cursor: pointer"
+                        [routerLink]="'/main/trainer/course/details/' + id"
+                        (click)="deleteLiveCourse(course.id!)"
+                        ><i class="mdi mdi-delete-forever"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

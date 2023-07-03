@@ -20,12 +20,14 @@ export class CourseContentDetailsComponent implements OnInit {
   coursesContentsArr!: CourseContent[];
   course!: Course;
   id: number = 0;
+  LiveCorses: any;
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.id = params["courseId"];
     });
     this.getAllCoursesContents();
     this.getCourseById(this.id);
+    this.getAllLiveCoursesContents();
   }
 
   getCourseById(id: number) {
@@ -46,6 +48,32 @@ export class CourseContentDetailsComponent implements OnInit {
       },
       (err) => {
         console.log("Error getting courses contents");
+        console.log(err);
+      }
+    );
+  }
+
+  getAllLiveCoursesContents() {
+    this.CourseContentService.getCourseLive(this.id).subscribe(
+      (res) => {
+        this.LiveCorses = res;
+      },
+      (err) => {
+        console.log("Error getting courses contents");
+        console.log(err);
+      }
+    );
+  }
+  deleteLiveCourse(id: number) {
+    this.CourseContentService.deleteCourseLive(id).subscribe(
+      (res) => {
+        // this.coursesContentsArr = res;
+        // console.log(res);
+        // this.router.navigate([`/main/trainer/course/details/${this.id}`]);
+        this.ngOnInit();
+      },
+      (err) => {
+        console.log("Error deleting course content");
         console.log(err);
       }
     );
