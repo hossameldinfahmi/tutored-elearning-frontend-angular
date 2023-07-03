@@ -31,6 +31,7 @@ export class VideoComponent implements OnInit {
     degree: 0,
   };
 
+  LiveCorses: any;
   newProgress: number = 0;
   active: boolean = false;
   ngOnInit(): void {
@@ -39,6 +40,7 @@ export class VideoComponent implements OnInit {
       // console.log(params);
       if (this.id) {
         this.getCourseContent(this.id);
+        this.getLiveCourse(this.id);
       }
       this.resultService.getProgress(this.id).subscribe(
         (data) => {
@@ -79,6 +81,19 @@ export class VideoComponent implements OnInit {
       }
     );
   }
+
+  getLiveCourse(id: number) {
+    this.courseContentService.getCourseLive(id).subscribe(
+      (res) => {
+        this.LiveCorses = res.data;
+      },
+      (err) => {
+        console.log("Error adding course content");
+        console.log(err);
+      }
+    );
+  }
+
   getresult() {
     this.result.student_id = parseInt(localStorage.getItem("id")!);
 
