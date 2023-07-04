@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, NgModule, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 import { AdminService } from "src/app/_services/admin.service";
 
 @Component({
@@ -9,7 +11,11 @@ import { AdminService } from "src/app/_services/admin.service";
   styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
-  constructor(private adminService: AdminService, private router: Router) {}
+  constructor(
+    private adminService: AdminService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -35,10 +41,17 @@ export class LoginComponent implements OnInit {
 
         this.router.navigate(["/dashboard/home"]);
       },
-      (err: any) => {
-        console.log("Error login");
-        console.log(err);
-        this.router.navigate(["/dashboard/login"]);
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Email Or Password is wrong", "Error");
+        }
       }
     );
   }

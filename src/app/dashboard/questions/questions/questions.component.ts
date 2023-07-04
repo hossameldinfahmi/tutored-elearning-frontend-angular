@@ -4,6 +4,8 @@ import { Observable } from "rxjs";
 import { Exam } from "src/app/_models/exam.model";
 import { QuestionService } from "src/app/_services/question.service";
 import { Question } from "../../../_models/question.model";
+import { HttpErrorResponse } from "@angular/common/http";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-questions",
@@ -14,7 +16,8 @@ export class QuestionsComponent implements OnInit {
   constructor(
     private QuestionService: QuestionService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private toastr: ToastrService
   ) {}
 
   QuetionArray!: Question[];
@@ -75,11 +78,21 @@ export class QuestionsComponent implements OnInit {
     this.QuestionService.deleteQestion(id).subscribe(
       (res) => {
         // console.log(res.data);
+        this.toastr.success("Question Deleted successfully!", "Success");
+
         this.ngOnInit();
       },
-      (err) => {
-        console.log("Error deleting deleteQestion ");
-        console.log(err);
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }
