@@ -100,8 +100,15 @@ export class UpdateTrainerComponent implements OnInit {
     this.trainerService.updateTrainer(this.trainerId, formdata).subscribe(
       (res) => {
         console.log(res);
+
+        // console.log(res);
+
+        const name: any = res.data.fname;
+        localStorage.setItem("name", name);
+
         this.toastr.success("Uploded Successfully!", "Success");
         this.router.navigate(["main/home"]);
+        window.location.reload();
       },
       (err: HttpErrorResponse) => {
         if (err.error && err.error.error) {

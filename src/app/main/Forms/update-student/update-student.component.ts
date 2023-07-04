@@ -89,8 +89,13 @@ export class UpdateStudentComponent implements OnInit {
     this.studentService.updateStudent(this.studentId, formdata).subscribe(
       (res) => {
         // console.log(res);
+
+        const name: any = res.data.fname;
+        localStorage.setItem("name", name);
+
         this.toastr.success("Updated Successfully!", "Success");
         this.router.navigate(["main/home"]);
+        window.location.reload();
       },
       (err: HttpErrorResponse) => {
         if (err.error && err.error.error) {
