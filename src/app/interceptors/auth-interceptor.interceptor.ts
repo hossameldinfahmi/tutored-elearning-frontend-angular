@@ -4,18 +4,47 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
+  HttpErrorResponse,
+  HttpResponse,
 } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, tap } from "rxjs";
+import { ToastrService } from "ngx-toastr";
+import { SpinerService } from "../_services/spiner.service";
 
 @Injectable()
 export class AuthInterceptorInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(
+    private toastr: ToastrService,
+    private spinnerService: SpinerService
+  ) {}
 
   intercept(
-    req: HttpRequest<unknown>,
+    request: HttpRequest<unknown>,
     next: HttpHandler
-  ): Observable<HttpEvent<unknown>> {
-    return next.handle(req);
+  ): Observable<HttpEvent<any>> {
+    console.log(1);
+
+    if (
+      request.url.endsWith("/trainers") ||
+      request.url.endsWith("/student/courses") ||
+      request.url.endsWith("/student/update") ||
+      request.url.endsWith("/main/courses")
+    ) {
+      this.spinnerService.requestStarted();
+    }
+
+    return next.handle(request).pipe(
+      tap(
+        (event) => {
+          if (event instanceof HttpResponse) {
+            this.spinnerService.requestEnded();
+          }
+        },
+        (error: HttpErrorResponse) => {
+          this.spinnerService.resetSpinner();
+        }
+      )
+    );
   }
 }
 

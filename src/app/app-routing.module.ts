@@ -77,54 +77,81 @@ const routes: Routes = [
         component: HomePageComponent,
       },
       { path: "about", component: AboutPageComponent },
-      { path: "login", component: MainLoginComponent },
+      {
+        path: "login",
+        canActivate: [IsLoggedGuard],
+        component: MainLoginComponent,
+      },
       {
         path: "login/student",
         canActivate: [IsLoggedGuard],
         component: LoginStudentComponent,
       },
-      { path: "register", component: RegisterComponent },
+      {
+        path: "register",
+        canActivate: [IsLoggedGuard],
+        component: RegisterComponent,
+      },
       {
         path: "register/student",
         canActivate: [IsLoggedGuard],
         component: RegisterStudentComponent,
       },
-      {
-        path: "student/courses",
-        // canActivate: [StudentGuard],
-        component: MyCoursesComponent,
-      },
+
       { path: "contact", component: ContactPageComponent },
       { path: "categories", component: CategoriesPageComponent },
       { path: "courses", component: CoursesPageComponent },
       { path: "trainers", component: TrainersPageComponent },
       { path: "search", component: SearchComponent },
       { path: "feedback-form/:courseId", component: FeedbackFormComponent },
-
-      {
-        path: "courses",
-        children: [
-          { path: "details/:courseId", component: CoursesDetailsPageComponent },
-          { path: "details/:courseId/videos", component: VideoComponent },
-
-          {
-            path: "details/:courseId/videos/exam",
-            component: ExamPageComponent,
-          },
-          {
-            path: "details/:courseId/videos/exam/result",
-            component: ResultComponent,
-          },
-        ],
-      },
-
       { path: "payment/:courseId", component: PaymentComponent },
-
       {
         path: "categories",
         children: [
           { path: "details/:categoryId", component: CategoryCoursesComponent },
         ],
+      },
+      { path: "chat", component: ChatDialogComponent },
+
+      {
+        path: "courses",
+        children: [
+          { path: "details/:courseId", component: CoursesDetailsPageComponent },
+          {
+            path: "details/:courseId/videos",
+            canActivate: [StudentGuard],
+            component: VideoComponent,
+          },
+
+          {
+            path: "details/:courseId/videos/exam",
+            canActivate: [StudentGuard],
+
+            component: ExamPageComponent,
+          },
+          {
+            path: "details/:courseId/videos/exam/result",
+            canActivate: [StudentGuard],
+
+            component: ResultComponent,
+          },
+        ],
+      },
+      {
+        path: "student/certified/:studentId/:courseId/:verificationNumber",
+        canActivate: [StudentGuard],
+        component: CertfiedComponent,
+      },
+
+      {
+        path: "student/courses",
+        canActivate: [StudentGuard],
+        component: MyCoursesComponent,
+      },
+      {
+        path: "student/update",
+        canActivate: [StudentGuard],
+        component: UpdateStudentComponent,
       },
 
       {
@@ -142,7 +169,7 @@ const routes: Routes = [
           },
           {
             path: "courses",
-            // canActivate: [AuthTrainerGuard],
+            canActivate: [AuthTrainerGuard],
             component: MyCoursesComponent,
           },
           {
@@ -219,17 +246,6 @@ const routes: Routes = [
           },
         ],
       },
-      {
-        path: "student/certified/:studentId/:courseId/:verificationNumber",
-        component: CertfiedComponent,
-      },
-      {
-        path: "student/update",
-        canActivate: [StudentGuard],
-        component: UpdateStudentComponent,
-      },
-
-      { path: "chat", component: ChatDialogComponent },
     ],
   },
 

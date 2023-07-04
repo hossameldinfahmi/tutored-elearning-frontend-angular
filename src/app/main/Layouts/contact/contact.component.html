@@ -127,7 +127,7 @@
               type="text"
               #subNameInput="ngModel"
               ngModel
-              minlength="3"
+              minlength="5"
               maxlength="191"
               pattern="^[a-zA-Z0-9 _.-]*$"
               class="form-control"
@@ -146,7 +146,7 @@
               *ngIf="subNameInput.errors?.['minlength']"
               style="color: red"
               class="alert"
-              >Please enter more than 2 characters *</span
+              >Please enter more than 5 characters *</span
             >
             <span
               *ngIf="subNameInput.errors?.['maxlength']"
@@ -165,9 +165,9 @@
           <div class="form-group mt-3">
             <textarea
               class="form-control"
-              #subNameInput="ngModel"
+              #messageInput="ngModel"
               ngModel
-              minlength="3"
+              minlength="10"
               pattern="^[a-zA-Z0-9 _.-]*$"
               maxlength="191"
               name="message"
@@ -177,25 +177,25 @@
             ></textarea>
           </div>
           <span
-            *ngIf="subNameInput.touched && subNameInput.invalid && subNameInput.errors?.['required']"
+            *ngIf="messageInput.touched && messageInput.invalid && messageInput.errors?.['required']"
             style="color: red"
             class="alert"
             >This field is required *</span
           >
           <span
-            *ngIf="subNameInput.errors?.['minlength']"
+            *ngIf="messageInput.errors?.['minlength']"
             style="color: red"
             class="alert"
-            >Please enter more than 2 characters *</span
+            >Please enter more than 10 characters *</span
           >
           <span
-            *ngIf="subNameInput.errors?.['maxlength']"
+            *ngIf="messageInput.errors?.['maxlength']"
             style="color: red"
             class="alert"
             >Please enter less than 192 characters *</span
           >
           <span
-            *ngIf="subNameInput.errors?.['pattern']"
+            *ngIf="messageInput.errors?.['pattern']"
             style="color: red"
             class="alert"
             >Please enter alphabets characters only *</span
@@ -211,7 +211,6 @@
           <div class="text-center">
             <button
               type="submit"
-              routerLink="/main/home"
               (click)="addContact(contactForm)"
               [disabled]="!contactForm.valid"
             >

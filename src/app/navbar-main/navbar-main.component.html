@@ -98,7 +98,7 @@
                 >
                   <a
                     class="dropdown-item"
-                    [routerLink]="'/main/' + checkUser + '/courses'"
+                    [routerLink]="'/main/' + checkUser.getValue() + '/courses'"
                   >
                     <i
                       class="mdi mdi-book-open-page-variant menu-icon mr-2 text-info"
@@ -107,7 +107,7 @@
                   </a>
                   <a
                     class="dropdown-item"
-                    [routerLink]="'/main/' + checkUser + '/update'"
+                    [routerLink]="'/main/' + checkUser.getValue() + '/update'"
                   >
                     <i
                       class="fa fa-pencil-square-o mr-2 text-success"
@@ -117,7 +117,7 @@
                   </a>
                   <a
                     class="dropdown-item"
-                    [routerLink]="'/main/' + checkUser + '/logout'"
+                    [routerLink]="'/main/' + checkUser.getValue() + '/logout'"
                     (click)="logout()"
                   >
                     <i class="mdi mdi-logout mr-2 text-primary"></i> Sign Out

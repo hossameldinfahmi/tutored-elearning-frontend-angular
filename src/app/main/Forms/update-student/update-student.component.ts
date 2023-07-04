@@ -1,37 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Student } from 'src/app/_models/student.model';
-import { StudentService } from 'src/app/_services/student.service';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Student } from "src/app/_models/student.model";
+import { StudentService } from "src/app/_services/student.service";
 
 @Component({
-  selector: 'app-update-student',
-  templateUrl: './update-student.component.html',
-  styleUrls: ['./update-student.component.css']
+  selector: "app-update-student",
+  templateUrl: "./update-student.component.html",
+  styleUrls: ["./update-student.component.css"],
 })
 export class UpdateStudentComponent implements OnInit {
-
   files: any;
   submitted = false;
   form!: FormGroup;
   // data!: Trainer;
-  student: Student={fname:"",lname:"",phone:"",img:""};
+  student: Student = { fname: "", lname: "", phone: "", img: "" };
   studentId!: number;
   ff = new FormData();
 
-  constructor(private studentService:StudentService, private formbuilder:FormBuilder) { }
+  constructor(
+    private studentService: StudentService,
+    private formbuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
-this.studentId=parseInt(localStorage.getItem('id')!);
-this.getStudent(this.studentId);
-this.createForm();
+    this.studentId = parseInt(localStorage.getItem("id")!);
+    this.getStudent(this.studentId);
+    this.createForm();
   }
 
-  getStudent(id:number){
+  getStudent(id: number) {
     this.studentService.getStudentById(id).subscribe(
-      res=>{
-        this.student=res.data;
+      (res) => {
+        this.student = res.data;
         // console.log(this.student);
-        
+
         this.form = this.formbuilder.group({
           fname: [this.student.fname, Validators.required],
           lname: [this.student.lname, Validators.required],
@@ -39,11 +41,10 @@ this.createForm();
           img: [null],
         });
       },
-      err=>{
+      (err) => {
         console.log(err);
-        
       }
-    )
+    );
   }
 
   createForm() {
@@ -75,23 +76,20 @@ this.createForm();
     }
     // console.log(form.value);
     const formdata = new FormData();
-    formdata.append('img', this.files, this.files.name);
-    formdata.append('fname', form.value.fname);
-    formdata.append('lname', form.value.lname);
-    formdata.append('phone', form.value.phone);
+    formdata.append("img", this.files, this.files.name);
+    formdata.append("fname", form.value.fname);
+    formdata.append("lname", form.value.lname);
+    formdata.append("phone", form.value.phone);
 
     // console.log(formdata);
 
-    this.studentService.updateStudent(this.studentId,formdata).subscribe(
-          res=>{
-            // console.log(res);
-            
-          },
-          err=>{
-            console.log(err);
-            
-          }
-        )
+    this.studentService.updateStudent(this.studentId, formdata).subscribe(
+      (res) => {
+        // console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
-
 }

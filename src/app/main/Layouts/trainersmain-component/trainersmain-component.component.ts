@@ -25,7 +25,6 @@ export class TrainersmainComponentComponent implements OnInit {
       (res) => {
         this.TrainersArray = res.data;
         // this.array = this.TrainersArray.slice(0,3);
-        console.log(this.TrainersArray);
       },
       (err) => {
         console.log("error in get trainers");

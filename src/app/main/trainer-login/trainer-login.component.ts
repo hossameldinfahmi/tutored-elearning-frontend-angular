@@ -3,6 +3,7 @@ import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { TrainerService } from "../../_services/trainer.service";
 import { ToastrService } from "ngx-toastr";
+import { NavbarMainComponent } from "src/app/navbar-main/navbar-main.component";
 
 @Component({
   selector: "app-trainer-login",
@@ -31,13 +32,13 @@ export class TrainerLoginComponent implements OnInit {
     this.trainer.password = form.value["password"];
     this.trainerService.loginTrainer(this.trainer).subscribe(
       (res: any) => {
-        console.log("Login successful:", res);
         localStorage.setItem("Authorization", "bearer " + res.access_token);
         localStorage.setItem("id", res.id + "");
         localStorage.setItem("role", res.role);
         localStorage.setItem("name", res.name);
         this.trainerService.trainerloginservice.emit(res);
         this.router.navigate(["/main/home"]);
+        this.trainerService.checkUser.next("trainer");
       },
       (error: Error) => {
         console.log("Login failed:", error);

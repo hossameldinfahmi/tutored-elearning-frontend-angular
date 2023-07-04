@@ -13,8 +13,10 @@
 
 <app-chat-dialog *ngIf="active1 == true"></app-chat-dialog>
 <app-navbar-main *ngIf="active1 == true"></app-navbar-main>
+<app-spiner></app-spiner>
 <router-outlet *ngIf="active1 == true"></router-outlet>
 <app-footer *ngIf="active1 == true"></app-footer>
+<app-spiner></app-spiner>
 
 <app-nav-bar *ngIf="active == true"></app-nav-bar>
 <div class="container-scroller" *ngIf="active == true">
