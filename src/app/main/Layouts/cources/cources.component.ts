@@ -38,9 +38,9 @@ export class CourcesComponent implements OnInit {
     );
   }
 
-  getCountOfStudents(index: number, id: number) {
-    this.courseService.getCountStudentsInCourse(id).subscribe((res) => {
-      this.courseCount[index] = res;
-    });
-  }
+  // getCountOfStudents(index: number, id: number) {
+  //   this.courseService.getCountStudentsInCourse(id).subscribe((res) => {
+  //     this.courseCount[index] = res;
+  //   });
+  // }
 }

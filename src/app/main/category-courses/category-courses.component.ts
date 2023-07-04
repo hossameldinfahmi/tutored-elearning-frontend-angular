@@ -40,9 +40,11 @@ export class CategoryCoursesComponent implements OnInit {
     this.categoryService.getCoursesOfCategory(id).subscribe(
       (res) => {
         this.coursesArray = res;
-        for (let i = 0; i < this.coursesArray.length; i++) {
-          this.getCountOfStudents(i, this.coursesArray[i].id!);
-        }
+        console.log(this.coursesArray);
+
+        // for (let i = 0; i < this.coursesArray.length; i++) {
+        //   this.getCountOfStudents(i, this.coursesArray[i].id!);
+        // }
       },
       (err) => {
         console.log(err);
@@ -50,9 +52,9 @@ export class CategoryCoursesComponent implements OnInit {
     );
   }
 
-  getCountOfStudents(index: number, id: number) {
-    this.courseService.getCountStudentsInCourse(id).subscribe((res) => {
-      this.courseCount[index] = res;
-    });
-  }
+  // getCountOfStudents(index: number, id: number) {
+  //   this.courseService.getCountStudentsInCourse(id).subscribe((res) => {
+  //     this.courseCount[index] = res;
+  //   });
+  // }
 }

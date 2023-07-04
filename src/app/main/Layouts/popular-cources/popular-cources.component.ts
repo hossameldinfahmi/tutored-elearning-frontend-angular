@@ -31,11 +31,14 @@ export class PopularCourcesComponent implements OnInit {
     this.courseService.getAllCourses().subscribe(
       (res) => {
         this.courseArray = res;
+        console.log("====================================");
+        console.log(this.courseArray);
+        console.log("====================================");
         this.Array = this.courseArray.slice(0, 3);
         // console.log(this.courseArray);
-        for (let i = 0; i < this.courseArray.length; i++) {
-          this.getCountOfStudents(i, this.courseArray[i].id!);
-        }
+        // for (let i = 0; i < this.courseArray.length; i++) {
+        //   this.getCountOfStudents(i, this.courseArray[i].id!);
+        // }
       },
       (err) => {
         console.log(err);
@@ -44,9 +47,9 @@ export class PopularCourcesComponent implements OnInit {
     );
   }
 
-  getCountOfStudents(index: number, id: number) {
-    this.courseService.getCountStudentsInCourse(id).subscribe((res) => {
-      this.courseCount[index] = res;
-    });
-  }
+  // getCountOfStudents(index: number, id: number) {
+  //   this.courseService.getCountStudentsInCourse(id).subscribe((res) => {
+  //     this.courseCount[index] = res;
+  //   });
+  // }
 }

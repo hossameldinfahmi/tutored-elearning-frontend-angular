@@ -84,11 +84,11 @@ export class CoursesService {
     );
   }
 
-  getCountStudentsInCourse(id: number): Observable<number> {
-    return this.httpClient.get<number>(
-      `${environment.baseUrl}student/studentCount/${id}`
-    );
-  }
+  // getCountStudentsInCourse(id: number): Observable<number> {
+  //   return this.httpClient.get<number>(
+  //     `${environment.baseUrl}student/studentCount/${id}`
+  //   );
+  // }
 
   getCoursesCount(): Observable<number> {
     return this.httpClient.get<number>(`${environment.baseUrl}courses/count`);

@@ -60,6 +60,9 @@ export class VideoComponent implements OnInit {
       );
     });
     this.getresult();
+    console.log("====================================");
+    console.log(this.newresult.degree);
+    console.log("====================================");
     this.activatedRoute.params.subscribe((params) => {
       const courseId = params["courseId"];
       if (courseId) {
@@ -102,15 +105,17 @@ export class VideoComponent implements OnInit {
 
   getresult() {
     this.result.student_id = parseInt(localStorage.getItem("id")!);
+    this.result.exam_id = parseInt(localStorage.getItem("exam_id")!);
 
     this.resultService.getresult(this.result, this.result.exam_id).subscribe(
       (res) => {
-        this.newresult = res;
-        if (Object.keys(res).length === 0) {
-          this.active = false;
-        } else {
-          this.active = true;
-        }
+        this.newresult = res.exam_degree;
+
+        // if (Object.keys(res).length === 0) {
+        //   this.active = false;
+        // } else {
+        //   this.active = true;
+        // }
       },
 
       (err) => {

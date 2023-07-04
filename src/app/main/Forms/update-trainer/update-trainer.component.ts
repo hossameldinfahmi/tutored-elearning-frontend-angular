@@ -99,7 +99,7 @@ export class UpdateTrainerComponent implements OnInit {
 
     this.trainerService.updateTrainer(this.trainerId, formdata).subscribe(
       (res) => {
-        // console.log(res);
+        console.log(res);
         this.toastr.success("Uploded Successfully!", "Success");
         this.router.navigate(["main/home"]);
       },
