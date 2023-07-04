@@ -20,6 +20,7 @@
                 id="fname"
                 placeholder="First Name"
                 name="fname"
+                required
               />
               <span
                 *ngIf="firstNameInput.touched && firstNameInput.invalid && firstNameInput.errors?.['required']"
@@ -61,6 +62,7 @@
                 id="lname"
                 placeholder="Last Name"
                 name="lname"
+                required
               />
               <span
                 *ngIf="lastNameInput.touched && lastNameInput.invalid && lastNameInput.errors?.['required']"

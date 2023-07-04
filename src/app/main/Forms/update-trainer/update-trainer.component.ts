@@ -1,7 +1,8 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 import { Trainer } from "src/app/_models/trainer.model";
 import { TrainerService } from "src/app/_services/trainer.service";
 
@@ -29,7 +30,9 @@ export class UpdateTrainerComponent implements OnInit {
 
   constructor(
     private trainerService: TrainerService,
-    private formbuilder: FormBuilder
+    private formbuilder: FormBuilder,
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -97,9 +100,20 @@ export class UpdateTrainerComponent implements OnInit {
     this.trainerService.updateTrainer(this.trainerId, formdata).subscribe(
       (res) => {
         // console.log(res);
+        this.toastr.success("Uploded Successfully!", "Success");
+        this.router.navigate(["main/home"]);
       },
-      (err) => {
-        console.log(err);
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }

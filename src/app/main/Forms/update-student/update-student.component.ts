@@ -1,5 +1,8 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 import { Student } from "src/app/_models/student.model";
 import { StudentService } from "src/app/_services/student.service";
 
@@ -19,7 +22,9 @@ export class UpdateStudentComponent implements OnInit {
 
   constructor(
     private studentService: StudentService,
-    private formbuilder: FormBuilder
+    private formbuilder: FormBuilder,
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -74,21 +79,30 @@ export class UpdateStudentComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    // console.log(form.value);
+
     const formdata = new FormData();
     formdata.append("img", this.files, this.files.name);
     formdata.append("fname", form.value.fname);
     formdata.append("lname", form.value.lname);
     formdata.append("phone", form.value.phone);
 
-    // console.log(formdata);
-
     this.studentService.updateStudent(this.studentId, formdata).subscribe(
       (res) => {
         // console.log(res);
+        this.toastr.success("Updated Successfully!", "Success");
+        this.router.navigate(["main/home"]);
       },
-      (err) => {
-        console.log(err);
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }
