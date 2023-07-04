@@ -8,7 +8,7 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./certfied.component.css"],
 })
 export class CertfiedComponent {
-  isVerified: boolean = true;
+  isVerified: boolean = false;
   studentName: string = "";
   courseTitle: string = "";
   courseId: string = "";
@@ -20,14 +20,17 @@ export class CertfiedComponent {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
-      const studentId = params["studentid"];
-      const courseId = params["courseid"];
-      const verificationNumber = params["verificationnumber"];
+      const studentId = params["studentId"];
+      const courseId = params["courseId"];
+      const verificationNumber = params["verificationNumber"];
 
+      console.log("====================================");
+      console.log(studentId, courseId, verificationNumber);
+      console.log("====================================");
       // Make API call to verify certificate
       const apiUrl = `http://127.0.0.1:8000/api/verify/certificate/${studentId}/${courseId}/${verificationNumber}`;
       this.http.get(apiUrl).subscribe((response: any) => {
-        if (response.message === "verified") {
+        if (response.message === "Verified") {
           this.isVerified = true;
           this.studentName = response.student_name;
           this.courseTitle = response.course_name;

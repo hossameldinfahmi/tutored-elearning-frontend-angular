@@ -79,27 +79,24 @@
     </div>
   </div>
 </div>
-
-<div class="mt-lg-5 w-100 h-100 top-100">
+<div
+  *ngIf="isVerified; else notVerified"
+  class="container pm-certificate-container mt-5"
+></div>
+<div class="position-relative" style="height: 100vh">
   <div
     *ngIf="isVerified; else notVerified"
     class="container pm-certificate-container mt-5"
-  ></div>
-  <div class="position-relative" style="height: 100vh">
-    <div
-      *ngIf="isVerified; else notVerified"
-      class="container pm-certificate-container mt-5"
-    >
-      <!-- Certificate HTML template -->
-    </div>
-    <ng-template #notVerified>
-      <div
-        class="alert alert-danger position-absolute top-0 start-0 end-0 bottom-0 d-flex align-items-center justify-content-center"
-        style="width: 100vw; height: 100vh; font-size: 24px"
-      >
-        <i class="bi bi-exclamation-triangle-fill me-2"></i>
-        <span>This certificate is not valid.</span>
-      </div>
-    </ng-template>
+  >
+    <!-- Certificate HTML template -->
   </div>
+  <ng-template #notVerified>
+    <div
+      class="alert alert-danger position-absolute top-0 start-0 end-0 bottom-0 d-flex align-items-center justify-content-center"
+      style="width: 100vw; height: 100vh; font-size: 24px"
+    >
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>
+      <span>This certificate is not valid.</span>
+    </div>
+  </ng-template>
 </div>
