@@ -38,10 +38,8 @@
                 target="_blank"
               >
                 topic: {{ content.topic }} <br />
-
-                <span style="font-size: 11px">
-                  started at:{{ content.start_at }}</span
-                >
+                started at:
+                <span style="font-size: 11px">{{ content.start_at }}</span>
                 <br />
                 duration: {{ content.duration }} min
               </a>
@@ -112,14 +110,14 @@
     <div class="mt-5">
       <h6>Previous Exam Score:</h6>
       <p class="mb-4">
-        <span> {{ newresult.degree }} % </span>
+        <span class="font-weight-bolder"> {{ newresult.degree }} % </span>
       </p>
     </div>
     <div>
       <h6>My Progress :</h6>
     </div>
     <progress value="{{ newProgress }}" max="100"></progress>
-    <div>{{ newProgress }}%</div>
+    <div class="font-weight-bolder">{{ newProgress }}%</div>
 
     <div class="mt-5">
       <h4 class="mb-3">Get Your Certificate Via Mail:</h4>
