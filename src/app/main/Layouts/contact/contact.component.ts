@@ -2,13 +2,20 @@ import { Component, OnInit } from "@angular/core";
 import { ContactUsService } from "src/app/_services/contact-us.service";
 import { Contactus } from "src/app/_models/contactus.model";
 import { NgForm } from "@angular/forms";
+import { ToastrService } from "ngx-toastr";
+import { HttpErrorResponse } from "@angular/common/http";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-contact",
   templateUrl: "./contact.component.html",
   styleUrls: ["./contact.component.css"],
 })
 export class ContactComponent implements OnInit {
-  constructor(private contactService: ContactUsService) {}
+  constructor(
+    private contactService: ContactUsService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
   newcontact: Contactus = {
     email: "",
     name: "",
@@ -29,9 +36,20 @@ export class ContactComponent implements OnInit {
       (res) => {
         // this.coursesContentsArr = res;
         // console.log(res);
+        this.toastr.success("Sent Successfully!", "Success");
+        this.router.navigate(["main/home"]);
       },
-      (err) => {
-        console.log("Error adding contact");
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }

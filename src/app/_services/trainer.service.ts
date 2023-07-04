@@ -18,8 +18,10 @@ interface trainer {
 })
 export class TrainerService {
   trainerloginservice: EventEmitter<any> = new EventEmitter<any>();
-  private currentTrainerSubject: BehaviorSubject<LoginResponse | null> =
+  currentTrainerSubject: BehaviorSubject<LoginResponse | null> =
     new BehaviorSubject<LoginResponse | null>(null);
+
+  checkUser = new BehaviorSubject<string | null>(null);
 
   constructor(private httpClient: HttpClient) {
     const token: string | null = localStorage.getItem("Authorization");
@@ -46,6 +48,7 @@ export class TrainerService {
       this.currentTrainerSubject.next(null);
     }
   }
+
   get currentUser(): Observable<any> {
     return this.currentTrainerSubject.asObservable();
   }

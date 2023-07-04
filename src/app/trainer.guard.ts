@@ -14,25 +14,42 @@ import { LoginResponse } from "src/app/_models/trainer.model";
   providedIn: "root",
 })
 export class AuthTrainerGuard implements CanActivate {
-  constructor(private router: Router, private trainerService: TrainerService) {}
+  islogged: boolean = false;
 
+  constructor(private router: Router, private trainerService: TrainerService) {
+    trainerService.currentTrainerSubject.subscribe(() => {
+      if (trainerService.currentTrainerSubject.getValue()?.role == "isTrainer")
+        this.islogged = true;
+      else this.islogged = false;
+    });
+  }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.trainerService.currentUser.pipe(
-      map((currentTrainer: LoginResponse) => {
-        if (currentTrainer && currentTrainer.role === "isTrainer") {
-          return true;
-        } else {
-          this.router.navigate(["/main/trainer/login"], {
-            queryParams: {
-              returnUrl: state.url,
-            },
-          });
-          return false;
-        }
-      })
-    );
+    if (this.islogged) return true;
+    else {
+      this.router.navigate(["/main/trainer/login"], {
+        queryParams: {
+          returnUrl: state.url,
+        },
+      });
+      return false;
+    }
+
+    // return this.trainerService.currentUser.pipe(
+    //   map((currentTrainer: LoginResponse) => {
+    //     if (currentTrainer && currentTrainer.role === "isTrainer") {
+    //       return true;
+    //     } else {
+    //       this.router.navigate(["/main/trainer/login"], {
+    //         queryParams: {
+    //           returnUrl: state.url,
+    //         },
+    //       });
+    //       return false;
+    //     }
+    //   })
+    // );
   }
 }

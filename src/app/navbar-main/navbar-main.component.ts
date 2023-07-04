@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { StudentService } from "../_services/student.service";
 import { TrainerService } from "../_services/trainer.service";
+import { BehaviorSubject } from "rxjs";
 
 @Component({
   selector: "app-navbar-main",
@@ -9,12 +10,14 @@ import { TrainerService } from "../_services/trainer.service";
   styleUrls: ["./navbar-main.component.css"],
 })
 export class NavbarMainComponent implements OnInit {
+  checkUser: any;
   constructor(
     private trainserService: TrainerService,
     private studentService: StudentService,
     private router: Router
-  ) {}
-  checkUser!: string;
+  ) {
+    this.checkUser = trainserService.checkUser;
+  }
   id: number = parseInt(localStorage.getItem("id")!);
   // @Input()
   userName: string = localStorage.getItem("name")!;
@@ -24,9 +27,11 @@ export class NavbarMainComponent implements OnInit {
 
   ngOnInit(): void {
     this.checktoken();
-    if (localStorage.getItem("role") == "isTrainer") this.checkUser = "trainer";
-    else this.checkUser = "student";
-    console.log(this.checkUser);
+    if (localStorage.getItem("role") == "isTrainer")
+      this.checkUser.next("trainer");
+    else if (localStorage.getItem("role") == "isStudent")
+      this.checkUser.next("student");
+    else this.checkUser.next(null);
 
     this.studentService.studentloginservice.subscribe(
       (next) => {
@@ -62,7 +67,7 @@ export class NavbarMainComponent implements OnInit {
   }
 
   logout() {
-    if (this.checkUser == "trainer") {
+    if (this.checkUser.getValue() == "trainer") {
       this.trainserService.logoutTrainer().subscribe(
         (res) => {
           // console.log(res);

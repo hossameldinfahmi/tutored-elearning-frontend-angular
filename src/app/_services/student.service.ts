@@ -17,7 +17,7 @@ interface student {
 })
 export class StudentService {
   studentloginservice: EventEmitter<any> = new EventEmitter<any>();
-  private currentStudentSubject: BehaviorSubject<LoginResponse | null> =
+  currentStudentSubject: BehaviorSubject<LoginResponse | null> =
     new BehaviorSubject<LoginResponse | null>(null);
 
   constructor(private httpClient: HttpClient) {
@@ -116,10 +116,23 @@ export class StudentService {
   }
 
   checkStudent(data: any): Observable<student> {
-    return this.httpClient.post<student>(
-      environment.baseUrl + "student/login/",
-      data
-    );
+    return this.httpClient
+      .post<student>(environment.baseUrl + "student/login/", data)
+      .pipe(
+        tap((response: LoginResponse) => {
+          this.currentStudentSubject.next({
+            name: response.name,
+            id: response.id,
+            role: response.role,
+            access_token: response.access_token,
+            token_type: response.token_type,
+            expires_in: response.expires_in,
+            accessToken: response.accessToken,
+            tokenType: response.tokenType,
+            expiresIn: response.expiresIn,
+          });
+        })
+      );
   }
 
   getStudentsCount(): Observable<number> {
