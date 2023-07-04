@@ -3,6 +3,7 @@ import { Course } from "src/app/_models/course.model";
 import { CoursesService } from "src/app/_services/courses.service";
 import { StudentService } from "src/app/_services/student.service";
 import { TrainerService } from "src/app/_services/trainer.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-my-courses",
@@ -23,14 +24,14 @@ export class MyCoursesComponent implements OnInit {
   constructor(
     private trainserService: TrainerService,
     private studentService: StudentService,
-    private courseService: CoursesService
+    private courseService: CoursesService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
     if (localStorage.getItem("role") == "isTrainer") this.checkUser = "trainer";
     else this.checkUser = "student";
     this.getCourses();
-    console.log(this.checkUser);
   }
 
   getCourses() {

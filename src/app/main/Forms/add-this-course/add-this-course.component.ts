@@ -13,6 +13,7 @@ import { CategororyService } from "src/app/_services/categorory.service";
 import { CoursesService } from "src/app/_services/courses.service";
 import { TrainerService } from "src/app/_services/trainer.service";
 import { ToastrService } from "ngx-toastr";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-add-this-course",
@@ -25,7 +26,8 @@ export class AddThisCourseComponent implements OnInit {
     private categoryService: CategororyService,
     private trainerService: TrainerService,
     private formbuilder: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   categories!: Category[];
@@ -135,11 +137,10 @@ export class AddThisCourseComponent implements OnInit {
       (res) => {
         console.log(res);
         this.toastr.success("Course added successfully!");
+        this.router.navigate(["/main/trainer/courses"]);
       },
       (err) => {
-        console.log("Error adding course");
-        this.toastr.error("An error occurred while adding the course.");
-        console.log(err);
+        this.toastr.error("Error adding course");
       }
     );
   }
