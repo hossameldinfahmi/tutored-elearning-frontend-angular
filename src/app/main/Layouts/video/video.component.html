@@ -34,8 +34,8 @@
               <a
                 class="nav-link"
                 style="padding: 5px; margin: -10px"
-                data-bs-toggle="tab"
                 [href]="content.join_url"
+                target="_blank"
               >
                 topic: {{ content.topic }} <br />
                 started at:
@@ -110,14 +110,14 @@
     <div class="mt-5">
       <h6>Previous Exam Score:</h6>
       <p class="mb-4">
-        <span> {{ newresult.degree }} % </span>
+        <span class="font-weight-bolder"> {{ newresult.degree }} % </span>
       </p>
     </div>
     <div>
       <h6>My Progress :</h6>
     </div>
     <progress value="{{ newProgress }}" max="100"></progress>
-    <div>{{ newProgress }}%</div>
+    <div class="font-weight-bolder">{{ newProgress }}%</div>
 
     <div class="mt-5">
       <h4 class="mb-3">Get Your Certificate Via Mail:</h4>

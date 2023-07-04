@@ -40,7 +40,9 @@ export class CategoryCoursesComponent implements OnInit {
     this.categoryService.getCoursesOfCategory(id).subscribe(
       (res) => {
         this.coursesArray = res;
-        console.log(this.coursesArray);
+        console.log("====================================");
+        console.log(res);
+        console.log("====================================");
 
         // for (let i = 0; i < this.coursesArray.length; i++) {
         //   this.getCountOfStudents(i, this.coursesArray[i].id!);

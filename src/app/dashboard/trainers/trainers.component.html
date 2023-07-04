@@ -25,7 +25,9 @@
             >
               <td>{{ trainer.id }}</td>
               <td class="py-1">
-                <img [src]="trainer.img" />
+                <img
+                  [src]="'http://localhost:8000/uploads/trainer/' + trainer.img"
+                />
               </td>
               <td>{{ trainer.fname }} {{ trainer.lname }}</td>
               <td>{{ trainer.email }}</td>
