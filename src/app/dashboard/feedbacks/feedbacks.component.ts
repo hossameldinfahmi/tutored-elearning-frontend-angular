@@ -1,25 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import { Feedback } from '../../_models/feedback.model';
-import { FeedbackService } from '../../_services/feedback.service';
+import { Feedback } from "../../_models/feedback.model";
+import { FeedbackService } from "../../_services/feedback.service";
+import { ToastrService } from "ngx-toastr";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
-  selector: 'app-feedbacks',
-  templateUrl: './feedbacks.component.html',
-  styleUrls: ['./feedbacks.component.css']
+  selector: "app-feedbacks",
+  templateUrl: "./feedbacks.component.html",
+  styleUrls: ["./feedbacks.component.css"],
 })
 export class FeedbacksComponent implements OnInit {
+  constructor(
+    private feedbackService: FeedbackService,
+    private toastr: ToastrService
+  ) {}
 
-  constructor( private feedbackService: FeedbackService) { }
-
-  feed!:Feedback[]
+  feed!: Feedback[];
   p: number = 1;
 
   ngOnInit(): void {
     this.getAllfeedbacks();
   }
-
-
 
   getAllfeedbacks() {
     this.feedbackService.getAllfeedbacks().subscribe(
@@ -28,23 +30,32 @@ export class FeedbacksComponent implements OnInit {
         // console.log(this.feed);
       },
       (err) => {
-        console.log('Error in get all feeds');
+        console.log("Error in get all feeds");
         console.log(err);
       }
     );
   }
 
+  deletefeedback(id: number) {
+    this.feedbackService.deleteFeedbackById(id).subscribe(
+      (res) => {
+        // console.log(res);
+        this.toastr.success("Feedback Deleted successfully!", "Success");
 
-  deletefeedback(id:number){
-      this.feedbackService.deleteFeedbackById(id).subscribe(
-        (res) => {
-          // console.log(res);
-          this.ngOnInit();
-        },
-        (err) => {
-          console.log('Error deleting feedback');
-          console.log(err);
+        this.ngOnInit();
+      },
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
         }
-      );
-    }
+      }
+    );
+  }
 }

@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 import { Exam } from "src/app/_models/exam.model";
 import { Question } from "src/app/_models/question.model";
 import {
@@ -16,7 +18,8 @@ export class QuestionsDetailsComponent implements OnInit {
   constructor(
     private QuestionService: QuestionService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private toastr: ToastrService
   ) {}
 
   QuetionArray!: any[];
@@ -79,10 +82,19 @@ export class QuestionsDetailsComponent implements OnInit {
       (res) => {
         // console.log(res.data);
         this.ngOnInit();
+        this.toastr.success("Question Deleted successfully!", "Success");
       },
-      (err) => {
-        console.log("Error deleting deleteQestion ");
-        console.log(err);
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }

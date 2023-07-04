@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 import { Course } from "src/app/_models/course.model";
 import { CourseContent } from "src/app/_models/course_content.model";
 import { CourseContentService } from "src/app/_services/course-content.service";
@@ -30,7 +32,8 @@ export class EditCourseContentComponent implements OnInit {
     private CourseContentService: CourseContentService,
     private activatedRoute: ActivatedRoute,
     private courseService: CoursesService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
   courseid!: number;
   coursename!: string;
@@ -87,13 +90,23 @@ export class EditCourseContentComponent implements OnInit {
       (res) => {
         // console.log(res);
         // this.ngOnInit();
+        this.toastr.success("Course Content Updated successfully!", "Success");
+
         this.router.navigate([
           `/dashboard/contents/${this.courseid}/${this.coursename}`,
         ]);
       },
-      (err) => {
-        console.log("Error updating course content");
-        console.log(err);
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }

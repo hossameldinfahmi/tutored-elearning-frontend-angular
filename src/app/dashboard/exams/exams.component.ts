@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import { Exam } from '../../_models/exam.model';
-import { ExamsService } from '../../_services/exams.service';
+import { Exam } from "../../_models/exam.model";
+import { ExamsService } from "../../_services/exams.service";
+import { ToastrService } from "ngx-toastr";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
-  selector: 'app-exams',
-  templateUrl: './exams.component.html',
-  styleUrls: ['./exams.component.css'],
+  selector: "app-exams",
+  templateUrl: "./exams.component.html",
+  styleUrls: ["./exams.component.css"],
 })
 export class ExamsComponent implements OnInit {
-  constructor(private examService: ExamsService) {}
+  constructor(
+    private examService: ExamsService,
+    private toastr: ToastrService
+  ) {}
   ExamArray!: Exam[];
 
   ngOnInit(): void {
@@ -36,9 +41,19 @@ export class ExamsComponent implements OnInit {
       (res) => {
         // console.log(res);
         this.ngOnInit();
+        this.toastr.success("Exam Deleted successfully!", "Success");
       },
-      (err) => {
-        console.log('Error deleting exam');
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }

@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 import { Course } from "src/app/_models/course.model";
 import { CourseContent } from "src/app/_models/course_content.model";
 import { CourseContentService } from "src/app/_services/course-content.service";
@@ -15,7 +17,8 @@ export class CourseContentDetailsComponent implements OnInit {
     private CourseContentService: CourseContentService,
     private activatedRoute: ActivatedRoute,
     private courseService: CoursesService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
   coursesContentsArr!: CourseContent[];
   course!: Course;
@@ -57,7 +60,6 @@ export class CourseContentDetailsComponent implements OnInit {
     this.CourseContentService.getCourseLive(this.id).subscribe(
       (res) => {
         this.LiveCorses = res.data;
-        console.log(res);
       },
       (err) => {
         console.log("Error getting courses contents");
@@ -72,10 +74,19 @@ export class CourseContentDetailsComponent implements OnInit {
         // console.log(res);
         // this.router.navigate([`/main/trainer/course/details/${this.id}`]);
         this.ngOnInit();
+        this.toastr.success("Live Course Deleted successfully!", "Success");
       },
-      (err) => {
-        console.log("Error deleting course content");
-        console.log(err);
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }
@@ -87,10 +98,19 @@ export class CourseContentDetailsComponent implements OnInit {
         // console.log(res);
         // this.router.navigate([`/main/trainer/course/details/${this.id}`]);
         this.ngOnInit();
+        this.toastr.success("Course Content Deleted successfully!", "Success");
       },
-      (err) => {
-        console.log("Error deleting course content");
-        console.log(err);
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }
