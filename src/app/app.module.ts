@@ -91,12 +91,15 @@ import { SafePipe } from "./safe.pipe";
 import { CertfiedComponent } from "./certfied/certfied.component";
 import { NotCertfiedComponent } from "./not-certfied/not-certfied.component";
 import { HttpErrorInterceptor } from "./http-error.interceptor";
+import { AuthInterceptor } from "./auth.interceptor";
+import { SpinerComponent } from "./spiner/spiner.component";
 
 @NgModule({
   declarations: [
     BooleanPipe,
     //main Component
     AppComponent,
+    SpinerComponent,
 
     // Layout
     NavbarMainComponent,
