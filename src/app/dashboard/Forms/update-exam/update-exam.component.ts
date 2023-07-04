@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 import { Course } from "src/app/_models/course.model";
 import { Exam } from "src/app/_models/exam.model";
 import { CoursesService } from "src/app/_services/courses.service";
@@ -30,7 +32,8 @@ export class UpdateExamComponent implements OnInit {
   constructor(
     private examService: ExamsService,
     private activatedRoute: ActivatedRoute,
-    private CourseServices: CoursesService
+    private CourseServices: CoursesService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -94,11 +97,21 @@ export class UpdateExamComponent implements OnInit {
       (res) => {
         // this.coursesContentsArr = res;
         // console.log(res);
+        this.toastr.success("Exam Updated successfully!", "Success");
+
         this.ngOnInit();
       },
-      (err) => {
-        console.log("Error updating course content");
-        console.log(err);
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }

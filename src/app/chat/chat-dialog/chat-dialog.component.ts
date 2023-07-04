@@ -7,6 +7,7 @@ import {
 } from "@angular/core";
 import Pusher from "pusher-js";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-chat-dialog",
@@ -20,7 +21,7 @@ export class ChatDialogComponent implements OnInit {
 
   reply = "we are online course site";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     const name = localStorage.getItem("name");
@@ -54,16 +55,20 @@ export class ChatDialogComponent implements OnInit {
       }),
     };
 
-    this.http
-      .post(
-        "http://localhost:8000/api/messages",
-        {
-          username: this.username,
-          message: this.message,
-        },
-        options
-      )
-      .subscribe(() => (this.message = ""));
+    if (token) {
+      this.http
+        .post(
+          "http://localhost:8000/api/messages",
+          {
+            username: this.username,
+            message: this.message,
+          },
+          options
+        )
+        .subscribe(() => (this.message = ""));
+    } else {
+      this.router.navigate(["/main/login"]);
+    }
   }
 
   openForm() {

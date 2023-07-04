@@ -1,29 +1,35 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Category } from 'src/app/_models/category.model';
-import { CategororyService } from 'src/app/_services/categorory.service';
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
+import { Category } from "src/app/_models/category.model";
+import { CategororyService } from "src/app/_services/categorory.service";
 
 @Component({
-  selector: 'app-update-category',
-  templateUrl: './update-category.component.html',
-  styleUrls: ['./update-category.component.css'],
+  selector: "app-update-category",
+  templateUrl: "./update-category.component.html",
+  styleUrls: ["./update-category.component.css"],
 })
 export class UpdateCategoryComponent implements OnInit {
+  constructor(
+    private http: HttpClient,
+    private formbuilder: FormBuilder,
+    private categoryservice: CategororyService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
-  constructor(private http: HttpClient,private formbuilder:FormBuilder,private categoryservice:CategororyService,private activatedRoute: ActivatedRoute,private router: Router) { }
-
-  cat:Category={id: 2, name: 'category', img: 'cate -6214efae12666.jpg'};
-  ff=new FormData();
-  files:any;
-  submitted=false;
-  form!:FormGroup;
-
+  cat: Category = { id: 2, name: "category", img: "cate -6214efae12666.jpg" };
+  ff = new FormData();
+  files: any;
+  submitted = false;
+  form!: FormGroup;
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      const id = params['id'];
+      const id = params["id"];
       if (id) {
         this.getcategory(id);
       }
@@ -43,17 +49,15 @@ export class UpdateCategoryComponent implements OnInit {
         });
       },
       (err) => {
-        console.log('Error getting category');
+        console.log("Error getting category");
       }
     );
   }
 
-
-
   creatForm() {
     this.form = this.formbuilder.group({
       updatename: [this, Validators.required],
-      image: [null]
+      image: [null],
     });
   }
 
@@ -69,34 +73,41 @@ export class UpdateCategoryComponent implements OnInit {
   onsubmit(id: any, form: any) {
     //console.log(form.value);
     const formdata = new FormData();
-    formdata.append('img', this.files, this.files.name);
-    formdata.append('name', form.value.updatename);
-// console.log(formdata);
+    formdata.append("img", this.files, this.files.name);
+    formdata.append("name", form.value.updatename);
+    // console.log(formdata);
 
     this.categoryservice.updatecategory(id, formdata).subscribe(
       (res) => {
         // console.log(res);
-        this.router.navigate(['/dashboard/categories']);
+        this.toastr.success("Category Updated successfully!", "Success");
 
+        this.router.navigate(["/dashboard/categories"]);
       },
-      (err) => {
-        console.log('Error updating category');
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }
 
   category: Category = {
-    name: '',
+    name: "",
   };
 
   updatedCategory: Category = {
-    name: '',
+    name: "",
   };
-
- 
 
   resetForm(form: NgForm) {
     form.reset();
   }
-
 }

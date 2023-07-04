@@ -1,88 +1,91 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, NgForm,FormGroup,Validators } from '@angular/forms';
-import { Category } from 'src/app/_models/category.model';
-import { CategororyService } from 'src/app/_services/categorory.service';
-import { ToastrService } from 'ngx-toastr';
-import { HttpClient } from '@angular/common/http';
-import { CoursesService } from 'src/app/_services/courses.service';
-import { Course } from 'src/app/_models/course.model';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, NgForm, FormGroup, Validators } from "@angular/forms";
+import { Category } from "src/app/_models/category.model";
+import { CategororyService } from "src/app/_services/categorory.service";
+import { ToastrService } from "ngx-toastr";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { CoursesService } from "src/app/_services/courses.service";
+import { Course } from "src/app/_models/course.model";
+import { Router } from "@angular/router";
 @Component({
-  selector: 'app-add-category',
-  templateUrl: './add-category.component.html',
-  styleUrls: ['./add-category.component.css']
+  selector: "app-add-category",
+  templateUrl: "./add-category.component.html",
+  styleUrls: ["./add-category.component.css"],
 })
 export class AddCategoryComponent implements OnInit {
+  constructor(
+    private http: HttpClient,
+    private formbuilder: FormBuilder,
+    private categoryservice: CategororyService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
-  constructor(private http: HttpClient,private formbuilder:FormBuilder,private categoryservice:CategororyService,private router: Router) { }
-
-  ff=new FormData();
-  data:Category={name:"sara",img:this.ff};
-
+  ff = new FormData();
+  data: Category = { name: "sara", img: this.ff };
 
   resetForm(form: NgForm) {
     form.reset();
   }
 
-  files:any;
-  submitted=false;
-  form!:FormGroup;
+  files: any;
+  submitted = false;
+  form!: FormGroup;
 
-  creatForm(){
-    this.form=this.formbuilder.group({
-      catname:[null,Validators.required],
-      image:[null,Validators.required]
-    })
+  creatForm() {
+    this.form = this.formbuilder.group({
+      catname: [null, Validators.required],
+      image: [null, Validators.required],
+    });
   }
 
-  get f(){
+  get f() {
     return this.form.controls;
-
   }
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.creatForm();
   }
-  uploadImage(event:any){
-    this.files=event.target.files[0]
+  uploadImage(event: any) {
+    this.files = event.target.files[0];
     // console.log(this.files);
-
   }
-  onsubmit(form:any){
-    this.submitted=true;
-    if(this.form.invalid){
+  onsubmit(form: any) {
+    this.submitted = true;
+    if (this.form.invalid) {
       return;
     }
     //console.log(form.value);
-    const formdata=new FormData();
-    formdata.append("img",this.files,this.files.name);
-    formdata.append("name",form.value.catname);
-
+    const formdata = new FormData();
+    formdata.append("img", this.files, this.files.name);
+    formdata.append("name", form.value.catname);
 
     // console.log(formdata);
 
     //const name=form.value.catname;
-    this.data.name=form.value.catname;
-    this.data.img=formdata;
-
+    this.data.name = form.value.catname;
+    this.data.img = formdata;
 
     // console.log(this.data);
 
-
-
-
     this.categoryservice.addcategory(formdata).subscribe(
-      (res) =>{
+      (res) => {
         // console.log(res);
-        this.router.navigate(['/dashboard/categories']);
+        this.toastr.success("Category added successfully!", "Success");
+
+        this.router.navigate(["/dashboard/categories"]);
       },
-      (err) => {
-        console.log('Error adding category');
-        console.log(err);
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
-   }
-
-
-
-
+  }
 }

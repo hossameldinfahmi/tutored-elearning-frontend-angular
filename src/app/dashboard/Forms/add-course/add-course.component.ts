@@ -16,6 +16,7 @@ import { TrainerService } from "src/app/_services/trainer.service";
 import { ToastrService } from "ngx-toastr";
 import { ConstantPool } from "@angular/compiler";
 import { Router } from "@angular/router";
+import { HttpErrorResponse } from "@angular/common/http";
 // import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -149,8 +150,17 @@ export class AddCourseComponent implements OnInit {
         this.toastr.success(res.message);
         this.router.navigate(["/dashboard/courses"]);
       },
-      (err: any) => {
-        this.toastr.error(err.error.message);
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }
