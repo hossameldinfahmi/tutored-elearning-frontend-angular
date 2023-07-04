@@ -22,6 +22,30 @@
               >{{ content.name }}</a
             >
           </li>
+
+          <li
+            class="nav-item"
+            *ngFor="let content of LiveCorses; let i = index"
+          >
+            <div class="nav-link">
+              <span style="display: inline-block; padding-bottom: 10px"
+                >Live Course</span
+              >
+              <a
+                class="nav-link"
+                style="padding: 5px; margin: -10px"
+                data-bs-toggle="tab"
+                [href]="content.join_url"
+                (click)="onTabClick(i)"
+                >topic : {{ content.topic }} <br />
+                started at :
+                <span style="font-size: 11px">{{ content.start_at }}</span
+                ><br />
+                duration : {{ content.duration }} min
+              </a>
+            </div>
+          </li>
+
           <li class="nav-item">
             <a
               class="nav-link"
