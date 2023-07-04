@@ -25,10 +25,11 @@ export class CourcesComponent implements OnInit {
     this.courseService.getAllCourses().subscribe(
       (res) => {
         this.courseArray = res;
+        // console.log(this.courseArray);
 
-        for (let i = 0; i < this.courseArray.length; i++) {
-          this.getCountOfStudents(i, this.courseArray[i].id!);
-        }
+        // for (let i = 0; i < this.courseArray.length; i++) {
+        //   this.getCountOfStudents(i, this.courseArray[i].id!);
+        // }
       },
       (err) => {
         console.log(err);

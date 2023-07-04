@@ -1,21 +1,29 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { Trainer } from 'src/app/_models/trainer.model';
-import { TrainerService } from 'src/app/_services/trainer.service';
+import { HttpClient } from "@angular/common/http";
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
+import { Trainer } from "src/app/_models/trainer.model";
+import { TrainerService } from "src/app/_services/trainer.service";
 
 @Component({
-  selector: 'app-update-trainer',
-  templateUrl: './update-trainer.component.html',
-  styleUrls: ['./update-trainer.component.css'],
+  selector: "app-update-trainer",
+  templateUrl: "./update-trainer.component.html",
+  styleUrls: ["./update-trainer.component.css"],
 })
 export class UpdateTrainerComponent implements OnInit {
-  files: any;
+  files: any = null;
   submitted = false;
   form!: FormGroup;
   // data!: Trainer;
-  trainer: Trainer={fname:"",lname:"",phone:"",facebook:"",twitter:"",linkedin:"",img:""};
+  trainer: Trainer = {
+    fname: "",
+    lname: "",
+    phone: "",
+    facebook: "",
+    twitter: "",
+    linkedin: "",
+    img: "",
+  };
   trainerId!: number;
   ff = new FormData();
 
@@ -25,8 +33,7 @@ export class UpdateTrainerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
- 
-    this.trainerId = parseInt(localStorage.getItem('id')!);
+    this.trainerId = parseInt(localStorage.getItem("id")!);
     this.getTrainer(this.trainerId);
     this.createForm();
   }
@@ -77,26 +84,24 @@ export class UpdateTrainerComponent implements OnInit {
     }
     // console.log(form.value);
     const formdata = new FormData();
-    formdata.append('img', this.files, this.files.name);
-    formdata.append('fname', form.value.fname);
-    formdata.append('lname', form.value.lname);
-    formdata.append('phone', form.value.phone);
-    formdata.append('facebook', form.value.facebook);
-    formdata.append('twitter', form.value.twitter);
-    formdata.append('linkedin', form.value.linkedin);
+    formdata.append("img", this.files, this.files.name);
+    formdata.append("fname", form.value.fname);
+    formdata.append("lname", form.value.lname);
+    formdata.append("phone", form.value.phone);
+    formdata.append("facebook", form.value.facebook);
+    formdata.append("twitter", form.value.twitter);
+    formdata.append("linkedin", form.value.linkedin);
 
     // console.log(formdata);
 
-    this.trainerService.updateTrainer(this.trainerId,formdata).subscribe(
-          res=>{
-            // console.log(res);
-            
-          },
-          err=>{
-            console.log(err);
-            
-          }
-        )
+    this.trainerService.updateTrainer(this.trainerId, formdata).subscribe(
+      (res) => {
+        // console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   uploadImage(event: any) {
@@ -107,5 +112,4 @@ export class UpdateTrainerComponent implements OnInit {
   resetForm(form: FormGroup) {
     form.reset();
   }
-
 }

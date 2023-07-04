@@ -15,4 +15,5 @@ export interface Course {
   preq?: string;
   desc?: string;
   exams?: Exam[];
+  students_count?: number;
 }
