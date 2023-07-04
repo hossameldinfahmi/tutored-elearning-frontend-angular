@@ -139,7 +139,7 @@ const routes: Routes = [
       },
       {
         path: "student/certified/:studentId/:courseId/:verificationNumber",
-        canActivate: [StudentGuard],
+        // canActivate: [StudentGuard],
         component: CertfiedComponent,
       },
 

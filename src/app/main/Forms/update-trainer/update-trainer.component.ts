@@ -99,6 +99,8 @@ export class UpdateTrainerComponent implements OnInit {
 
     this.trainerService.updateTrainer(this.trainerId, formdata).subscribe(
       (res) => {
+        console.log(res);
+
         // console.log(res);
 
         const name: any = res.data.fname;

@@ -45,12 +45,12 @@ export class CountsComponent implements OnInit {
       (res) => {
         this.categoryCount = res;
         // console.log(res);
-        this.projectcountstop3 = setInterval(() => {
-          this.categoriesCounter++;
-          if (this.categoriesCounter == this.categoryCount) {
-            clearInterval(this.projectcountstop3);
-          }
-        }, 8);
+        // this.projectcountstop3 = setInterval(() => {
+        //   this.categoriesCounter++;
+        //   if (this.categoriesCounter == this.categoryCount) {
+        //     clearInterval(this.projectcountstop3);
+        //   }
+        // }, 8);
       },
       (err) => {
         console.log(err);
@@ -62,13 +62,12 @@ export class CountsComponent implements OnInit {
     this.courseService.getCoursesCount().subscribe(
       (res) => {
         this.courseCount = res;
-        // console.log(res);
-        this.projectcountstop2 = setInterval(() => {
-          this.coursesCounter++;
-          if (this.coursesCounter == this.courseCount) {
-            clearInterval(this.projectcountstop2);
-          }
-        }, 8);
+        // this.projectcountstop2 = setInterval(() => {
+        //   this.coursesCounter++;
+        //   if (this.coursesCounter == this.courseCount) {
+        //     clearInterval(this.projectcountstop2);
+        //   }
+        // }, 8);
       },
       (err) => {
         console.log(err);
@@ -80,15 +79,6 @@ export class CountsComponent implements OnInit {
     this.studentService.getStudentsCount().subscribe(
       (res) => {
         this.studentCount = res;
-        // console.log(res);
-        this.projectcountstop1 = setInterval(() => {
-          this.studentsCounter++;
-          // console.log(this.studentCount);
-
-          if (this.studentsCounter == this.studentCount) {
-            clearInterval(this.projectcountstop1);
-          }
-        }, 8);
       },
       (err) => {
         console.log(err);
@@ -100,13 +90,6 @@ export class CountsComponent implements OnInit {
     this.trainerService.getTrainersCount().subscribe(
       (res) => {
         this.trainerCount = res;
-        // console.log(res);
-        this.projectcountstop4 = setInterval(() => {
-          this.trainersCounter++;
-          if (this.trainersCounter == this.trainerCount) {
-            clearInterval(this.projectcountstop4);
-          }
-        }, 8);
       },
       (err) => {
         console.log(err);

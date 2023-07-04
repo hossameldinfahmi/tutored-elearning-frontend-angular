@@ -57,10 +57,6 @@ export class ResultComponent implements OnInit {
     this.resultService.getresult(this.result, this.course_id).subscribe(
       (res) => {
         this.newresult = res.exam_degree;
-        console.log("====================================");
-        console.log(this.newresult);
-        console.log("====================================");
-        // console.log(this.newresult);
       },
 
       (err) => {

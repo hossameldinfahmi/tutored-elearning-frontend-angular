@@ -51,9 +51,9 @@ export class MyCoursesComponent implements OnInit {
           this.courseArray = [];
           this.courseArray = res;
 
-          for (let i = 0; i < this.courseArray.length; i++) {
-            this.getCountOfStudents(i, this.courseArray[i].id!);
-          }
+          // for (let i = 0; i < this.courseArray.length; i++) {
+          //   this.getCountOfStudents(i, this.courseArray[i].id!);
+          // }
         },
         (err) => {
           console.log(err);
@@ -62,9 +62,9 @@ export class MyCoursesComponent implements OnInit {
     }
   }
 
-  getCountOfStudents(index: number, id: number) {
-    this.courseService.getCountStudentsInCourse(id).subscribe((res) => {
-      this.courseCount[index] = res;
-    });
-  }
+  // getCountOfStudents(index: number, id: number) {
+  //   this.courseService.getCountStudentsInCourse(id).subscribe((res) => {
+  //     this.courseCount[index] = res;
+  //   });
+  // }
 }
