@@ -40,10 +40,6 @@ export class MyCoursesComponent implements OnInit {
         (res) => {
           this.courseArray = [];
           this.courseArray = res.courses;
-
-          for (let i = 0; i < this.courseArray.length; i++) {
-            this.getCountOfStudents(i, this.courseArray[i].id!);
-          }
         },
         (err) => {
           console.log(err);

@@ -16,4 +16,5 @@ export interface Course {
   desc?: string;
   exams?: Exam[];
   students_count?: number;
+  student_count?: number;
 }
