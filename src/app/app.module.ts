@@ -87,9 +87,11 @@ import { EditThisQuestionComponent } from "./main/Forms/edit-this-question/edit-
 import { EditCourseContentComponent } from "./Forms/edit-course-content/edit-course-content.component";
 import { BooleanPipe } from "./pipe-transform.pipe";
 import { AddThisLiveCourseComponent } from "./main/Forms/add-this-live-course/add-this-course-content.component";
-import { SafePipe } from './safe.pipe';
-import { CertfiedComponent } from './certfied/certfied.component';
-import { NotCertfiedComponent } from './not-certfied/not-certfied.component';
+import { SafePipe } from "./safe.pipe";
+import { CertfiedComponent } from "./certfied/certfied.component";
+import { NotCertfiedComponent } from "./not-certfied/not-certfied.component";
+import { SpinerComponent } from "./spiner/spiner.component";
+import { AuthInterceptorInterceptor } from "./interceptors/auth-interceptor.interceptor";
 
 @NgModule({
   declarations: [
@@ -205,9 +207,13 @@ import { NotCertfiedComponent } from './not-certfied/not-certfied.component';
 
     //live
     AddThisLiveCourseComponent,
-      SafePipe,
-      CertfiedComponent,
-      NotCertfiedComponent,
+    SafePipe,
+    CertfiedComponent,
+    NotCertfiedComponent,
+    SpinerComponent,
+
+    //spiner
+    SpinerComponent,
   ],
 
   imports: [
@@ -222,7 +228,7 @@ import { NotCertfiedComponent } from './not-certfied/not-certfied.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [AuthInterceptorInterceptor],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
