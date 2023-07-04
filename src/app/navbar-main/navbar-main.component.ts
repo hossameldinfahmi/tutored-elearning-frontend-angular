@@ -21,6 +21,7 @@ export class NavbarMainComponent implements OnInit {
   id: number = parseInt(localStorage.getItem("id")!);
   // @Input()
   userName: string = localStorage.getItem("name")!;
+  image: any = localStorage.getItem("img");
 
   // @Input()
   // userName:any;

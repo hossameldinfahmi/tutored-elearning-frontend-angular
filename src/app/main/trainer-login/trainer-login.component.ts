@@ -39,6 +39,14 @@ export class TrainerLoginComponent implements OnInit {
         this.trainerService.trainerloginservice.emit(res);
         this.router.navigate(["/main/home"]);
         this.trainerService.checkUser.next("trainer");
+        this.trainerService.getTrainerById(res.id).subscribe(
+          (res: any) => {
+            localStorage.setItem("img", res.data.img);
+          },
+          (error: Error) => {
+            console.log(error);
+          }
+        );
       },
       (error: Error) => {
         console.log("Login failed:", error);

@@ -158,7 +158,8 @@
               id="phone"
               placeholder="Phone Number"
               name="phone"
-              maxlength="11"
+              maxlength="13"
+              pattern="^\+201[0125][0-9]{8}$"
             />
             <span
               *ngIf="phoneContentInput.touched && phoneContentInput.invalid && phoneContentInput.errors?.['required']"
@@ -170,7 +171,7 @@
               *ngIf="phoneContentInput.errors?.['pattern']"
               style="color: red"
               class="alert"
-              >Please enter correct Phone *</span
+              >Please enter correct Phone started with +2 *</span
             >
           </div>
           <div class="form-group">
@@ -210,7 +211,34 @@
               id="password"
               placeholder="Password"
               name="password"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
             />
+            <span
+              *ngIf="passInput.touched && passInput.invalid && passInput.errors?.['required']"
+              style="color: red"
+              class="alert"
+              >This field is required *</span
+            >
+            <span
+              *ngIf="passInput.errors?.['pattern']"
+              style="color: red"
+              class="alert"
+              >Please enter correct Password *</span
+            >
+            <br />
+            <span
+              *ngIf="passInput.errors?.['pattern']"
+              style="color: red"
+              class="alert"
+              >Password must be Contain letter (uppercase or lowercase) , digit,
+              and special characters (!,$,#,%,-,_,&.) *</span
+            >
+            <span
+              *ngIf="passInput.errors?.['pattern']"
+              style="color: red"
+              class="alert"
+              >min Length 8 *</span
+            >
           </div>
 
           <button

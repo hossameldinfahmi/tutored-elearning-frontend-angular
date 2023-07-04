@@ -43,7 +43,7 @@
                 *ngIf="firstNameInput.errors?.['pattern']"
                 style="color: red"
                 class="alert"
-                >Please enter alphabets characters only *</span
+                >Please enter number or alphabets characters only *</span
               >
             </div>
 
@@ -106,6 +106,7 @@
                   id="male"
                   value="male"
                   checked
+                  required
                 />
                 <label
                   class="form-check-label"
@@ -124,6 +125,7 @@
                   name="gender"
                   id="female"
                   value="female"
+                  required
                 />
                 <label
                   class="form-check-label"
@@ -153,12 +155,20 @@
               id="phone"
               placeholder="Phone"
               name="phone"
+              maxlength="13"
+              pattern="^\+201[0125][0-9]{8}$"
             />
             <span
               *ngIf="phoneInput.touched && phoneInput.invalid && phoneInput.errors?.['required']"
               style="color: red"
               class="alert"
               >This field is required *</span
+            >
+            <span
+              *ngIf="phoneInput.errors?.['pattern']"
+              style="color: red"
+              class="alert"
+              >Please enter correct Phone started with +2 *</span
             >
           </div>
 
@@ -173,12 +183,19 @@
               id="email"
               placeholder="Email Address"
               name="email"
+              email
             />
             <span
               *ngIf="emailInput.touched && emailInput.invalid && emailInput.errors?.['required']"
               style="color: red"
               class="alert"
               >This field is required *</span
+            >
+            <span
+              *ngIf="emailInput.errors?.['email']"
+              style="color: red"
+              class="alert"
+              >Please enter correct email *</span
             >
           </div>
 
@@ -193,6 +210,7 @@
               id="password"
               placeholder="Password"
               name="password"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
             />
             <span
               *ngIf="passwordInput.touched && passwordInput.invalid && passwordInput.errors?.['required']"
@@ -200,12 +218,33 @@
               class="alert"
               >This field is required *</span
             >
+            <span
+              *ngIf="passwordInput.errors?.['pattern']"
+              style="color: red"
+              class="alert"
+              >Please enter correct Password *</span
+            >
+            <br />
+            <span
+              *ngIf="passwordInput.errors?.['pattern']"
+              style="color: red"
+              class="alert"
+              >Password must be Contain letter (uppercase or lowercase) , digit,
+              and special characters (!,$,#,%,-,_,&.) *</span
+            >
+            <span
+              *ngIf="passwordInput.errors?.['pattern']"
+              style="color: red"
+              class="alert"
+              >min Length 8 *</span
+            >
           </div>
 
           <button
             type="submit"
             class="btn btn-primary m-4"
             id="submitBtn"
+            [disabled]="!trainerRegisterForm.valid"
             (click)="addTrainer(trainerRegisterForm)"
           >
             Register

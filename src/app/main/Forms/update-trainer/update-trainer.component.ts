@@ -105,6 +105,14 @@ export class UpdateTrainerComponent implements OnInit {
 
         const name: any = res.data.fname;
         localStorage.setItem("name", name);
+        this.trainerService.deleteTrainerById(this.trainerId).subscribe(
+          (res: any) => {
+            localStorage.setItem("img", res.data.img);
+          },
+          (error: Error) => {
+            console.log(error);
+          }
+        );
 
         this.toastr.success("Uploded Successfully!", "Success");
         this.router.navigate(["main/home"]);

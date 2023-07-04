@@ -37,6 +37,14 @@ export class LoginStudentComponent implements OnInit {
         this.studentService.studentloginservice.emit(res);
         this.router.navigate(["/main/home"]);
         this.trainerService.checkUser.next("student");
+        this.studentService.getStudentById(res.id).subscribe(
+          (res: any) => {
+            localStorage.setItem("img", res.data.img);
+          },
+          (err: any) => {
+            console.log(err);
+          }
+        );
       },
       (err: any) => {
         if (err.error.message === "Your email address is not verified.") {

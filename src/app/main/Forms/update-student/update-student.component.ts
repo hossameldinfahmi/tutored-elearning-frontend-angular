@@ -93,6 +93,15 @@ export class UpdateStudentComponent implements OnInit {
         const name: any = res.data.fname;
         localStorage.setItem("name", name);
 
+        this.studentService.getStudentById(this.studentId).subscribe(
+          (res: any) => {
+            localStorage.setItem("img", res.data.img);
+          },
+          (err: any) => {
+            console.log(err);
+          }
+        );
+
         this.toastr.success("Updated Successfully!", "Success");
         this.router.navigate(["main/home"]);
         window.location.reload();

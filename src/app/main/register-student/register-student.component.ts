@@ -19,7 +19,7 @@ export class RegisterStudentComponent implements OnInit {
   ) {}
   ngOnInit(): void {}
   studentArray!: Student[];
-
+  startNumbet: string = "+20";
   newStudent: Student = {
     fname: "",
     lname: "",
