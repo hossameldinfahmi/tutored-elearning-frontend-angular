@@ -36,8 +36,10 @@ export class LoginStudentComponent implements OnInit {
         this.router.navigate(["/main/home"]);
       },
       (err: any) => {
-        if (err.status === 403) {
-          this.toastr.error("Your email address is not verified.");
+        if (err.error.message === "Your email address is not verified.") {
+          this.toastr.error(
+            "Your email address is not verified, Resend verfiction mail and try again "
+          );
         } else {
           this.toastr.error(
             "Login failed. Please check your email and password."

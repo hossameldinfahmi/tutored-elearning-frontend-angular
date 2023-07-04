@@ -5,6 +5,9 @@ import { CourseContent } from "src/app/_models/course_content.model";
 import { CourseContentService } from "src/app/_services/course-content.service";
 import { ExamResultService } from "src/app/_services/exam-result.service";
 import { result } from "src/app/_services/exam-result.service";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { ToastrService } from "ngx-toastr";
+
 @Component({
   selector: "app-video",
   templateUrl: "./video.component.html",
@@ -15,7 +18,9 @@ export class VideoComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private courseContentService: CourseContentService,
     private resultService: ExamResultService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private http: HttpClient,
+    private toastr: ToastrService
   ) {}
   urlArr: string[] = [""];
   contentArr!: CourseContent[];
@@ -34,6 +39,7 @@ export class VideoComponent implements OnInit {
   LiveCorses: any;
   newProgress: number = 0;
   active: boolean = false;
+
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.id = params["courseId"];
@@ -138,6 +144,23 @@ export class VideoComponent implements OnInit {
       },
       (error) => {
         console.error(error);
+      }
+    );
+  }
+
+  getCertificate() {
+    const token: string = localStorage.getItem("Authorization")!;
+    const headers = new HttpHeaders({
+      Authorization: token,
+    });
+
+    const url = `http://127.0.0.1:8000/api/courses/${this.id}/completion`;
+    this.http.get(url, { headers }).subscribe(
+      (response: any) => {
+        this.toastr.success(response.message);
+      },
+      (error: any) => {
+        this.toastr.error(error.error.message);
       }
     );
   }

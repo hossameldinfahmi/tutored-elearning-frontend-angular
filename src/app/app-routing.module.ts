@@ -224,7 +224,10 @@ const routes: Routes = [
         canActivate: [StudentGuard],
         component: UpdateStudentComponent,
       },
-      { path: "student/certfied", component: CertfiedComponent },
+      {
+        path: "student/certfied/:studentId/:courseId/:verificationNumber",
+        component: CertfiedComponent,
+      },
 
       { path: "chat", component: ChatDialogComponent },
     ],

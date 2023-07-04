@@ -111,6 +111,16 @@
     </div>
     <progress value="{{ newProgress }}" max="100"></progress>
     <div>{{ newProgress }}%</div>
+    <div class="mt-5">
+      <h4 class="mb-3">Get Your Certificate Via Mail:</h4>
+      <p class="mb-4">
+        You have to complete 100% of the progress and score higher than 70% in
+        the exam.
+      </p>
+      <button class="btn btn-primary" (click)="getCertificate()">
+        Get Certificate
+      </button>
+    </div>
   </div>
 </section>
 <!-- End Cource Details Tabs Section -->
