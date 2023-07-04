@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from "@angular/core";
 import Pusher from "pusher-js";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Component({
   selector: "app-chat-dialog",
@@ -30,7 +30,7 @@ export class ChatDialogComponent implements OnInit {
     Pusher.logToConsole = true;
 
     const pusher = new Pusher("a6b0e6bc99281245df30", {
-      cluster: "eu",
+      cluster: "mt1",
     });
 
     const channel = pusher.subscribe("chat");
@@ -46,11 +46,23 @@ export class ChatDialogComponent implements OnInit {
   }
 
   submit(): void {
+    const token: string = localStorage.getItem("Authorization")!;
+
+    const options = {
+      headers: new HttpHeaders({
+        Authorization: token,
+      }),
+    };
+
     this.http
-      .post("http://localhost:8000/api/messages", {
-        username: this.username,
-        message: this.message,
-      })
+      .post(
+        "http://localhost:8000/api/messages",
+        {
+          username: this.username,
+          message: this.message,
+        },
+        options
+      )
       .subscribe(() => (this.message = ""));
   }
 
