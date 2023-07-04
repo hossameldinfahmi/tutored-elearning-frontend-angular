@@ -25,7 +25,7 @@
                   required
                   minlength="3"
                   maxlength="191"
-                  pattern="[A-Za-z ]+"
+                  pattern="[A-Za-z]+"
                   type="text"
                   class="form-control"
                   id="exampleInputName1"
@@ -116,7 +116,7 @@
                 <input
                   formControlName="price"
                   required
-                  type="text"
+                  type="number"
                   class="form-control"
                   id="exampleInputName1"
                   placeholder="Price"
@@ -144,6 +144,7 @@
                 <input
                   formControlName="duration"
                   required
+                  type="number"
                   placeholder="Duration"
                   class="form-control"
                   name="duration"
@@ -175,6 +176,8 @@
                   id="exampleInputName1"
                   placeholder="Prerequisites"
                   name="preq"
+                  minlength="3"
+                  maxlength="191"
                 />
                 <div
                   *ngIf="
@@ -185,6 +188,12 @@
                 >
                   <div *ngIf="form.controls['preq'].errors?.['required']">
                     Prerequisites are required
+                  </div>
+                  <div *ngIf="form.controls['preq'].errors?.['minlength']">
+                    Prerequisites must be at least 3 characters
+                  </div>
+                  <div *ngIf="form.controls['preq'].errors?.['maxlength']">
+                    Prerequisites must be at most 191 characters
                   </div>
                 </div>
               </div>
@@ -199,6 +208,8 @@
                   id="exampleInputName1"
                   placeholder="Description"
                   name="desc"
+                  minlength="3"
+                  maxlength="191"
                 />
                 <div
                   *ngIf="
@@ -209,6 +220,12 @@
                 >
                   <div *ngIf="form.controls['desc'].errors?.['required']">
                     Description is required
+                  </div>
+                  <div *ngIf="form.controls['desc'].errors?.['minlength']">
+                    Description must be at least 3 characters
+                  </div>
+                  <div *ngIf="form.controls['desc'].errors?.['maxlength']">
+                    Description must be at most 191 characters
                   </div>
                 </div>
               </div>
@@ -221,6 +238,9 @@
                 [disabled]="form.invalid"
               >
                 Submit
+              </button>
+              <button class="btn btn-light col-sm-12" onclick="history.back()">
+                Cancel
               </button>
             </form>
           </div>
