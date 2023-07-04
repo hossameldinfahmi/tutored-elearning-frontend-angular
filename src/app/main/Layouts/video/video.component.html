@@ -34,12 +34,14 @@
               <a
                 class="nav-link"
                 style="padding: 5px; margin: -10px"
-                data-bs-toggle="tab"
                 [href]="content.join_url"
+                target="_blank"
               >
                 topic: {{ content.topic }} <br />
-                started at:
-                <span style="font-size: 11px">{{ content.start_at }}</span>
+
+                <span style="font-size: 11px">
+                  started at:{{ content.start_at }}</span
+                >
                 <br />
                 duration: {{ content.duration }} min
               </a>
