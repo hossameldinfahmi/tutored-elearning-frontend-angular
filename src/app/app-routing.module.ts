@@ -71,7 +71,7 @@ const routes: Routes = [
   {
     path: "main",
     children: [
-      { path: "", redirectTo: "/home", pathMatch: "full" },
+      { path: "", redirectTo: "/main/home", pathMatch: "full" },
       {
         path: "home",
         component: HomePageComponent,
@@ -142,7 +142,7 @@ const routes: Routes = [
           },
           {
             path: "courses",
-            canActivate: [AuthTrainerGuard],
+            // canActivate: [AuthTrainerGuard],
             component: MyCoursesComponent,
           },
           {
@@ -220,13 +220,13 @@ const routes: Routes = [
         ],
       },
       {
+        path: "student/certified/:studentId/:courseId/:verificationNumber",
+        component: CertfiedComponent,
+      },
+      {
         path: "student/update",
         canActivate: [StudentGuard],
         component: UpdateStudentComponent,
-      },
-      {
-        path: "student/certfied/:studentId/:courseId/:verificationNumber",
-        component: CertfiedComponent,
       },
 
       { path: "chat", component: ChatDialogComponent },

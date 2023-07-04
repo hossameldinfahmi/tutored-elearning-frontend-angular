@@ -37,10 +37,8 @@ export class MyCoursesComponent implements OnInit {
     if (this.checkUser == "trainer") {
       this.trainserService.getCoursesOfTrainer(this.id).subscribe(
         (res) => {
-          console.log(res);
           this.courseArray = [];
-          this.courseArray = res;
-          console.log(res.courses);
+          this.courseArray = res.courses;
 
           for (let i = 0; i < this.courseArray.length; i++) {
             this.getCountOfStudents(i, this.courseArray[i].id!);
@@ -50,9 +48,6 @@ export class MyCoursesComponent implements OnInit {
           console.log(err);
         }
       );
-      console.log("====================================");
-      console.log(this.courseArray);
-      console.log("====================================");
     } else {
       this.studentService.getCoursesOfStudent(this.id).subscribe(
         (res) => {
