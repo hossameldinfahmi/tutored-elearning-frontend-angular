@@ -31,9 +31,7 @@ export class PopularCourcesComponent implements OnInit {
     this.courseService.getAllCourses().subscribe(
       (res) => {
         this.courseArray = res;
-        console.log("====================================");
-        console.log(this.courseArray);
-        console.log("====================================");
+
         this.Array = this.courseArray.slice(0, 3);
         // console.log(this.courseArray);
         // for (let i = 0; i < this.courseArray.length; i++) {
