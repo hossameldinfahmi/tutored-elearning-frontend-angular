@@ -63,6 +63,7 @@ import { StudentGuard } from "./student.guard";
 import { IsLoggedGuard } from "./is-logged.guard";
 import { AdminGardGuard } from "./admin-gard.guard";
 import { AddThisLiveCourseComponent } from "./main/Forms/add-this-live-course/add-this-course-content.component";
+import { CertfiedComponent } from "./certfied/certfied.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/main/home", pathMatch: "full" },
@@ -90,7 +91,7 @@ const routes: Routes = [
       },
       {
         path: "student/courses",
-        canActivate: [StudentGuard],
+        // canActivate: [StudentGuard],
         component: MyCoursesComponent,
       },
       { path: "contact", component: ContactPageComponent },
@@ -223,6 +224,8 @@ const routes: Routes = [
         canActivate: [StudentGuard],
         component: UpdateStudentComponent,
       },
+      { path: "student/certfied", component: CertfiedComponent },
+
       { path: "chat", component: ChatDialogComponent },
     ],
   },

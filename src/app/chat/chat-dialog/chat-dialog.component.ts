@@ -29,7 +29,7 @@ export class ChatDialogComponent implements OnInit {
 
     Pusher.logToConsole = true;
 
-    const pusher = new Pusher("f71e4af780b4d8afdf8b", {
+    const pusher = new Pusher("a6b0e6bc99281245df30", {
       cluster: "eu",
     });
 

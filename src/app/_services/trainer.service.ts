@@ -139,7 +139,7 @@ export class TrainerService {
     );
   }
 
-  getCoursesOfTrainer(id: number): Observable<Trainer> {
+  getCoursesOfTrainer(id: number): Observable<any> {
     const token: string = localStorage.getItem("Authorization")!;
     const headers = new HttpHeaders({
       Authorization: token,

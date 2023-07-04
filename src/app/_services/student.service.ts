@@ -126,7 +126,7 @@ export class StudentService {
     return this.httpClient.get<number>(`${environment.baseUrl}students/count`);
   }
 
-  getCoursesOfStudent(id: number): Observable<Student> {
+  getCoursesOfStudent(id: number): Observable<any> {
     const token: string = localStorage.getItem("Authorization")!;
     const headers = new HttpHeaders({
       Authorization: token,

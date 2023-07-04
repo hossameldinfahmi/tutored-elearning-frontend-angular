@@ -88,6 +88,8 @@ import { EditCourseContentComponent } from "./Forms/edit-course-content/edit-cou
 import { BooleanPipe } from "./pipe-transform.pipe";
 import { AddThisLiveCourseComponent } from "./main/Forms/add-this-live-course/add-this-course-content.component";
 import { SafePipe } from './safe.pipe';
+import { CertfiedComponent } from './certfied/certfied.component';
+import { NotCertfiedComponent } from './not-certfied/not-certfied.component';
 
 @NgModule({
   declarations: [
@@ -204,6 +206,8 @@ import { SafePipe } from './safe.pipe';
     //live
     AddThisLiveCourseComponent,
       SafePipe,
+      CertfiedComponent,
+      NotCertfiedComponent,
   ],
 
   imports: [

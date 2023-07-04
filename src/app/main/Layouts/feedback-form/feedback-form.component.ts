@@ -3,6 +3,7 @@ import { NgForm } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Feedback } from "src/app/_models/feedback.model";
 import { FeedbackService } from "src/app/_services/feedback.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-feedback-form",
@@ -13,7 +14,8 @@ export class FeedbackFormComponent implements OnInit {
   constructor(
     private feedbackService: FeedbackService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
   feed!: Feedback[];
   newfeedback: Feedback = {
@@ -47,20 +49,16 @@ export class FeedbackFormComponent implements OnInit {
       .addFeeback(this.newfeedback, this.newfeedback.course_id)
       .subscribe(
         (res) => {
-          // this.coursesContentsArr = res;
-          // console.log(res);
+          this.toastr.success("Feedback added successfully", "Success");
           this.router.navigate([`main/courses/details/${this.id}/videos`]);
         },
         (err) => {
-          console.log(err);
+          this.toastr.error(err.error.message, "Error");
         }
       );
   }
 
-  onSubmit(form: NgForm) {
-    // console.log(form);
-    // console.log(form.value);
-  }
+  onSubmit(form: NgForm) {}
 
   resetForm(form: NgForm) {
     form.reset();

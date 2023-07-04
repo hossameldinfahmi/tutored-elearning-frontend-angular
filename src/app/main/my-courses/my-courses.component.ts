@@ -39,7 +39,9 @@ export class MyCoursesComponent implements OnInit {
         (res) => {
           console.log(res);
           this.courseArray = [];
-          this.courseArray = res.courses!;
+          this.courseArray = res;
+          console.log(res.courses);
+
           for (let i = 0; i < this.courseArray.length; i++) {
             this.getCountOfStudents(i, this.courseArray[i].id!);
           }
@@ -48,12 +50,14 @@ export class MyCoursesComponent implements OnInit {
           console.log(err);
         }
       );
+      console.log("====================================");
+      console.log(this.courseArray);
+      console.log("====================================");
     } else {
       this.studentService.getCoursesOfStudent(this.id).subscribe(
         (res) => {
           this.courseArray = [];
-          this.courseArray = res.courses!;
-          console.log(res);
+          this.courseArray = res;
 
           for (let i = 0; i < this.courseArray.length; i++) {
             this.getCountOfStudents(i, this.courseArray[i].id!);

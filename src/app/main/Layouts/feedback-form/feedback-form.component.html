@@ -1,6 +1,6 @@
 <!-- ======= Contact Section ======= -->
-<section id="contact" class="contact">
-  <div class="container" data-aos="fade-up">
+<section id="contact mt-5 pt-5" class="contact">
+  <div class="container mt-5 pt-5" data-aos="fade-up">
     <div class="row mt-5">
       <div class="col-lg-8 mt-5 mt-lg-0">
         <form
@@ -10,12 +10,15 @@
           #feedForm="ngForm"
         >
           <div class="form-group mt-5">
+            <label for="desc">Write Youre Feed back : </label>
+
             <textarea
               class="form-control"
               #subNameInput="ngModel"
               ngModel
               minlength="3"
               pattern="^[a-zA-Z0-9 _.-]*$"
+              minlength="10"
               maxlength="191"
               name="desc"
               rows="5"
@@ -24,7 +27,7 @@
             ></textarea>
           </div>
           <div class="form-group mt-3">
-            <label for="rating">Rating:</label>
+            <label for="rating">Rating: (1 To 5) :</label>
             <input
               type="number"
               class="form-control"
@@ -55,7 +58,7 @@
               (click)="addFeedback(feedForm)"
               [disabled]="!feedForm.valid"
             >
-              Send Message
+              Send FeedBack
             </button>
           </div>
         </form>
