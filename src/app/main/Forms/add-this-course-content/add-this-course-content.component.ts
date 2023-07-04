@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 import { Course } from "src/app/_models/course.model";
 import { CourseContent } from "src/app/_models/course_content.model";
 import { CourseContentService } from "src/app/_services/course-content.service";
@@ -26,7 +28,8 @@ export class AddThisCourseContentComponent implements OnInit {
   constructor(
     private CourseContentService: CourseContentService,
     private courseService: CoursesService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -45,10 +48,19 @@ export class AddThisCourseContentComponent implements OnInit {
       (res) => {
         // this.coursesContentsArr = res;
         // console.log(res);
+        this.toastr.success("Course Content Added Successfully!", "Success");
       },
-      (err) => {
-        console.log("Error adding course content");
-        console.log(err);
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }

@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 import { Exam } from "src/app/_models/exam.model";
 import { Question } from "src/app/_models/question.model";
 import { ExamsService } from "src/app/_services/exams.service";
@@ -25,7 +27,8 @@ export class AddThisQuestionComponent implements OnInit {
     private questionService: QuestionService,
     private router: Router,
     private examService: ExamsService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -87,10 +90,19 @@ export class AddThisQuestionComponent implements OnInit {
     this.questionService.CreateQestion(formattedData, this.exam_id).subscribe(
       (res: any) => {
         console.log(res);
+        this.toastr.success("Question Added Successfully!", "Success");
       },
-      (err: any) => {
-        console.log("Error adding question");
-        console.log(err);
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
 

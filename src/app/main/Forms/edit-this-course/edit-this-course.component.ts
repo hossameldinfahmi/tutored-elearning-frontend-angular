@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 import { Category } from "src/app/_models/category.model";
 import { Course } from "src/app/_models/course.model";
 import { Trainer } from "src/app/_models/trainer.model";
@@ -20,7 +22,8 @@ export class EditThisCourseComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private formbuilder: FormBuilder,
     private trainerService: TrainerService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
   id: number = 0;
   trainerId: number = parseInt(localStorage.getItem("id")!);
@@ -126,15 +129,23 @@ export class EditThisCourseComponent implements OnInit {
     formdata.append("desc", form.value.desc);
     formdata.append("preq", form.value.preq);
 
-    console.log("====================================");
-    console.log(formdata);
-    console.log("====================================");
     this.courseService.updatecourse(id, formdata).subscribe(
       (res) => {
+        this.toastr.success("Course Updated Successfully!", "Success");
+
         this.router.navigate(["/main/trainer/courses"]);
       },
-      (err) => {
-        console.log("Error updating course");
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }
