@@ -16,9 +16,16 @@
       >
         <div class="member w-100 h-100">
           <!-- <img src="assets/main/img/trainers/trainer-1.jpg" class="img-fluid" alt=""> -->
-          <img [src]="url + trainer.img" alt="" class="img-fluid w-100" />
+          <img
+            [src]="url + trainer.img"
+            alt=""
+            class="img-fluid w-100"
+            style="height: 170px"
+          />
           <div class="member-content">
-            <h4>{{ trainer.fname }} {{ trainer.lname }}</h4>
+            <h4 style="height: 60px">
+              {{ trainer.fname }} {{ trainer.lname }}
+            </h4>
             <span>Phone : {{ trainer.phone }}</span>
             <p>Email : {{ trainer.email }}</p>
             <div class="social">
