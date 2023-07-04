@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 import { Admin } from "src/app/_models/admin.model";
 import { AdminService } from "src/app/_services/admin.service";
 
@@ -10,7 +12,11 @@ import { AdminService } from "src/app/_services/admin.service";
   styleUrls: ["./add-admin.component.css"],
 })
 export class AddAdminComponent implements OnInit {
-  constructor(private adminService: AdminService, private router: Router) {}
+  constructor(
+    private adminService: AdminService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   admin: Admin = {
     name: "",
@@ -29,9 +35,19 @@ export class AddAdminComponent implements OnInit {
     this.adminService.addAdmin(this.admin).subscribe(
       (res) => {
         // console.log(res);
+        this.toastr.success("Admin added successfully!", "Success");
       },
-      (err) => {
-        console.log(err);
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
     this.router.navigate(["/dashboard/admins"]);
