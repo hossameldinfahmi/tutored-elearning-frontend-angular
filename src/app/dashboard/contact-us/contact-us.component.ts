@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 
 import { Contactus } from "../../_models/contactus.model";
 import { ContactUsService } from "../../_services/contact-us.service";
+import { HttpErrorResponse } from "@angular/common/http";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-contact-us",
@@ -11,7 +13,10 @@ import { ContactUsService } from "../../_services/contact-us.service";
 export class ContactUsComponent implements OnInit {
   p: number = 1;
 
-  constructor(private contactUS: ContactUsService) {}
+  constructor(
+    private contactUS: ContactUsService,
+    private toastr: ToastrService
+  ) {}
 
   ContactusArray!: Contactus[];
 
@@ -39,10 +44,19 @@ export class ContactUsComponent implements OnInit {
       (res) => {
         // console.log(res);
         this.ngOnInit();
+        this.toastr.success("Deleted successfully!", "Success");
       },
-      (err) => {
-        console.log("Error deleting contact");
-        console.log(err);
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }

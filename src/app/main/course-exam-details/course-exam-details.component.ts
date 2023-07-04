@@ -4,6 +4,8 @@ import { Course } from "src/app/_models/course.model";
 import { CoursesService } from "src/app/_services/courses.service";
 import { Exam } from "../../_models/exam.model";
 import { ExamsService } from "../../_services/exams.service";
+import { ToastrService } from "ngx-toastr";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
   selector: "app-course-exam-details",
@@ -14,7 +16,8 @@ export class CourseExamDetailsComponent implements OnInit {
   constructor(
     private examService: ExamsService,
     private courseService: CoursesService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private toastr: ToastrService
   ) {}
 
   ExamArray!: any;
@@ -67,10 +70,21 @@ export class CourseExamDetailsComponent implements OnInit {
       (res) => {
         // this.coursesContentsArr = res;
         // console.log(res);
+        this.toastr.success("Exam Deleted successfully!", "Success");
+
         this.ngOnInit();
       },
-      (err) => {
-        console.log("Error deleting exam");
+      (err: HttpErrorResponse) => {
+        if (err.error && err.error.error) {
+          const errors = err.error.error;
+          const errorFields = Object.keys(errors);
+          errorFields.forEach((field) => {
+            const errorMessages = errors[field].join(". ");
+            this.toastr.error(`${field}: ${errorMessages}`, "Error");
+          });
+        } else {
+          this.toastr.error("Something went wrong", "Error");
+        }
       }
     );
   }
