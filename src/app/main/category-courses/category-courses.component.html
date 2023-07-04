@@ -14,11 +14,16 @@
       <div class="row" data-aos="zoom-in" data-aos-delay="100">
         <div
           *ngFor="let course of coursesArray; let i = index"
-          class="col-lg-4 col-md-6 d-flex align-items-stretch"
+          class="col-lg-4 col-md-6 d-flex justify-content-between align-items-stretch"
         >
-          <div class="course-item">
+          <div class="course-item my-5 w-100">
             <!-- <img src="assets/main/img/course-1.jpg" class="img-fluid" alt="..."> -->
-            <img [src]="course.c_img" class="img-fluid" alt="" />
+            <img
+              [src]="course.img"
+              class="img-fluid"
+              alt=""
+              style="height: 250px; object-fit: contain"
+            />
             <div class="course-content">
               <div
                 class="d-flex justify-content-between align-items-center mb-3"
@@ -26,12 +31,12 @@
                 <h4>{{ course.c_name }}</h4>
                 <p class="price">${{ course.price }}</p>
               </div>
-              <h3>
+              <h3 style="height: 48px">
                 <a [routerLink]="'/main/courses/details/' + course.id">{{
                   course.name
                 }}</a>
               </h3>
-              <p>{{ course.desc }}</p>
+              <p style="height: 40px; overflow: hidden">{{ course.desc }}</p>
               <p>{{ course.duration }} hour(s)</p>
               <div
                 class="trainer d-flex justify-content-between align-items-center"

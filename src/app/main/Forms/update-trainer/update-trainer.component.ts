@@ -105,7 +105,7 @@ export class UpdateTrainerComponent implements OnInit {
 
         const name: any = res.data.fname;
         localStorage.setItem("name", name);
-        this.trainerService.deleteTrainerById(this.trainerId).subscribe(
+        this.trainerService.getTrainerById(this.trainerId).subscribe(
           (res: any) => {
             localStorage.setItem("img", res.data.img);
           },
