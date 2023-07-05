@@ -3,7 +3,7 @@
 }
 
 section {
-  background: #fb4e3e;
+  background: #5fcf80;
   position: fixed;
   top: 0;
   left: 0;
@@ -56,13 +56,13 @@ h1:after {
   width: 30px;
   height: 45px;
   border: 4px solid #ffffff;
-  border-left: 1px solid #fb4e3e;
+  border-left: 1px solid #5fcf80;
   margin: 0;
   position: absolute;
   right: -4px;
   top: -4px;
   overflow: hidden;
-  background: #fb4e3e;
+  background: #5fcf80;
   transform-style: preserve-3d;
   -webkit-transform-origin: left center;
   transform-origin: left center;
@@ -92,17 +92,17 @@ h1:after {
   }
 
   20% {
-    background: #b5372c;
+    background: #44a962;
   }
 
   40% {
-    background: #fb4e3e;
+    background: #339450;
     -webkit-transform: rotateY(-180deg);
     transform: rotateY(-180deg);
   }
 
   100% {
-    background: #fb4e3e;
+    background: #31934f;
     -webkit-transform: rotateY(-180deg);
     transform: rotateY(-180deg);
   }
@@ -114,16 +114,16 @@ h1:after {
   }
 
   20% {
-    background: #b5372c;
+    background: #5fcf80;
   }
 
   40% {
-    background: #fb4e3e;
+    background: #49b669;
     transform: rotateY(-180deg);
   }
 
   100% {
-    background: #fb4e3e;
+    background: #3fa45d;
     transform: rotateY(-180deg);
   }
 }

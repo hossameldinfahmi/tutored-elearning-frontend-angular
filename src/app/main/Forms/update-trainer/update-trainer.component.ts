@@ -108,6 +108,7 @@ export class UpdateTrainerComponent implements OnInit {
         this.trainerService.getTrainerById(this.trainerId).subscribe(
           (res: any) => {
             localStorage.setItem("img", res.data.img);
+            window.location.reload();
           },
           (error: Error) => {
             console.log(error);
@@ -116,7 +117,6 @@ export class UpdateTrainerComponent implements OnInit {
 
         this.toastr.success("Uploded Successfully!", "Success");
         this.router.navigate(["main/home"]);
-        window.location.reload();
       },
       (err: HttpErrorResponse) => {
         if (err.error && err.error.error) {

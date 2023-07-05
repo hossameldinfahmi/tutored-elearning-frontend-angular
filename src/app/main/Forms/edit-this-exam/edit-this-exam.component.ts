@@ -19,15 +19,14 @@ export class EditThisExamComponent implements OnInit {
 
   examContent: Exam = {
     course_id: 0,
-    max_score: 0,
     title: "",
   };
 
   updatedExam: Exam = {
     course_id: 0,
-    max_score: 0,
     title: "",
   };
+  title: string = "";
   exam_id: number = 0;
   course_id: number = 0;
   constructor(
@@ -35,12 +34,17 @@ export class EditThisExamComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private CourseServices: CoursesService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      this.exam_id = params["exam_id"];
+      const examIdParam = this.route.snapshot.paramMap.get("exam_id");
+      if (examIdParam !== null) {
+        this.exam_id = +examIdParam;
+      }
+
       this.course_id = params["courseId"];
 
       // console.log(params);
@@ -55,7 +59,7 @@ export class EditThisExamComponent implements OnInit {
     this.examService.getexam(id).subscribe(
       (res) => {
         this.examContent = res.data;
-        // console.log(res);
+        console.log(res);
       },
       (err) => {
         console.log("Error getting exam");
@@ -67,9 +71,8 @@ export class EditThisExamComponent implements OnInit {
   updateExam(id: number, form: NgForm) {
     this.updatedExam.title = form.value["examName"];
     this.updatedExam.course_id = this.course_id;
-    this.updatedExam.max_score = form.value["max_score"];
-    // console.log(this.updatedExam);
-    this.examService.editExam(id, this.updatedExam).subscribe(
+
+    this.examService.editExam(id, this.title).subscribe(
       (res) => {
         // this.coursesContentsArr = res;
         // console.log(res);

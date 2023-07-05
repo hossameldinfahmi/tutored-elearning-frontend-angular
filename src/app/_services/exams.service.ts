@@ -58,7 +58,7 @@ export class ExamsService {
     );
   }
 
-  editExam(id: number, updatedExam: Exam): Observable<Exam> {
+  editExam(id: number, updatedExam: any): Observable<Exam> {
     const token: string = localStorage.getItem("Authorization")!;
     const headers = new HttpHeaders({
       Authorization: token,
@@ -66,7 +66,7 @@ export class ExamsService {
     // console.log(id);
     // console.log(updatedExam);
 
-    return this.httpClient.post<Exam>(
+    return this.httpClient.put<Exam>(
       `${environment.baseUrl}exams/${id}`,
       updatedExam,
       { headers }

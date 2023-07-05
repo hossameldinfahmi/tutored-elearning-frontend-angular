@@ -23,6 +23,7 @@ export class NavBarComponent implements OnInit {
         localStorage.removeItem("name");
         // localStorage.removeItem('pusherTransportTLS');
         localStorage.removeItem("exam_id");
+        localStorage.removeItem("img");
 
         this.router.navigate(["/dashboard/login"]);
       },

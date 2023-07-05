@@ -38,7 +38,7 @@ export class CourseExamDetailsComponent implements OnInit {
   getCourseById(id: number) {
     this.courseService.getCourseById(id).subscribe(
       (res) => {
-        // console.log(res);
+        console.log(res);
         this.course = res;
       },
       (err) => {

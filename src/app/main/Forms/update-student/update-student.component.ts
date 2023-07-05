@@ -37,7 +37,7 @@ export class UpdateStudentComponent implements OnInit {
     this.studentService.getStudentById(id).subscribe(
       (res) => {
         this.student = res.data;
-        // console.log(this.student);
+        console.log(this.student);
 
         this.form = this.formbuilder.group({
           fname: [this.student.fname, Validators.required],
@@ -96,6 +96,7 @@ export class UpdateStudentComponent implements OnInit {
         this.studentService.getStudentById(this.studentId).subscribe(
           (res: any) => {
             localStorage.setItem("img", res.data.img);
+            window.location.reload();
           },
           (err: any) => {
             console.log(err);
@@ -104,7 +105,6 @@ export class UpdateStudentComponent implements OnInit {
 
         this.toastr.success("Updated Successfully!", "Success");
         this.router.navigate(["main/home"]);
-        window.location.reload();
       },
       (err: HttpErrorResponse) => {
         if (err.error && err.error.error) {

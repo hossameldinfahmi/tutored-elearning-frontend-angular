@@ -28,7 +28,7 @@ export class StudentsComponent implements OnInit {
     this.studentservice.getAllStudents().subscribe(
       (res) => {
         this.StudentsArray = res.data;
-        // console.log(this.StudentsArray);
+        console.log(this.StudentsArray);
       },
       (err) => {
         console.log("error in get students");

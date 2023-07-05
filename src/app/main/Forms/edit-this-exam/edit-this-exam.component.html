@@ -109,7 +109,7 @@
                           >This field required *</span
                         >
                       </div> -->
-
+              <!-- 
               <div class="form-group">
                 <label for="exampleInputName1">Maximum score :</label>
                 <input
@@ -129,13 +129,13 @@
                   class="alert"
                   >This field is required *</span
                 >
-              </div>
+              </div> -->
 
               <!-- <div *ngFor="let exam of ExamArray"> -->
               <button
                 type="submit"
                 id="submitBtn"
-                (click)="updateExam(this.examContent.id!, examForm)"
+                (click)="updateExam(this.exam_id, examForm)"
                 class="btn main-btns btn-success text-light mr-2"
                 [disabled]="!examForm.valid"
               >

@@ -27,6 +27,9 @@ export class NavbarMainComponent implements OnInit {
   // userName:any;
 
   ngOnInit(): void {
+    console.log("====================================");
+    console.log(this.image);
+    console.log("====================================");
     this.checktoken();
     if (localStorage.getItem("role") == "isTrainer")
       this.checkUser.next("trainer");
@@ -77,6 +80,7 @@ export class NavbarMainComponent implements OnInit {
           localStorage.removeItem("id");
           localStorage.removeItem("role");
           localStorage.removeItem("name");
+          localStorage.removeItem("img");
 
           this.trainserService.trainerloginservice.emit("null");
           this.router.navigate(["/main/home"]);

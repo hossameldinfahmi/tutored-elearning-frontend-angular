@@ -36,6 +36,7 @@ export class UpdateExamComponent implements OnInit {
     private toastr: ToastrService
   ) {}
 
+  title: string = "";
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       const id = params["id"];
@@ -89,11 +90,11 @@ export class UpdateExamComponent implements OnInit {
   }
 
   updateExam(id: number, form: NgForm) {
-    this.updatedExam.title = form.value["examName"];
+    this.title = form.value["examName"];
     this.updatedExam.course_id = form.value["course_id"];
     this.updatedExam.max_score = form.value["max_score"];
     // console.log(this.updatedExam);
-    this.examService.editExam(id, this.updatedExam).subscribe(
+    this.examService.editExam(id, this.title).subscribe(
       (res) => {
         // this.coursesContentsArr = res;
         // console.log(res);
